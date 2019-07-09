@@ -1,0 +1,66 @@
+a { color: rgb(150, 150, 150); text-decoration: none; font-weight: bolder; }
+body {
+	margin: 0;
+	padding: 0;
+	color: black;
+	background-color: white;
+	background-image: url("../images/homepage_background.jpg");
+	background-size: 100% 100%;
+
+}
+
+hr {
+	width: 85%;
+	border-radius: 10px;
+	border: 1px solid rgba(30, 30, 30, 0.9);
+}
+
+.log_panel {
+	margin-top: 2%;
+	margin-left: 2%;
+	padding-top: 20px;
+	width: 600px;
+	height: 92%;
+	background-color: rgba(35, 35, 35, 0.8);
+}
+
+.log_panel p {
+	margin-left: 10%;
+	margin-right: 10%;
+	text-align: center;
+	font-size: 20px;
+	font-family: fantasy;
+}
+
+.camagru_logo { width: 80%; display: block; margin: 0 auto; }
+.input_text {
+	width: 80%;
+	height: 60px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	border: none;
+	outline: none;
+	font-size: 25px;
+	font-family: fantasy;
+	text-align: center;
+	background-color: rgba(50, 50, 50, 0.8);
+}
+
+.submit {
+	display: block;
+	margin: 0 auto;
+	margin-top: 30px;
+	width: 70%;
+	height: 5%;
+	font-size: 20px;
+	font-family: fantasy;
+	font-weight: bold;
+	border: none;
+	outline: none;
+	color: white;
+	background-color: rgba(255, 168, 0, 0.6);
+}
+
+.input_text:focus { outline: 2px solid orange; }
