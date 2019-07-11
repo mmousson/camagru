@@ -27,19 +27,18 @@ hr {
 .log_panel p {
 	margin-left: 10%;
 	margin-right: 10%;
-	padding-bottom: 1em;
 	text-align: center;
-	font-size: 1em;
+	font-size: 0.9em;
 	font-family: fantasy;
 }
 
-.camagru_logo { width: 70%; display: block; margin: 0 auto; }
+.camagru_logo { width: 65%; display: block; margin: 0 auto; }
 .input_text {
 	width: 80%;
 	height: 2em;
 	display: block;
 	margin: 0 auto;
-	margin-top: 30px;
+	margin-top: 28px;
 	margin-bottom: 10px;
 	border: none;
 	outline: none;

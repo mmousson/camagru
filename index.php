@@ -22,15 +22,15 @@
 			</form>
 			<hr/>
 			<p>
-				En vous inscrivant, vous acceptez nos <a href="src/useful_links/conditions.php">Conditions générales</a>. Découvrez comment nous recueillons, utilisons et partageons vos données en lisant notre <a href="src/useful_links/data.php">Politique d’utilisation des données</a> et comment nous utilisons les cookies et autres technologies similaires en consultant notre <a href="src/useful_links/cookies.php">Politique d’utilisation des cookies</a>.
+				En vous inscrivant, vous acceptez nos <a href="src/useful_links/conditions.php">Conditions générales</a>. Découvrez comment nous recueillons, utilisons et partageons vos données en lisant notre <a href="src/useful_links/data.php">Politique d’utilisation des données</a> et comment nous utilisons les cookies en consultant notre <a href="src/useful_links/cookies.php">Politique d’utilisation des cookies</a>.
 			</p>
-			<div class="useful_links">
+			<!-- <div class="useful_links">
 				<a href="about_us.php">ABOUT US</a>
 				<a href="support.php">SUPPORT</a>
 				<a href="privacy.php">PRIVACY</a>
 				<a href="contacts.php">CONTACTS</a>
-			</div>
-			<br/>
+			</div> -->
+			<!-- <br/>	 -->
 			<p>© 2019 mmousson</p>
 		</div>
 
@@ -92,7 +92,7 @@
 			slide_index++;
 			if (slide_index > x.length) {slide_index = 1} 
 			x[slide_index - 1].style.display = "block"; 
-			setTimeout(carousel, 3000);
+			setTimeout(carousel, 5000);
 		}
 	</script>
 </html>
