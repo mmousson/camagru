@@ -8,6 +8,7 @@
 	</head>
 
 	<body>
+		<section class="wrapper">
 		<div class="log_panel">
 			<img class="camagru_logo" src="images/camagru_logo.png" alt="Camagru Logo"/>
 			<form class="log_inputs">
@@ -23,18 +24,75 @@
 			<p>
 				En vous inscrivant, vous acceptez nos <a href="src/useful_links/conditions.php">Conditions générales</a>. Découvrez comment nous recueillons, utilisons et partageons vos données en lisant notre <a href="src/useful_links/data.php">Politique d’utilisation des données</a> et comment nous utilisons les cookies et autres technologies similaires en consultant notre <a href="src/useful_links/cookies.php">Politique d’utilisation des cookies</a>.
 			</p>
+			<div class="useful_links">
+				<a href="about_us.php">ABOUT US</a>
+				<a href="support.php">SUPPORT</a>
+				<a href="privacy.php">PRIVACY</a>
+				<a href="contacts.php">CONTACTS</a>
+			</div>
+			<br/>
+			<p>© 2019 mmousson</p>
 		</div>
+
+		<div class="slider">
+			<section class="slides_wrapper">
+				<img class="slides" src="images/posts/0-0/post_img.jpg"/>
+				<input type="image" class="previous_btn" onclick="slide_divs(-1)" src="images/UI/prev_btn.png"/>
+				<input type="image" class="next_btn" onclick="slide_divs(+1)" src="images/UI/next_btn.png"/>
+			</section>
+
+			<section class="slides_wrapper">
+				<img class="slides" src="images/posts/1-0/post_img.jpg"/>
+				<input type="image" class="previous_btn" onclick="slide_divs(-1)" src="images/UI/prev_btn.png"/>
+				<input type="image" class="next_btn" onclick="slide_divs(+1)" src="images/UI/next_btn.png"/>
+			</section>
+			
+			<section class="slides_wrapper">
+				<img class="slides" src="images/posts/2-0/post_img.jpg"/>
+				<input type="image" class="previous_btn" onclick="slide_divs(-1)" src="images/UI/prev_btn.png"/>
+				<input type="image" class="next_btn" onclick="slide_divs(+1)" src="images/UI/next_btn.png"/>
+			</section>
+		</div>
+		</section>
 	</body>
+	<script>
+		var slide_index = 1;
+		carousel();
 
-	<footer>
-		<div class="useful_links">
-			<a href="about_us.php">ABOUT US</a>
-			<a href="support.php">SUPPORT</a>
-			<a href="privacy.php">PRIVACY</a>
-			<a href="contacts.php">CONTACTS</a>
-		</div>
-		<br/>
-		<p>© 2019 mmousson</p>
-	</footer>
+		function slide_divs(amount)
+		{
+			console.log("Called slide");
+			show_divs(slide_index += amount);
+		}
+
+		function show_divs(index)
+		{
+			var	i;
+			var	x;
+			
+			console.log("Called show");
+			x = document.getElementsByClassName("slides_wrapper");
+			if (index > x)
+				slide_index = 1;
+			if (index < 1)
+				slide_index = x.length;
+			for (i = 0; i < x.length; i++)
+				x[i].style.display = "none";
+			x[slide_index - 1].style.display = "block";
+		}
+
+		function carousel()
+		{
+			var	i;
+			var	x;
+
+			x = document.getElementsByClassName("slides_wrapper");
+			for (i = 0; i < x.length; i++)
+				x[i].style.display = "none";
+			slide_index++;
+			if (slide_index > x.length) {slide_index = 1} 
+			x[slide_index - 1].style.display = "block"; 
+			setTimeout(carousel, 3000);
+		}
+	</script>
 </html>
-
