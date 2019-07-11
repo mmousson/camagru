@@ -24,13 +24,6 @@
 			<p>
 				En vous inscrivant, vous acceptez nos <a href="src/useful_links/conditions.php">Conditions générales</a>. Découvrez comment nous recueillons, utilisons et partageons vos données en lisant notre <a href="src/useful_links/data.php">Politique d’utilisation des données</a> et comment nous utilisons les cookies en consultant notre <a href="src/useful_links/cookies.php">Politique d’utilisation des cookies</a>.
 			</p>
-			<!-- <div class="useful_links">
-				<a href="about_us.php">ABOUT US</a>
-				<a href="support.php">SUPPORT</a>
-				<a href="privacy.php">PRIVACY</a>
-				<a href="contacts.php">CONTACTS</a>
-			</div> -->
-			<!-- <br/>	 -->
 			<p>© 2019 mmousson</p>
 		</div>
 
@@ -54,6 +47,12 @@
 			</section>
 		</div>
 		</section>
+		<div class="useful_pannel">
+		<a class="useful_link" href="about_us.php">ABOUT US</a>
+		<a class="useful_link" href="support.php">SUPPORT</a>
+		<a class="useful_link" href="privacy.php">PRIVACY</a>
+		<a class="useful_link" href="contacts.php">CONTACTS</a>
+		</div>
 	</body>
 	<script>
 		var slide_index = 1;

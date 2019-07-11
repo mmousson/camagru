@@ -35,14 +35,14 @@ hr {
 .camagru_logo { width: 65%; display: block; margin: 0 auto; }
 .input_text {
 	width: 80%;
-	height: 2em;
+	height: 1.9em;
 	display: block;
 	margin: 0 auto;
 	margin-top: 28px;
 	margin-bottom: 10px;
 	border: none;
 	outline: none;
-	font-size: 25px;
+	font-size: 20px;
 	font-family: fantasy;
 	text-align: center;
 	background-color: rgba(50, 50, 50, 0.8);
@@ -60,7 +60,7 @@ hr {
 	border: none;
 	outline: none;
 	color: white;
-	background-color: rgba(255, 168, 0, 0.6);
+	background-color: rgba(0, 196, 255, 0.6);
 }
 
 .wrapper { display: inline; }
@@ -78,7 +78,25 @@ hr {
 	position: relative;
 }
 
+.useful_pannel {
+	position: fixed;
+	height: 2%;
+	width: 100%;
+	transform: translate(0%, -100%);
+	background-color: #c1c1c1cb;
+	text-align: center;
+}
+
+.useful_link {
+	color: #3e3e3e;
+	margin-right: 100px;
+	margin-left: 100px;
+	font-size: 12px;
+	font-weight: normal;
+	font-family: cursive;
+}
+
 .previous_btn { height: 5em; width: 5em; position: absolute; left: 0px; top: 45%; max-width: 5em; }
 .next_btn { height: 5em; width: 5em; position: absolute; right: 0; top: 45%; max-width: 5em; }
 
-.input_text:focus { outline: 2px solid orange; }
+.input_text:focus { outline: 2px solid #009eff; }
