@@ -1,4 +1,5 @@
 <?php
+include_once("error_msg.php");
 ?>
 <html>
 	<meta charset="UTF-8">
