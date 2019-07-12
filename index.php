@@ -60,17 +60,13 @@ include_once("error_msg.php");
 		carousel();
 
 		function slide_divs(amount)
-		{
-			console.log("Called slide");
 			show_divs(slide_index += amount);
-		}
 
 		function show_divs(index)
 		{
 			var	i;
 			var	x;
-			
-			console.log("Called show");
+
 			x = document.getElementsByClassName("slides_wrapper");
 			if (index > x)
 				slide_index = 1;
