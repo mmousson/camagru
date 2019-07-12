@@ -9,7 +9,7 @@ include_once("header.php");
 			<div id="hero_text"/>
 				<h1>CONTACT US</h1>
 				<p id="white_p">Have a question ? Need a tip ? You can send a message to our team anytime !</p>
-				<button>CLICK HERE</button>
+				<button id="hero_click_btn">CLICK HERE</button>
 			</div>
 		</div>
 			<h2>Our Story</h2>

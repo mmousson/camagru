@@ -60,7 +60,9 @@ include_once("error_msg.php");
 		carousel();
 
 		function slide_divs(amount)
+		{
 			show_divs(slide_index += amount);
+		}
 
 		function show_divs(index)
 		{
@@ -81,7 +83,8 @@ include_once("error_msg.php");
 		{
 			var	i;
 			var	x;
-
+			
+			console.log("Carousel");
 			x = document.getElementsByClassName("slides_wrapper");
 			for (i = 0; i < x.length; i++)
 				x[i].style.display = "none";

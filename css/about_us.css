@@ -17,7 +17,7 @@ body { margin-top: 0px; margin-left: 0px; width: 100%; background-color: rgb(234
 	color: white;
 }
 
-button {
+#hero_click_btn {
 	border: none;
     outline: 0;
     display: inline-block;

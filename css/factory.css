@@ -1,0 +1,52 @@
+body { background-color: black; }
+.editor_wrapper {
+	display: flex;
+	margin-top: 6em;
+    height: 90%;
+}
+.editor_wrapper > div {
+	margin: 10px;
+	padding: 20px;
+	background-color: rgb(42, 42, 42);
+}
+
+.image_settings { max-width: 256px; }
+.image_filters { max-width: 128px; }
+.image_settings, .image_filters {
+	width: 15%;
+	height: 95%;
+	background-color: red;
+}
+
+.image_preview {
+	width: 100%;
+	background-image: url(/images/checker.jpg);
+    background-repeat: repeat;
+    background-size: 64px;
+}
+
+.image_texts {
+	padding: 30px 30px 30px 30px;
+	background-color: rgba(0,0,0,0.5);
+	border-radius: 10px;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-35%, -50%);
+	color: white;
+}
+
+#upload_btn { background-color: rgba(82, 229, 255, 0.8); }
+#photo_btn { background-color: rgba(255, 174, 82, 0.8); }
+#upload_btn, #photo_btn {
+	border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 10px 25px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    font-size: 17px;
+	margin-top: 6px;
+}
