@@ -1,0 +1,47 @@
+body { margin-top: 0px; margin-left: 0px; width: 100%; background-color: rgb(234, 234, 234); }
+#hero_image {
+	margin: auto;
+	background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("../images/earth_view.png");
+	height: 50%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#hero_text {
+	text-align: center;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}
+
+button {
+	border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 10px 25px;
+    color: white;
+    background-color: rgba(82, 229, 255, 0.7);
+    text-align: center;
+    cursor: pointer;
+    font-size: 17px;
+	margin-top: 6px;
+}
+
+h2 {
+	text-align: center;
+	color: #47b8ff;
+	font-size: 42px;
+}
+
+#white_p { color: white; }
+p {
+	width: 80%;
+	font-size: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	color: rgb(42, 42, 42);
+}

@@ -9,21 +9,43 @@ a {
 	margin-right: 1.5em;
 }
 
-.identification_pannel { height: 100%; top: 2em; right: 0; }
-.navigation_pannel { top: 2em; left: 20em; }
+.identification_pannel { height: 100%; top: 0; right: 0; }
+.navigation_pannel { display: inline-flex; height: 100%; top: 0; left: 20em; }
+.navigation_pannel button, .identification_pannel button {
+	padding-left: 0px;
+	padding-right: 0px;
+	height: 100%;
+	width: 10em;
+	margin-top: 0px;
+	color: white;
+	background-color: rgba(0,0,0,0.0);
+	transition: 0.2s;
+}
+.navigation_pannel button:hover, .identification_pannel button:hover
+{ background-color: rgb(0, 195, 255); }
+.navigation_pannel button:active, .identification_pannel button:active
+{ background-color: rgb(0, 151, 197); }
+
+#register_btn:hover { background-color: rgb(255, 186, 57); }
+#register_btn:active { background-color: rgb(197, 128, 0); }
+#register_btn {
+	transition: 0s;
+	background-color: orange;
+	transition: 0.2s;
+}
 
 #main_header {
 	position: relative;
 	width: 100%;
-	height: 8%;
+	height: 6%;
 	position: fixed;
 	top: 0;
 	left: 0;
-	background-color: rgb(52, 96, 214);
+	background-color: rgba(0, 0, 0, 0.25);
 }
 
 #main_header div {
-	display: inline;
+	display: inline-flex;
 	position: absolute;
 }
 #main_header input[type="image"] {
@@ -31,12 +53,4 @@ a {
 	margin-top: 1em;
 	max-height: 75%;
 	width: auto;
-}
-#register_btn {
-	font-size: 20px;
-	padding-top: 5px;
-	padding-left: 40px;
-	padding-right: 40px;
-	background-color: orange;
-	border-radius: 10px;
 }

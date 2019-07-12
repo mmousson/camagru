@@ -7,12 +7,12 @@
 		<div id="main_header">
 			<input type="image" src="images/site_logo.png" onclick="locate_homepage()"/>
 			<div class="navigation_pannel">
-				<a href="gallery.php">GALLERY</a>
-				<a href="factory.php">THE FACTORY</a>
+				<button>GALLERY</button>
+				<button>THE FACTORY</button>
 			</div>
 			<div class="identification_pannel">
-				<a href="index.php?registered=true">LOG IN</a>
-				<a id="register_btn" href="index.php">REGISTER</a>
+				<button>LOG IN</button>
+				<button id="register_btn">REGISTER</button>
 			</div>
 		</div>
 	</body>
