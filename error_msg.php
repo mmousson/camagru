@@ -12,12 +12,7 @@
 
 		msg = find_get_parameter("ERROR");
 		if (msg != null)
-		{
-			console.log("Error successfully retrieved");
 			document.getElementById("message").innerHTML = msg;
-		}
-		else
-			console.log("No error message found");
 
 		function close_error_msg() { document.getElementById("error_msg").style.top = "-5%"; setTimeout(disable_error_msg, 1010); }
 		function disable_error_msg() { document.getElementById("error_msg").remove(); }
