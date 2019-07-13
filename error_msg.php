@@ -1,6 +1,7 @@
 <html>
 	<meta charset="UTF-8"/>
 	<link rel="stylesheet" type="text/css" href="css/error_msg.css"/>
+	<link rel="shortcut icon" href="/images/ico.ico" type="image/x-icon"/>
 	<body>
 		<div id="error_msg">
 			<p id="message"></p>

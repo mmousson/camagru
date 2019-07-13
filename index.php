@@ -7,7 +7,6 @@ include_once("error_msg.php");
 		<title>Camagru</title>
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
 	</head>
-
 	<body>
 		<section class="wrapper">
 		<div class="log_panel">
@@ -83,8 +82,7 @@ include_once("error_msg.php");
 		{
 			var	i;
 			var	x;
-			
-			console.log("Carousel");
+
 			x = document.getElementsByClassName("slides_wrapper");
 			for (i = 0; i < x.length; i++)
 				x[i].style.display = "none";

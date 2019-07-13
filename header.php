@@ -5,6 +5,7 @@
 	<head>
 		<title>Camagru</title>
 		<link rel="stylesheet" type="text/css" href="css/header.css"/>
+		<link rel="shortcut icon" href="/images/ico.ico" type="image/x-icon"/>
 	</head>
 	<body>
 		<div id="main_header">
