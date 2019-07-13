@@ -50,7 +50,7 @@ include_once("error_msg.php");
 		<div class="useful_pannel">
 		<a class="useful_link" href="about_us.php">ABOUT US</a>
 		<a class="useful_link" href="support.php">SUPPORT</a>
-		<a class="useful_link" href="privacy.php">PRIVACY</a>
+		<a class="useful_link" href="privacy.php">COOKIES</a>
 		<a class="useful_link" href="contacts.php">CONTACTS</a>
 		</div>
 	</body>
