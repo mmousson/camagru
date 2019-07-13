@@ -18,7 +18,7 @@ include_once("error_msg.php");
 				<input class="input_text" type="text" id="user_name" name="user_name" placeholder="User Name" minlength="6" maxlength="15" required>
 				<input class="input_text" type="password" id="pass" name="pass" minlength="6" maxlength="18" placeholder="Enter a password" required>
 				<input class="input_text" type="password" id="repass" name="repass" minlength="6" maxlength="18" placeholder="Confirm your password" required>
-				<input class="submit" type="submit" id="submit" name="submit" value="NEXT" />
+				<button class="submit" id="submit">NEXT</button>
 			</form>
 			<hr/>
 			<p>
@@ -54,42 +54,6 @@ include_once("error_msg.php");
 		<a class="useful_link" href="contacts.php">CONTACTS</a>
 		</div>
 	</body>
-	<script>
-		var slide_index = 1;
-		carousel();
-
-		function slide_divs(amount)
-		{
-			show_divs(slide_index += amount);
-		}
-
-		function show_divs(index)
-		{
-			var	i;
-			var	x;
-
-			x = document.getElementsByClassName("slides_wrapper");
-			if (index > x)
-				slide_index = 1;
-			if (index < 1)
-				slide_index = x.length;
-			for (i = 0; i < x.length; i++)
-				x[i].style.display = "none";
-			x[slide_index - 1].style.display = "block";
-		}
-
-		function carousel()
-		{
-			var	i;
-			var	x;
-
-			x = document.getElementsByClassName("slides_wrapper");
-			for (i = 0; i < x.length; i++)
-				x[i].style.display = "none";
-			slide_index++;
-			if (slide_index > x.length) {slide_index = 1} 
-			x[slide_index - 1].style.display = "block"; 
-			setTimeout(carousel, 5000);
-		}
-	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
 </html>

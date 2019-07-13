@@ -15,10 +15,9 @@
 		if (msg != null)
 			document.getElementById("message").innerHTML = msg;
 		else
-			document.getElementById("error_msg").remove();
+			document.getElementById("error_msg").style.display = "none";
 
-		function close_error_msg() { document.getElementById("error_msg").style.top = "-5%"; setTimeout(disable_error_msg, 1010); }
-		function disable_error_msg() { document.getElementById("error_msg").remove(); }
+		function close_error_msg() { document.getElementById("error_msg").style.top = "-5%"; }
 
 		function find_get_parameter(parameter_name)
 		{
