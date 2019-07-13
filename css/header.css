@@ -51,8 +51,14 @@ input[type="image"] {
 }
 
 .red { background-color: rgba(255, 20, 20, 0.815); }
+.red:hover { background-color: rgba(255, 79, 79, 0.815); }
+.red:active { background-color: rgba(165, 0, 0, 0.815); }
 .blue { background-color: rgba(20, 149, 255, 0.815); }
+.blue:hover { background-color: rgba(87, 179, 255, 0.815); }
+.blue:active { background-color: rgba(0, 91, 165, 0.815); }
 .green { background-color: rgba(20, 255, 59, 0.815); }
+.green:hover { background-color: rgba(93, 255, 120, 0.815); }
+.green:active { background-color: rgba(0, 168, 28, 0.815); }
 .btn {
 	border: none;
     outline: 0;
@@ -63,4 +69,5 @@ input[type="image"] {
     cursor: pointer;
     font-size: 15px;
 	transform: translate(120%, 50%);
+	transition: 0.15s;
 }

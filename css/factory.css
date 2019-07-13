@@ -1,4 +1,4 @@
-body { background-color: black; }
+body { background-color: rgb(25,25,25); }
 .editor_wrapper {
 	display: flex;
 	margin-top: 6em;
@@ -10,7 +10,7 @@ body { background-color: black; }
 	background-color: rgb(42, 42, 42);
 }
 
-.image_settings { max-width: 350px; }
+.image_settings { max-width: 350px; overflow: auto; }
 .image_filters { max-width: 156px; }
 .image_settings, .image_filters {
 	width: 100%;
