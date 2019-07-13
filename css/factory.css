@@ -61,7 +61,7 @@ body { background-color: black; }
 .slider_wrapper { margin: auto; }
 .sliders { display: inline-block; width: 100%; }
 .sliders p {
-	margin: 1.2em 0em 0em 0em;
+	margin: 1em 0em 0em 0em;
 	vertical-align: middle;
 	padding: 10px 10px 10px 10px;
 	text-align: center;
@@ -142,3 +142,9 @@ input[type="range"]:active::-moz-range-thumb { background: #1abc9c;}
 	border: 0;
 }
 input::-moz-focus-inner, input::-moz-focus-outer { border: 0; }
+
+
+.image_filters input[type="image"] {
+	max-width: 90%;
+	height: auto;
+}
