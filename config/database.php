@@ -17,14 +17,56 @@ try
         login VARCHAR(32),
         full_name VARCHAR(64),
         phone VARCHAR(12),
+        mail VARCHAR(128),
+        signup_date DATETIME,
         verified BOOLEAN,
         token VARCHAR(256),
-        signup_date DATE
+        password_hash VARCHAR(1024)
     );";
     $conn->exec($sql);
 
     $sql = "CREATE DATABASE IF NOT EXISTS __camagru_posts";
     $conn->exec($sql);
+
+    $user_name = "root";
+    $full_name = "root";
+    $mobile = "ROOT ACCOUNT";
+    $mail = "ROOT ACCOUNT";
+    $token = "ROOT ACCOUNT";
+    $date = date("Y-m-d H:i:s");
+    $pass_hash = hash("whirlpool", "bleu");
+    $verfied = 1;
+    $pdo = $conn->prepare(" INSERT INTO __camagru_users.account_infos
+                            (
+                                login,
+                                full_name,
+                                phone,
+                                mail,
+                                signup_date,
+                                verified,
+                                token,
+                                password_hash
+                            )
+                            VALUES
+                            (
+                                :login,
+                                :full_name,
+                                :phone,
+                                :mail,
+                                :signup_date,
+                                :verified,
+                                :token,
+                                :password_hash
+                            )");
+    $pdo->bindParam(':login', $user_name);
+    $pdo->bindParam(':full_name', $full_name);
+    $pdo->bindParam(':phone', $mobile);
+    $pdo->bindParam(':mail', $mail);
+    $pdo->bindParam(':signup_date', $date);
+    $pdo->bindParam(':verified', $verfied);
+    $pdo->bindParam(':token', $token);
+    $pdo->bindParam(':password_hash', $pass_hash);
+    $pdo->execute();
 
     echo "Database created successfully<br>";
 }

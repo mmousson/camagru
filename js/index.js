@@ -36,7 +36,6 @@ function carousel()
 }
 
 $("#submit").click(function () {
-	console.log("HERE");
 	$.post(
 		'/scripts/register.php',
 
@@ -53,10 +52,38 @@ $("#submit").click(function () {
 			if (data != "")
 			{
 				$("#error_msg").css("display", "inline");
+				$("#error_msg").css("top", "0%");
 				$("#message").text(data);
 			}
 			else
-				console.log("OK");
+			{
+				$("#error_msg").css("display", "inline");
+				$("#error_msg").css("background-color", "rgba(70, 255, 86, 0.905)");
+				$("#message").text("Registration Complete ! A confirmation e-mail has been sent to you");
+			}
+		},
+
+		'text');
+});
+
+$("#login").click(function () {
+	$.post(
+		'/scripts/login.php',
+
+		{
+			user_name: $("#user_name").val(),
+			pass: $("#pass").val()
+		},
+
+		function (data) {
+			if (data == "OK")
+				window.location.replace("/factory.php");
+			else
+			{
+				$("#error_msg").css("display", "inline");
+				$("#error_msg").css("top", "0%");
+				$("#message").text(data);
+			}
 		},
 
 		'text');
