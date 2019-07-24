@@ -94,13 +94,17 @@ function    add_user($mobile, $mail, $full_name, $user_name, $pass)
     $conn = NULL;
 }
 
+
+//0 -> Incorrect password
+//1 -> Account not yet verified
+//2 -> OK
 function    auth_user($user, $pass)
 {
     $servername = "localhost";
     $username = "root";
     $password = "bleu";
 
-    $ret = FALSE;
+    $ret = 2;
 
     try
     {
@@ -111,12 +115,11 @@ function    auth_user($user, $pass)
         $rows = $conn->prepare("SELECT * FROM account_infos WHERE (login='$user' AND password_hash='$pass_hash')");
         $rows->execute();
         if ( $rows->rowCount() === 1 )
-            $ret = TRUE;
+            $ret = 1;
     }
     catch ( PDOException $e )
     {
         echo $sql . "<br>" . $e->getMessage();
-        return ( FALSE );
     }
     $conn = NULL;
     return ( $ret );

@@ -10,13 +10,21 @@ if (isset($_POST['user_name']) && isset($_POST['pass']))
 	else
 	{
         $hash = hash("whirlpool", $_POST['pass']);
-        if ( auth_user( $_POST['user_name'], $_POST['pass'] ) === TRUE )
+        //0 -> Incorrect password
+        //1 -> Account not yet verified
+        //2 -> OK
+        $ret = auth_user( $_POST['user_name'], $_POST['pass'] );
+        if ( $ret === 0 )
+            echo "Incorrect password";
+        else if ( $ret === 1 )
+            echo "You first need to verify your account";
+        else if ( $ret === 2 )
         {
             $_SESSION['user_name'] = $_POST['user_name'];
             echo "OK";
         }
         else
-            echo "Incorrect pasword: $hash";
+            echo "Unknown error";
 	}
 }
 else
