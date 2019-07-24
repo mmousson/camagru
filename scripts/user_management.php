@@ -1,5 +1,5 @@
 <?php
-function	check_if_exists($data, $row)
+function    pdo_connect()
 {
     $servername = "localhost";
     $username = "root";
@@ -9,7 +9,20 @@ function	check_if_exists($data, $row)
     {
         $conn = new PDO("mysql:host=$servername;dbname=__camagru_users", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return ( $conn );
+    }
+    catch (PDOException $e)
+    {
+        echo $sql . "<br>" . $e->getMessage();
+        return ( NULL );
+    }
+}
 
+function	check_if_exists($data, $row)
+{
+    $conn = pdo_connect();
+    if ( $conn !== NULL )
+    {
         $sql = "SELECT * FROM account_infos WHERE $row='$data'";
 
         $rows = $conn->prepare($sql);
@@ -18,10 +31,6 @@ function	check_if_exists($data, $row)
             return TRUE;
         else
             return FALSE;
-    }
-    catch(PDOException $e)
-    {
-        echo $sql . "<br>" . $e->getMessage();
     }
     $conn = NULL;
 }
@@ -104,18 +113,24 @@ function    auth_user($user, $pass)
     $username = "root";
     $password = "bleu";
 
-    $ret = 2;
-
+    $ret = 0;
+    
     try
     {
         $conn = new PDO("mysql:host=$servername;dbname=__camagru_users", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $pass_hash = hash("whirlpool", $pass);
-        $rows = $conn->prepare("SELECT * FROM account_infos WHERE (login='$user' AND password_hash='$pass_hash')");
+        $rows = $conn->prepare( "SELECT * FROM account_infos WHERE (login='$user' AND password_hash='$pass_hash')" );
         $rows->execute();
         if ( $rows->rowCount() === 1 )
+        {
             $ret = 1;
+            $rows = $conn->prepare( "SELECT * FROM account_infos WHERE (login='$user' AND verified='1')" );
+            $rows->execute();
+            if ( $rows->rowCount() === 1 )
+                $ret = 2;
+        }
     }
     catch ( PDOException $e )
     {
@@ -123,5 +138,20 @@ function    auth_user($user, $pass)
     }
     $conn = NULL;
     return ( $ret );
+}
+
+function    get_user_mail($user)
+{
+    $conn = pdo_connect();
+    if ( $conn !== NULL )
+    {
+        $query = $conn->prepare("SELECT mail FROM account_infos WHERE login='" . $user . "'");
+        $query->execute();
+
+        $results = $query->fetchAll();
+        $conn = NULL;
+        return ( $results[0][0] );
+    }
+    return ( "" );
 }
 ?>

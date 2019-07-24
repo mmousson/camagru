@@ -1,5 +1,6 @@
 <?php
 include( "header.php" );
+require_once( "scripts/user_management.php" );
 function    get_button_style($id)
 {
     if (isset($_GET['profile']))
@@ -51,6 +52,8 @@ function    get_img_style($id, $src)
     <link rel="stylesheet" type="text/css" href="css/profile.css"/>
 </head>
 <body>
+    <div class="cover_image">
+    </div>
     <div class="top_wrapper">
         <div class="left_panel">
             <h1>PROFILE</h1>
@@ -81,10 +84,10 @@ function    get_img_style($id, $src)
         </div>
         <div class="center_panel">
             <label for="username">Username:</label>
-            <input id="username" name="username" type="text"/>
+            <input id="username" name="username" type="text" value=<?php echo '"' . $_SESSION['user_name'] . '"'; ?>/>
 
             <label for="email">E-mail:</label>
-            <input id="email" name="email" type="text"/>
+            <input id="email" name="email" type="text" value=<?php echo '"' . get_user_mail($_SESSION['user_name']) . '"'; ?>/>
 
             <label for="oldpassword">Old Password:</label>
             <input id="oldpassword" name="oldpassword" type="password"/>
@@ -94,6 +97,8 @@ function    get_img_style($id, $src)
 
             <label for="repassword">New Password Confirmation:</label>
             <input id="repassword" name="repassword" type="password"/>
+
+            <button>UPDATE INFORMATIONS</button>
         </div>
         <div class="right_panel">
             <?php get_button_style("profile"); ?>
@@ -109,8 +114,6 @@ function    get_img_style($id, $src)
                 <?php get_img_style("signout", "/images/UI/signout_icon.png"); ?>
             </button>
         </div>
-    </div>
-    <div class="bottom_wrapper">
     </div>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 <html>
 	<meta charset="UTF-8"/>
@@ -17,8 +18,8 @@
 				<button onclick="window.location.href='contacts.php'">CONTACT US</button>
 			</div>
 			<div class="identification_pannel">
-				<button onclick="window.location.href='index.php'">LOG IN</button>
-				<button onclick="window.location.href='index.php'" id="register_btn">REGISTER</button>
+				<button onclick="window.location.href='index.php?login=true'">LOG IN</button>
+				<button onclick="window.location.href='index.php?login=false'" id="register_btn">REGISTER</button>
 			</div>
 		</div>
 	</body>

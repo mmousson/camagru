@@ -12,12 +12,13 @@ function show_divs(index)
 	var	x;
 
 	x = document.getElementsByClassName("slides_wrapper");
-	if (index > x)
+	if (index > x.length)
 		slide_index = 1;
 	if (index < 1)
 		slide_index = x.length;
 	for (i = 0; i < x.length; i++)
 		x[i].style.display = "none";
+	console.log(slide_index - 1);
 	x[slide_index - 1].style.display = "block";
 }
 
@@ -27,10 +28,11 @@ function carousel()
 	var	x;
 
 	x = document.getElementsByClassName("slides_wrapper");
+	console.log(x);
 	for (i = 0; i < x.length; i++)
 		x[i].style.display = "none";
 	slide_index++;
-	if (slide_index > x.length) {slide_index = 1} 
+	if (slide_index > x.length) {slide_index = 1;} 
 	x[slide_index - 1].style.display = "block"; 
 	setTimeout(carousel, 5000);
 }
