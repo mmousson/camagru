@@ -18,8 +18,12 @@ session_start();
 				<button onclick="window.location.href='contacts.php'">CONTACT US</button>
 			</div>
 			<div class="identification_pannel">
-				<button onclick="window.location.href='index.php?login=true'">LOG IN</button>
-				<button onclick="window.location.href='index.php?login=false'" id="register_btn">REGISTER</button>
+				<?php
+				if (isset($_SESSION['user_name']))
+					include("fragmented_files/header_logged_in.php");
+				else
+					include("fragmented_files/header_not_logged_in.php");
+				?>
 			</div>
 		</div>
 	</body>

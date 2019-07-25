@@ -20,6 +20,7 @@ if (isset($_POST['user_name']) && isset($_POST['pass']))
             echo "You first need to verify your account";
         else if ( $ret === 2 )
         {
+            $_SESSION['logged_in'] = TRUE;
             $_SESSION['user_name'] = $_POST['user_name'];
             echo "OK";
         }

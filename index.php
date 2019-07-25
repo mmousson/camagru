@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once("error_msg.php");
 ?>
 <html>
@@ -12,8 +13,19 @@ include_once("error_msg.php");
 		<div class="log_panel">
 			<img class="camagru_logo" src="images/camagru_logo.png" alt="Camagru Logo"/>
 <?php
-if (isset($_GET['login']) && strcmp($_GET['login'], "true") === 0)
-	include( "scripts/generate_login.php" );
+if (isset($_GET['login']))
+{
+	if (strcmp($_GET['login'], "true") === 0)
+		include( "scripts/generate_login.php" );
+	else if (strcmp($_GET['login'], "logout") === 0)
+	{
+		include( "scripts/generate_login.php" );
+		$_SESSION['logged_in'] = FALSE;
+		$_SESSION['user_name'] = NULL;
+	}
+	else
+		include( "scripts/generate_register.php" );
+}
 else
 	include( "scripts/generate_register.php" );
 ?>			

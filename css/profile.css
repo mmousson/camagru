@@ -105,3 +105,14 @@ h1, h3, p, label { color: #2464ce; text-align: center; font-family: sans-serif; 
     width: auto;
     transform: translate(-5px, -42px);
 }
+
+#not_logged_in_box {
+    width: 70%;
+    height: 200px;
+    background-color: wheat;
+    margin: auto;
+}
+
+.not_logged_in_text_wrapper {
+    padding-top: 60px;
+}
