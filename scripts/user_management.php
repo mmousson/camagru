@@ -170,4 +170,23 @@ function	get_user_preference($login, $preference_id)
 	}
 	return ( "" );
 }
+
+function	update_user_settings($login, $like, $comment)
+{
+	$conn = pdo_connect();
+	$like_val = ($like === "true" ? "1" : "0");
+	$comment_val = ($comment === "true" ? "1" : "0");
+	if ( $conn !== NULL )
+	{
+		$query = $conn->prepare("UPDATE account_infos SET
+			like_notif='$like_val', comment_notif='$comment_val'
+			WHERE login='$login'");
+		$query->execute();
+
+		$conn = NULL;
+		return ( TRUE );
+	}
+	else
+		return ( FALSE );
+}
 ?>

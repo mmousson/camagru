@@ -29,7 +29,7 @@
 				<p>Receive a Notification when a post of yours receives a comment</p>
 			</div>
 
-			<button class="update_btn">UPDATE SETTINGS</button>
+			<button id="btn_update_settings" class="update_btn">UPDATE SETTINGS</button>
 			<button id="delete_account_btn">DELETE ACCOUNT</button>
 		</div>
 		<?php
