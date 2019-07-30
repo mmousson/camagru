@@ -6,14 +6,14 @@ function    get_button_style($id)
     if (isset($_GET['profile']))
     {
         if (strcmp($id, $_GET['profile']) === 0)
-            echo "<button style='background-color: #2464ce;'>";
+            echo "<button id='btn_$id' class='focus_btn'>";
         else
-            echo "<button style='background-color: ghostwhite;'>";
+            echo "<button id='btn_$id' class='clear_btn'>";
     }
     else if (strcmp($id, "profile") === 0)
-        echo "<button style='background-color: #2464ce;'>";
+        echo "<button id='btn_$id' class='focus_btn'>";
     else
-        echo "<button style='background-color: ghostwhite;'>";
+        echo "<button id='btn_$id' class='clear_btn'>";
 }
 
 function    get_p_style($id)
@@ -55,10 +55,21 @@ function    get_img_style($id, $src)
     <div class="cover_image">
     </div>
     <?php
-        if ($_SESSION['logged_in'] === true)
-            include ( "fragmented_files/profile_logged_in.php" );
+		if ($_SESSION['logged_in'] === true)
+		{
+			if (isset($_GET['profile']))
+			{
+				if (strcmp($_GET['profile'], "settings") === 0)
+					include ( "fragmented_files/profile_settings.php" );
+				else
+					include ( "fragmented_files/profile_logged_in.php" );
+			}
+			else
+				include ( "fragmented_files/profile_logged_in.php" );
+		}
         else
             include ( "fragmented_files/profile_not_logged_in.php" );
     ?>
 </body>
+<script type="text/javascript" src="js/profile.js"></script>
 </html>

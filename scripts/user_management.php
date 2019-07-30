@@ -154,4 +154,20 @@ function    get_user_mail($user)
     }
     return ( "" );
 }
+
+function	get_user_preference($login, $preference_id)
+{
+	$conn = pdo_connect();
+	if ( $conn !== NULL )
+	{
+		$query = $conn->prepare("SELECT $preference_id FROM account_infos WHERE login='" . $login . "'");
+		$query->execute();
+		
+		$results = $query->fetch();
+		$conn = NULL;
+		if ($results[0] === "1")
+			return ( "checked" );
+	}
+	return ( "" );
+}
 ?>

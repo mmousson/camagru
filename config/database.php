@@ -20,6 +20,8 @@ try
         mail VARCHAR(128),
         signup_date DATETIME,
         verified BOOLEAN,
+		like_notif BOOLEAN,
+		comment_notif BOOLEAN,
         token VARCHAR(256),
         password_hash VARCHAR(1024)
     );";
@@ -35,7 +37,9 @@ try
     $token = "ROOT ACCOUNT";
     $date = date("Y-m-d H:i:s");
     $pass_hash = hash("whirlpool", "bleu");
-    $verfied = 1;
+	$verfied = 1;
+	$like_notif = 1;
+	$comment_notif = 1;
     $pdo = $conn->prepare(" INSERT INTO __camagru_users.account_infos
                             (
                                 login,
@@ -44,6 +48,8 @@ try
                                 mail,
                                 signup_date,
                                 verified,
+								like_notif,
+								comment_notif,
                                 token,
                                 password_hash
                             )
@@ -55,6 +61,8 @@ try
                                 :mail,
                                 :signup_date,
                                 :verified,
+								:like_notif,
+								:comment_notif,
                                 :token,
                                 :password_hash
                             )");
@@ -63,7 +71,9 @@ try
     $pdo->bindParam(':phone', $mobile);
     $pdo->bindParam(':mail', $mail);
     $pdo->bindParam(':signup_date', $date);
-    $pdo->bindParam(':verified', $verfied);
+	$pdo->bindParam(':verified', $verfied);
+	$pdo->bindParam(':like_notif', $like_notif);
+	$pdo->bindParam(':comment_notif', $comment_notif);
     $pdo->bindParam(':token', $token);
     $pdo->bindParam(':password_hash', $pass_hash);
     $pdo->execute();
