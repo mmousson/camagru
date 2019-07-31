@@ -189,4 +189,51 @@ function	update_user_settings($login, $like, $comment)
 	else
 		return ( FALSE );
 }
+
+function	update_user_infos($login, $new_login, $mail, $oldpass, $newpass, $repass)
+{
+	$conn = pdo_connect();
+	if (strcmp($newpass, $repass) !== 0)
+		return ( 2 );
+	$old_pass_hash = hash("whirlpool", $oldpass);
+	$new_pass_hash = hash("whirlpool", $newpass);
+	if ( $conn !== NULL )
+	{
+		//Check if old password is the same as the one stored in the Database
+		$query = $conn->prepare("	SELECT password_hash
+									FROM account_infos
+									WHERE login='$login'");
+		$query->execute();
+		$result = $query->fetch();
+
+		//Check if the user asked for a new passsword, and if so, check that he spelled it
+		//right
+		if ( strcmp($result[0], $old_pass_hash) !== 0 )
+			return ( 1 );
+		
+		//Check if the user asked for a new username, and if so, check its avaibility
+		if ( strcmp($login, $new_login) !== 0
+			&& check_if_exists( $new_login, "login" ) === TRUE )
+			return ( 3 );
+		if ( strcmp( get_user_mail( $login ), $mail ) !== 0
+			&& check_if_exists( $mail, "mail" ) === TRUE )
+			return ( 4 );
+
+
+		$query_str = "UPDATE account_infos SET
+					login='$new_login',
+					mail='$mail'";
+		if ( !empty( $newpass ) )
+			$query_str .= ", password_hash='$new_pass_hash'";
+		$query_str .= " WHERE login='$login'";
+
+		$query = $conn->prepare($query_str);
+		$query->execute();
+
+		$conn = NULL;
+		return ( 0 );
+	}
+	else
+		return ( 5 );
+}
 ?>

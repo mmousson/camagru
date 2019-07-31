@@ -18,7 +18,7 @@
         <label for="repassword">New Password Confirmation:</label>
         <input id="repassword" name="repassword" type="password" placeholder="Please Confirm Your New Password"/>
 
-        <button class="update_btn">UPDATE INFORMATIONS</button>
+        <button id="btn_update_infos" class="update_btn">UPDATE INFORMATIONS</button>
     </div>
     <?php
 		include ( "profile_right_pannel.php" );
