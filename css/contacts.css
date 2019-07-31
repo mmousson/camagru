@@ -8,8 +8,9 @@ body {
 * {box-sizing: border-box;}
 #hero_image {
 	margin: auto;
-	background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("../images/bolivia_view.jpg");
-	height: 50%;
+	background-image: url("../images/bolivia_view.jpg");
+	width: 100%;
+	height: 400px;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
