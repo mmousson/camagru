@@ -1,3 +1,4 @@
+var	dropped_file = null;
 var rangeSlider = function(){
 	var slider = $('.slider_wrapper'),
 	range = $('.slider_range'),
@@ -14,6 +15,15 @@ var rangeSlider = function(){
 	});
 };
 rangeSlider();
+
+var			is_advanced_upload = function () {
+	var	div = document.createElement("div");
+
+	return (('draggable' in div)
+		|| ('ondragstart' in div && 'ondrop' in div)
+		&& ('FormData' in window)
+		&& ('FileReader' in window));
+}();
 
 function	edit_image()
 {
@@ -55,3 +65,40 @@ $("#reset_btn").click(function () {
 	rangeSlider();
 	edit_image();
 });
+
+if (is_advanced_upload)
+{
+	var	form;
+
+	var	wrapper = document.getElementById("box_wrapper");
+	if (wrapper != null)
+		wrapper.classList.add("has_advanced_upload");
+	
+	form = document.getElementById("box_wrapper");
+	form.addEventListener("drag", drag_dragstart_dragend_dragenter_dragleave_drop_events, false);
+	form.addEventListener("dragstart", drag_dragstart_dragend_dragenter_dragleave_drop_events, false);
+	form.addEventListener("dragend", drag_dragstart_dragend_dragenter_dragleave_drop_events, false);
+	form.addEventListener("dragover", drag_dragstart_dragend_dragenter_dragleave_drop_events, false);
+	form.addEventListener("dragenter", drag_dragstart_dragend_dragenter_dragleave_drop_events, false);
+	form.addEventListener("dragleave", drag_dragstart_dragend_dragenter_dragleave_drop_events, false);
+	form.addEventListener("drop", drag_dragstart_dragend_dragenter_dragleave_drop_events, false);
+
+	form.addEventListener("dragover", dragover_dragenter, false);
+	form.addEventListener("dragenter", dragover_dragenter, false);
+
+	form.addEventListener("dragleave", dragleave_dragend_drop, false);
+	form.addEventListener("dragend", dragleave_dragend_drop, false);
+	form.addEventListener("drop", dragleave_dragend_drop, false);
+
+	form.addEventListener("drop", drop_event, false);
+}
+
+function	drag_dragstart_dragend_dragenter_dragleave_drop_events(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	console.log("Event detected");
+}
+
+function	dragover_dragenter() { form.classList.add("is_dragover"); }
+function	dragleave_dragend_drop() { form.classList.remove("is_dragover"); }
+function	drop_event() { dropped_file = e.originalEvent.dataTransfer.files; }

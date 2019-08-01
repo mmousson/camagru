@@ -54,10 +54,6 @@ function	remove_user($login)
 		$query = $conn->prepare("DELETE FROM account_infos WHERE login = :login");
 		$query->bindParam(':login', $login);
 		$query->execute();
-		if ( $query->rowCount() == 0 )
-			echo "Suppresion FAILED";
-		else
-			echo "OK";
 
 		$conn = NULL;
 	}

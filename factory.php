@@ -77,14 +77,24 @@ include_once("header.php");
 					<button id="reset_btn" class="btn red">RESET</button>
 				</div>
 			</div>
-			<div id="the_image" class="image_preview">
+			<form id="box_wrapper" class="box" method="post" action="" enctype="multipart/form-data">
+				<div class="box_input">
+					<input class="box_file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple/>
+					<label for="file"><img src="/images/UI/upload_icon.png"/><br/><strong>Choose a file</strong><span class="box_dragndrop"> or drag it here</span></label>
+					<!-- <button class="box_button" type="submit">Upload</button> -->
+				</div>
+				<div class="box_uploading">Uploading&hellip;</div>
+				<div class="box_success">Done !</div>
+				<div class="box_error">Error ! <span></span>.</div>
+			</form>
+			<!-- <div id="the_image" class="image_preview">
 				<div class="image_texts">
 					<h1>Camagru Photo Edition</h1>
 					<button id="upload_btn">UPLOAD AN IMAGE</button>
 					<p>or</p>
 					<button id="photo_btn">TAKE A PHOTO</button>
 				</div>
-			</div>
+			</div> -->
 			<div class="image_filters" style="overflow-y: scroll;">
 				<h2 class="pannel_title">FILTERS</h2>
 				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
