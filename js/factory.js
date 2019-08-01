@@ -1,4 +1,7 @@
 var	dropped_file = null;
+var	form = document.getElementById("box_wrapper");
+var	submit_btn = document.getElementById("submit_button");
+
 var rangeSlider = function(){
 	var slider = $('.slider_wrapper'),
 	range = $('.slider_range'),
@@ -73,8 +76,7 @@ if (is_advanced_upload)
 	var	wrapper = document.getElementById("box_wrapper");
 	if (wrapper != null)
 		wrapper.classList.add("has_advanced_upload");
-	
-	form = document.getElementById("box_wrapper");
+
 	form.addEventListener("drag", drag_dragstart_dragend_dragenter_dragleave_drop_events, false);
 	form.addEventListener("dragstart", drag_dragstart_dragend_dragenter_dragleave_drop_events, false);
 	form.addEventListener("dragend", drag_dragstart_dragend_dragenter_dragleave_drop_events, false);
@@ -93,12 +95,63 @@ if (is_advanced_upload)
 	form.addEventListener("drop", drop_event, false);
 }
 
+submit_btn.addEventListener("click", function (e) {
+	if (form.classList.contains("is_uploading"))
+		return false;
+	form.classList.add("is_uploading");
+	form.classList.remove("is_error");
+
+	console.log("Submitting");
+	if (is_advanced_upload)
+	{
+		var	xhttp;
+		var	form_data;
+
+		xhttp = new XMLHttpRequest();
+		form_data = new FormData(form);
+		console.log("Form Data: ", form_data);
+		xhttp.open("POST", "/scripts/upload_image.php", true);
+		xhttp.onreadystatechange = function () {
+			if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
+			{
+				form.classList.remove("is_uploading");
+				if (this.responseText.startsWith("ERROR: "))
+					console.log("AN ERROR OCCURED: ", this.responseText);
+				else
+				{
+					set_background_image(this.responseText);
+					console.log("OK: Response: ", this.responseText);
+				}
+			}
+		}
+		xhttp.send(form_data);
+	}
+	else
+	{
+		console.log("NOT ADVANCED UPLOAD");
+	}
+});
+
 function	drag_dragstart_dragend_dragenter_dragleave_drop_events(e) {
 	e.preventDefault();
 	e.stopPropagation();
-	console.log("Event detected");
 }
 
 function	dragover_dragenter() { form.classList.add("is_dragover"); }
 function	dragleave_dragend_drop() { form.classList.remove("is_dragover"); }
-function	drop_event() { dropped_file = e.originalEvent.dataTransfer.files; }
+function	drop_event(e) {
+	dropped_file = e.dataTransfer.files;
+}
+
+function	set_background_image(full_path)
+{
+	var	editor = document.getElementById("the_image");
+
+	console.log("setting..");
+	editor.style.display = "block";
+	editor.style.backgroundImage = "url(" + full_path + ")";
+	editor.style.backgroundRepeat = "round";
+	editor.style.backgroundSize = "cover";
+	console.log("set");
+	form.style.display = "none";
+}

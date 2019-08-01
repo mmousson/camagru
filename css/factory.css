@@ -154,12 +154,18 @@ input::-moz-focus-inner, input::-moz-focus-outer { border: 0; }
 /*  */
 
 /* First, hide all divs containing user interaction / process status */
+#the_image,
 .box_dragndrop,
 .box_uploading,
 .box_success,
 .box_error {
 	display: none;
 }
+
+/* Next, setup all classes' visibility depending on upload status */
+
+.box.is_uploading .box_input { visibility: none; }
+.box.is_uploading .box_uploading { display: block; }
 
 /* In case the browser supports drag 'n drop, the box wrapper shall
 have a special class added to it
@@ -171,7 +177,7 @@ Just style it to let the user know he can drag and drop files */
 	background-color: #c4d1d6;
 	outline: grey dashed 2px;
 	outline-offset: -15px;
-	transition: 0.3s;
+	transition: 0.25s;
 }
 
 #box_wrapper { display: inline-table; }
@@ -206,4 +212,4 @@ Just style it to let the user know he can drag and drop files */
 	transition: 0.4s;
 }
 
-.box.is_dragover { background-color: white; outline-offset: -40px; }
+.box.is_dragover { background-color: white; outline-offset: -30px; }
