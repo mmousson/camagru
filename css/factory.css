@@ -153,6 +153,24 @@ input::-moz-focus-inner, input::-moz-focus-outer { border: 0; }
 /* Drag and Drop dialog part */
 /*  */
 
+/* Style the SNAPSHOT button */
+#submit_button:hover { background-color: rgb(255, 91, 91); }
+#submit_button:active { background-color: rgb(180, 0, 0); }
+#submit_button {
+	width: 250px;
+	height: 75px;
+	background-color: rgb(255, 29, 29);
+	border: none;
+	outline: none;
+	color: white;
+	font-size: 20px;
+	font-family: monospace;
+	font-weight: bold;
+	margin-left: 40%;
+	margin-top: 50px;
+	transition: 0.3s;
+}
+
 /* First, hide all divs containing user interaction / process status */
 #the_image,
 .box_dragndrop,

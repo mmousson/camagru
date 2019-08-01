@@ -80,8 +80,9 @@ include_once("header.php");
 			<form id="box_wrapper" class="box" method="post" action="" enctype="multipart/form-data">
 				<div class="box_input">
 					<input class="box_file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple/>
-					<label for="file"><img src="/images/UI/upload_icon.png"/><br/><strong>Choose a file</strong><span class="box_dragndrop"> or drag it here</span></label>
-					<button id="submit_button" class="box_button" type="button">Upload</button>
+					<label for="file"><img src="/images/UI/upload_icon.png"/><br/><strong>Choose a file</strong><span class="box_dragndrop"> or drag it here<br/><br/>OR</span></label>
+					<button id="submit_button" class="box_button" type="button">TAKE A WEBCAM SNAPSHOT</button>
+					<!-- <button id="submit_button" class="box_button" type="button">Upload</button> -->
 				</div>
 				<div class="box_uploading">Uploading&hellip;</div>
 				<div class="box_success">Done !</div>
