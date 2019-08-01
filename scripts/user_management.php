@@ -46,6 +46,23 @@ function    generate_token()
     return $randomString;
 }
 
+function	remove_user($login)
+{
+	$conn = pdo_connect();
+	if ( $conn !== NULL )
+	{
+		$query = $conn->prepare("DELETE FROM account_infos WHERE login = :login");
+		$query->bindParam(':login', $login);
+		$query->execute();
+		if ( $query->rowCount() == 0 )
+			echo "Suppresion FAILED";
+		else
+			echo "OK";
+
+		$conn = NULL;
+	}
+}
+
 function    add_user($mobile, $mail, $full_name, $user_name, $pass)
 {
     $servername = "localhost";

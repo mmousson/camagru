@@ -3,6 +3,7 @@ settings_btn = document.getElementById("btn_settings");
 signout_btn = document.getElementById("btn_signout");
 update_settings_btn = document.getElementById("btn_update_settings");
 update_infos_btn = document.getElementById("btn_update_infos");
+delete_account_btn = document.getElementById("delete_account_btn");
 
 if (profile_btn != null)
 {
@@ -80,5 +81,33 @@ if (update_infos_btn != null)
 			+ "&repass=" + repass_val,
 			true);
 		xhttp.send();
+	});
+}
+
+if (delete_account_btn != null)
+{
+	console.log("Adding event listener");
+	delete_account_btn.addEventListener("click", function () {
+		if (confirm("Are you sure you want to delete your account ?"))
+		{
+			console.log("CONFIRMED");
+			var	xhttp;
+			var	hash_check;
+
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200)
+				{
+					hash_check = this.responseText;
+					document.location.href = "/index.php?"
+						+ "login=delete_account"
+						+ "&delete_check=" + hash_check;
+				}
+			}
+			xhttp.open("GET", "/scripts/hash_username.php", true);
+			xhttp.send();
+		}
+		else
+			console.log("NOT CONFIMED");
 	});
 }

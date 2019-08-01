@@ -1,6 +1,7 @@
 <?php
 session_start();
-include_once("error_msg.php");
+include_once ( "error_msg.php" );
+include_once ( "scripts/user_management.php" );
 ?>
 <html>
 	<meta charset="UTF-8">
@@ -15,13 +16,30 @@ include_once("error_msg.php");
 <?php
 if (isset($_GET['login']))
 {
-	if (strcmp($_GET['login'], "true") === 0)
+	if ( strcmp( $_GET['login'], "true" ) === 0 )
 		include( "scripts/generate_login.php" );
-	else if (strcmp($_GET['login'], "logout") === 0)
+	else if ( strcmp( $_GET['login'], "logout" ) === 0 )
 	{
-		include( "scripts/generate_login.php" );
 		$_SESSION['logged_in'] = FALSE;
 		$_SESSION['user_name'] = NULL;
+		include( "scripts/generate_login.php" );
+	}
+	else if ( strcmp( $_GET['login'], "delete_account" ) === 0 )
+	{
+		if ( $_SESSION['logged_in'] === TRUE )
+		{
+			if ( strcmp( hash( "md5", $_SESSION['user_name'] ), $_GET['delete_check'] ) === 0 )
+			{
+				remove_user( $_SESSION['user_name'] );
+				$_SESSION['logged_in'] = FALSE;
+				$_SESSION['user_name'] = NULL;
+				include ( "scripts/generate_login.php" );
+			}
+			else
+				include ( "/scripts/generate_register.php" );
+		}
+		else
+			include ( "/scripts/generate_register.php" );
 	}
 	else
 		include( "scripts/generate_register.php" );

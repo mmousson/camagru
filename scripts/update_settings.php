@@ -13,6 +13,10 @@ if ( isset( $_GET['like'] ) && isset( $_GET['comment'] ) )
 	else
 		echo "ERROR: NO LOGGED IN USER";
 }
+else if ( isset( $_GET['delete_account'] ) )
+{
+	
+}
 else
 	echo "MISSING DATA";
 ?>
