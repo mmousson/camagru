@@ -151,7 +151,7 @@ function	set_background_image(full_path)
 
 	console.log("setting..");
 	editor.style.display = "block";
-	editor.style.backgroundImage = "url(" + "../uploads/Flag.jpg" + ")";
+	editor.style.backgroundImage = "url(" + full_path + ")";
 	editor.style.backgroundRepeat = "round";
 	editor.style.backgroundSize = "cover";
 	console.log("set");

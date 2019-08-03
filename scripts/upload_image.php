@@ -20,10 +20,13 @@
 
 	function check_file_type( $file_path )
 	{
-		if ( strcmp( mime_content_type( $file_path ), "image/jpeg" ) !== 0)
+		$type = mime_content_type( $file_path );
+		if ( strcmp( $type, "image/jpeg" ) !== 0
+			&& strcmp( $type, "image/png" ) !== 0 )
 			return ( TRUE );
 		if ( endsWith( $file_path, ".jpg" ) !== TRUE
-			&& endsWith( $file_path, ".jpeg" ) !== TRUE )
+			&& endsWith( $file_path, ".jpeg" ) !== TRUE
+			&& endsWith( $file_path, ".png" ) !== TRUE )
 		return ( FALSE );
 	}
 
@@ -32,7 +35,7 @@
 	ini_set('post_max_size', '500M');
 	ini_set('max_input_time', 4000); // Play with the values
 	ini_set('max_execution_time', 4000); // Play with the values
-	$uploads_folder = "../../uploads";
+	$uploads_folder = "../uploads";
 
 	if ( $_FILES['files']['error'][0] === 0 )
 	{
