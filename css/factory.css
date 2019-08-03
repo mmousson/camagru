@@ -138,7 +138,7 @@ input::-moz-focus-inner, input::-moz-focus-outer { border: 0; }
 }
 
 /* Set what the filters' positions will be relative to */
-#the_image { position: relative; }
+#the_image { position: relative; overflow: hidden; }
 
 /* Style the class applied to every filter's wrapper */
 .my_filter {
@@ -268,3 +268,34 @@ Just style it to let the user know he can drag and drop files */
 }
 
 .box.is_dragover { background-color: white; outline-offset: -30px; }
+
+.resizable {
+  background: white;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
+
+.resizable .resizers{
+	width: 100%;
+	height: 100%;
+	border: 3px solid #4286f4;
+	box-sizing: border-box;
+}
+
+.resizable .resizers .resizer{
+	width: 10px;
+	height: 10px;
+	border-radius: 50%; /*magic to turn square into circle*/
+	background: white;
+	border: 3px solid #4286f4;
+	position: absolute;
+}
+
+.resizable .resizers .resizer.bottom-right {
+	right: -5px;
+	bottom: -5px;
+	cursor: nwse-resize;
+}
