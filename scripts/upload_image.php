@@ -41,7 +41,7 @@
 
 		if ( check_file_uploaded_name( $tmp_name ) === TRUE
 			|| check_file_uploaded_length( $tmp_name ) === TRUE )
-			echo "ERROR: Illegal characters detected in file name ! File has been dropped and this incident has been reported";
+			echo "ERROR: Illegal characters detected in file name ! File has been dropped and this incident will be reported";
 		else if ( check_file_type( $full_tmp_name ) === TRUE )
 			echo "ERROR: Bad file type";
 		else

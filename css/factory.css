@@ -162,6 +162,7 @@ input::-moz-focus-inner, input::-moz-focus-outer { border: 0; }
 
 /* First, hide all divs containing user interaction / process status */
 #the_image,
+#the_webcam,
 .box_dragndrop,
 .box_uploading,
 .box_success,
@@ -212,7 +213,7 @@ Just style it to let the user know he can drag and drop files */
 	font-family: initial;
 }
 
-.box.box.has_advanced_upload img:hover { opacity: 0.6; }
+.box.box.has_advanced_upload img:hover { opacity: 0.1; transform: scale(0.95); }
 .box.box.has_advanced_upload img {
 	width: 20%;
 	height: auto;
