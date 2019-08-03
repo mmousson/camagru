@@ -1,48 +1,32 @@
 var filter_count = 0;
 var editor = document.getElementById("the_image");
 var add_btn = document.getElementById("add_btn");
+var resizing = false;
 
 function    add_filter_to_editor(path_to_filter_image)
 {
     var new_filter_wrapper = document.createElement("div");
-    var new_filter_image = document.createElement("img");
-    // var resize_div = document.createElement("div");
-    // var rotate_div = document.createElement("div");
     var resizers = document.createElement("div");
     var resizer_bottom_right = document.createElement("div");
-    var delete_button = document.createElement("button");
 
     new_filter_wrapper.classList.add("my_filter");
     new_filter_wrapper.classList.add("resizable");
-    new_filter_image.classList.add("my_filter_header");
     resizers.classList.add("resizers");
     resizer_bottom_right.classList.add("resizer");
     resizer_bottom_right.classList.add("bottom-right");
 
     new_filter_wrapper.id = "filter_" + filter_count + "_wrapper";
-    new_filter_image.id = "filter_" + filter_count + "_wrapperheader";
-    new_filter_image.src = path_to_filter_image;
-    delete_button.id = "delete_btn_" + filter_count;
-    delete_button.appendChild(document.createTextNode("DELETE"));
-    delete_button.addEventListener("click", function (elem) {
-        document.getElementById(elem.toElement.id).parentElement.remove();
-    });
+    new_filter_wrapper.style.backgroundImage = "url(" + path_to_filter_image + ")";
+    new_filter_wrapper.style.backgroundRepeat = "no-repeat";
+    new_filter_wrapper.style.backgroundSize = "cover";
 
-    // resize_div.classList.add("handle");
-    // resize_div.classList.add("h_blue");
-    // rotate_div.classList.add("handle");
-    // rotate_div.classList.add("h_green");
-    delete_button.classList.add("delete_btn");
-
-    new_filter_wrapper.appendChild(new_filter_image);
-    // new_filter_wrapper.appendChild(resize_div);
-    // new_filter_wrapper.appendChild(rotate_div);
-    new_filter_wrapper.appendChild(delete_button);
     new_filter_wrapper.appendChild(resizers);
     resizers.appendChild(resizer_bottom_right);
+
     editor.appendChild(new_filter_wrapper);
 
     drag_element(new_filter_wrapper);
+    makeResizableDiv(new_filter_wrapper.id);
 
     filter_count++;
 }
@@ -61,14 +45,17 @@ function    drag_element(elem)
 
     function    drag_mouse_down(event)
     {
-        event = event || window.event;
-        event.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = event.clientX;
-        pos4 = event.clientY;
-        document.onmouseup = close_drag;
-        // call a function whenever the cursor moves:
-        document.onmousemove = drag_element;
+        if (!resizing)
+        {
+            event = event || window.event;
+            event.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = event.clientX;
+            pos4 = event.clientY;
+            document.onmouseup = close_drag;
+            // call a function whenever the cursor moves:
+            document.onmousemove = drag_element;
+        }
     }
 
     function    drag_element(event)
@@ -114,6 +101,7 @@ function makeResizableDiv(id)
             original_mouse_y = e.pageY;
             window.addEventListener('mousemove', resize)
             window.addEventListener('mouseup', stopResize)
+            resizing = true;
         })
       
         function resize(e)
@@ -135,6 +123,7 @@ function makeResizableDiv(id)
         
         function stopResize()
         {
+            resizing = false;
             window.removeEventListener('mousemove', resize)
         }
     }

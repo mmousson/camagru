@@ -95,11 +95,6 @@ include_once("header.php");
 			</form>
 
 			<div id="the_image" class="image_preview">
-				<div id="filter_test" class='resizable'>
-					<div class='resizers'>
-						<div class='resizer bottom-right'></div>
-					</div>
-				</div>
 			</div>
 
 			<div id="the_webcam">
