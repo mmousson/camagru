@@ -81,7 +81,9 @@ include_once("header.php");
 				<div class="box_input">
 					<input class="box_file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple/>
 					<label for="file"><img src="/images/UI/upload_icon.png"/><br/><strong>Choose a file</strong><span class="box_dragndrop"> or drag it here<br/><br/>OR</span></label>
-					<button id="submit_button" class="box_button" type="button">TAKE A WEBCAM SNAPSHOT</button>
+					<div id="submit_button_wrapper">
+						<button id="submit_button" class="box_button" type="button">TAKE A WEBCAM SNAPSHOT</button>
+					</div>
 					<!-- <button id="submit_button" class="box_button" type="button">Upload</button> -->
 				</div>
 				<div class="box_uploading">Uploading&hellip;</div>
@@ -89,12 +91,6 @@ include_once("header.php");
 				<div class="box_error">Error ! <span></span>.</div>
 			</form>
 			<div id="the_image" class="image_preview">
-				<div class="image_texts">
-					<h1>Camagru Photo Edition</h1>
-					<button id="upload_btn">UPLOAD AN IMAGE</button>
-					<p>or</p>
-					<button id="photo_btn">TAKE A PHOTO</button>
-				</div>
 			</div>
 			<div class="image_filters" style="overflow-y: scroll;">
 				<h2 class="pannel_title">FILTERS</h2>

@@ -1,6 +1,7 @@
 var	dropped_file = null;
 var	form = document.getElementById("box_wrapper");
 var	submit_btn = document.getElementById("submit_button");
+var	file_input = document.getElementById("file");
 
 var rangeSlider = function(){
 	var slider = $('.slider_wrapper'),
@@ -95,7 +96,8 @@ if (is_advanced_upload)
 	form.addEventListener("drop", drop_event, false);
 }
 
-submit_btn.addEventListener("click", function (e) {
+file_input.addEventListener("change", function () {
+	// this.value = null;
 	if (form.classList.contains("is_uploading"))
 		return false;
 	form.classList.add("is_uploading");
@@ -149,7 +151,7 @@ function	set_background_image(full_path)
 
 	console.log("setting..");
 	editor.style.display = "block";
-	editor.style.backgroundImage = "url(" + full_path + ")";
+	editor.style.backgroundImage = "url(" + "../uploads/Flag.jpg" + ")";
 	editor.style.backgroundRepeat = "round";
 	editor.style.backgroundSize = "cover";
 	console.log("set");

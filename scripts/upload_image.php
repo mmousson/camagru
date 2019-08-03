@@ -32,7 +32,7 @@
 	ini_set('post_max_size', '500M');
 	ini_set('max_input_time', 4000); // Play with the values
 	ini_set('max_execution_time', 4000); // Play with the values
-	$uploads_folder = "../uploads";
+	$uploads_folder = "../../uploads";
 
 	if ( $_FILES['files']['error'][0] === 0 )
 	{
@@ -46,8 +46,10 @@
 			echo "ERROR: Bad file type";
 		else
 		{
-			move_uploaded_file( $full_tmp_name, "$uploads_folder/$tmp_name" );
-			echo "$uploads_folder/$tmp_name";
+			if ( move_uploaded_file( $full_tmp_name, "$uploads_folder/$tmp_name" ) === TRUE )
+				echo "$uploads_folder/$tmp_name";
+			else
+				echo "ERROR: Upload failed";
 		}
 	}
 	else

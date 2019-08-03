@@ -1,11 +1,10 @@
-body { background-color: rgb(25,25,25); }
+body { background-color: rgb(25,25,25); margin: 0; }
 .editor_wrapper {
 	display: flex;
-	margin-top: 6em;
+	margin-top: 75px;
     height: 90%;
 }
 .editor_wrapper > div {
-	margin: 10px;
 	padding: 20px;
 	background-color: rgb(42, 42, 42);
 }
@@ -14,7 +13,7 @@ body { background-color: rgb(25,25,25); }
 .image_filters { max-width: 156px; }
 .image_settings, .image_filters {
 	width: 100%;
-	height: 95%;
+	height: 100%;
 	background-color: red;
 }
 
@@ -22,23 +21,12 @@ body { background-color: rgb(25,25,25); }
 	width: 100%;
 	background-image: url(/images/checker.jpg);
     background-repeat: repeat;
-    background-size: 64px;
+	background-size: 64px;
+	margin-top: 25px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
-.image_texts {
-	padding: 30px 30px 30px 30px;
-	background-color: rgba(0,0,0,0.5);
-	border-radius: 10px;
-	text-align: center;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-35%, -50%);
-	color: white;
-}
-
-#upload_btn { background-color: rgba(82, 229, 255, 0.8); }
-#photo_btn { background-color: rgba(255, 174, 82, 0.8); }
 #upload_btn, #photo_btn {
 	border: none;
     outline: 0;
@@ -154,6 +142,7 @@ input::-moz-focus-inner, input::-moz-focus-outer { border: 0; }
 /*  */
 
 /* Style the SNAPSHOT button */
+#submit_button_wrapper { text-align: center; }
 #submit_button:hover { background-color: rgb(255, 91, 91); }
 #submit_button:active { background-color: rgb(180, 0, 0); }
 #submit_button {
@@ -166,9 +155,9 @@ input::-moz-focus-inner, input::-moz-focus-outer { border: 0; }
 	font-size: 20px;
 	font-family: monospace;
 	font-weight: bold;
-	margin-left: 40%;
 	margin-top: 50px;
 	transition: 0.3s;
+	display: inline-block;
 }
 
 /* First, hide all divs containing user interaction / process status */
@@ -191,14 +180,14 @@ Just style it to let the user know he can drag and drop files */
 
 .box.has_advanced_upload {
 	width: 100%;
-	height: 100%;
+	height: calc(100% - 25px);
 	background-color: #c4d1d6;
 	outline: grey dashed 2px;
 	outline-offset: -15px;
 	transition: 0.25s;
 }
 
-#box_wrapper { display: inline-table; }
+#box_wrapper { display: inline-table; margin-top: 25px; margin-left: 20px; margin-right: 20px; }
 .box.has_advanced_upload .box_dragndrop { display: inline; }
 
 .box_input {
@@ -215,11 +204,12 @@ Just style it to let the user know he can drag and drop files */
 	z-index: -1;
 }
 
+.box.has_advanced_upload label strong:hover { color: cornflowerblue; cursor: pointer; }
 .box.has_advanced_upload label {
 	display: block;
 	text-align: center;
 	font-size: 200%;
-	font-family: cursive;
+	font-family: initial;
 }
 
 .box.box.has_advanced_upload img:hover { opacity: 0.6; }
