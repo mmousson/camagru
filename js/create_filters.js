@@ -2,7 +2,7 @@ var filter_count = 0;
 var editor = document.getElementById("the_image");
 var add_btn = document.getElementById("add_btn");
 
-function add_filter_to_editor(path_to_filter_image)
+function    add_filter_to_editor(path_to_filter_image)
 {
     var new_filter_wrapper = document.createElement("div");
     var new_filter_image = document.createElement("img");
@@ -16,7 +16,11 @@ function add_filter_to_editor(path_to_filter_image)
     new_filter_wrapper.id = "filter_" + filter_count + "_wrapper";
     new_filter_image.id = "filter_" + filter_count + "_wrapperheader";
     new_filter_image.src = path_to_filter_image;
+    delete_button.id = "delete_btn_" + filter_count;
     delete_button.appendChild(document.createTextNode("DELETE"));
+    delete_button.addEventListener("click", function (elem) {
+        document.getElementById(elem.toElement.id).parentElement.remove();
+    });
 
     resize_div.classList.add("handle");
     resize_div.classList.add("h_blue");
