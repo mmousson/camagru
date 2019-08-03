@@ -106,23 +106,24 @@ include_once("header.php");
 
 			<div class="image_filters" style="overflow-y: scroll;">
 				<h2 class="pannel_title">FILTERS</h2>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png"/>
+				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
+				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
+				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
+				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
+				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
+				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
+				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
+				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
+				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
+				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
+				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
+				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
+				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
 			</div>
 		</div>
 	</body>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="/js/factory.js"></script>
 	<script type="text/javascript" src="/js/webcam.js"></script>
+	<script type="text/javascript" src="/js/create_filters.js"></script>
 </html>

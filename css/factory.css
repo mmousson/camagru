@@ -137,6 +137,52 @@ input::-moz-focus-inner, input::-moz-focus-outer { border: 0; }
 	height: auto;
 }
 
+/* Set what the filters' positions will be relative to */
+#the_image { position: relative; }
+
+/* Style the class applied to every filter's wrapper */
+.my_filter {
+	position: absolute;
+	z-index: 10;
+	border: none;
+	text-align: center;
+	display: inline-grid;
+}
+
+/* Style the class applied to every actual filter image */
+.my_filter_header {
+	padding: 10px;
+	cursor: move;
+	z-index: 12;
+	border: 4px dashed rgba(0,0,0,0.1);
+}
+
+.h_green { background-color: green; top: -10px; right: -10px; }
+.h_green:hover { opacity: 1; cursor: nwse-resize; }
+.h_blue { background-color: blue; top: -10px; left: -10px; }
+.h_blue:hover { opacity: 1; cursor: nwse-resize; }
+.handle {
+	width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+	opacity: 0.2;
+	transition: 0.3s;
+	z-index: 50;
+}
+
+.delete_btn:hover { opacity: 0.6; }
+.delete_btn:active { opacity: 1; }
+.delete_btn {
+	border: none;
+	outline: none;
+	background-color: red;
+	opacity: 0.1;
+	transition: 0.3s;
+	font-size: 15px;
+	color: white;
+}
+
 /*  */
 /* Drag and Drop dialog part */
 /*  */
