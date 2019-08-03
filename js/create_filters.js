@@ -7,26 +7,36 @@ function    add_filter_to_editor(path_to_filter_image)
 {
     var new_filter_wrapper = document.createElement("div");
     var resizers = document.createElement("div");
-    var resizer_bottom_right = document.createElement("div");
+	var resizer_bottom_right = document.createElement("div");
+	var	delete_top_left = document.createElement("div");
 
     new_filter_wrapper.classList.add("my_filter");
     new_filter_wrapper.classList.add("resizable");
     resizers.classList.add("resizers");
     resizer_bottom_right.classList.add("resizer");
-    resizer_bottom_right.classList.add("bottom-right");
+	resizer_bottom_right.classList.add("bottom-right");
+	delete_top_left.classList.add("delete_filter");
+	delete_top_left.classList.add("top-left");
 
     new_filter_wrapper.id = "filter_" + filter_count + "_wrapper";
     new_filter_wrapper.style.backgroundImage = "url(" + path_to_filter_image + ")";
     new_filter_wrapper.style.backgroundRepeat = "no-repeat";
-    new_filter_wrapper.style.backgroundSize = "cover";
+	new_filter_wrapper.style.backgroundSize = "cover";
+	new_filter_wrapper.style.cursor = "move";
+	delete_top_left.id = "delete_btn_" + filter_count;
 
     new_filter_wrapper.appendChild(resizers);
-    resizers.appendChild(resizer_bottom_right);
+	resizers.appendChild(resizer_bottom_right);
+	resizers.appendChild(delete_top_left);
+	delete_top_left.appendChild(document.createTextNode("X"));
+	delete_top_left.addEventListener("click", function (elem) {
+		document.getElementById(elem.toElement.id).parentElement.parentElement.remove();
+	});
 
     editor.appendChild(new_filter_wrapper);
 
     drag_element(new_filter_wrapper);
-    makeResizableDiv(new_filter_wrapper.id);
+    make_resizable_div(new_filter_wrapper.id);
 
     filter_count++;
 }
@@ -79,7 +89,7 @@ function    drag_element(elem)
     }
 }
 
-function makeResizableDiv(id)
+function make_resizable_div(id)
 {
     const element = document.getElementById(id);
     const resizers = document.querySelectorAll("#" + id + " .resizer");
@@ -108,8 +118,12 @@ function makeResizableDiv(id)
         {
             if (currentResizer.classList.contains('bottom-right'))
             {
-                const width = original_width + (e.pageX - original_mouse_x);
-                const height = original_height + (e.pageY - original_mouse_y)
+                var width = original_width + (e.pageX - original_mouse_x);
+				var height = original_height + (e.pageY - original_mouse_y)
+				if (width > height)
+					height = width;
+				else if (height > width)
+					width = height;
                 if (width > minimum_size)
                 {
                     element.style.width = width + 'px'
@@ -128,5 +142,3 @@ function makeResizableDiv(id)
         }
     }
   }
-  
-  makeResizableDiv('filter_test')

@@ -52,7 +52,7 @@
 			if ( move_uploaded_file( $full_tmp_name, "$uploads_folder/$tmp_name" ) === TRUE )
 				echo "$uploads_folder/$tmp_name";
 			else
-				echo "ERROR: Upload failed";
+				echo "ERROR: Upload failed for user: " . shell_exec("whoami");
 		}
 	}
 	else
