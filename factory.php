@@ -106,19 +106,26 @@ include_once("header.php");
 
 			<div class="image_filters" style="overflow-y: scroll;">
 				<h2 class="pannel_title">FILTERS</h2>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
-				<input type="image" id="trollface_filter" name="trollface_filter" src="/images/filters/trollface.png" onclick="add_filter_to_editor('/images/filters/trollface.png')"/>
+				<?php
+					function endsWith($string, $endString) 
+					{ 
+						$len = strlen($endString); 
+						if ($len == 0) { 
+							return true; 
+						}
+						return (substr($string, -$len) === $endString); 
+					} 
+
+					$files = scandir("images/filters");
+					foreach ( $files as $name )
+					{
+						if ( endsWith($name, ".png") )
+						{
+							$id = explode( ".", $name )[0] . "_filter";
+							echo '<input type="image" id="' . $id . '" name="' . $id . '" src="/images/filters/' . $name . '" onclick="add_filter_to_editor(' . "'" . "images/filters/" . $name . "'" . ")\"" . '/>';
+						}
+					}
+				?>
 			</div>
 		</div>
 	</body>
