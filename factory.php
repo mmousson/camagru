@@ -78,23 +78,36 @@ include_once("header.php");
 				</div>
 			</div>
 
-			<form id="box_wrapper" class="box" method="post" action="" enctype="multipart/form-data">
-				<div class="box_input">
-					<input class="box_file" type="file" name="files[]" id="file"/>
-					<label for="file"><img src="/images/UI/upload_icon.png"/><br/><strong>Choose an image</strong><span class="box_dragndrop"> or drag it here<br/><br/>OR</span></label>
-					<div id="submit_button_wrapper">
-						<button id="submit_button" class="box_button" type="button">TAKE A WEBCAM SNAPSHOT</button>
+			<div id="center_pannel">
+
+				<form id="box_wrapper" class="box" method="post" action="" enctype="multipart/form-data">
+					<div class="box_input">
+						<input class="box_file" type="file" name="files[]" id="file"/>
+						<label for="file"><img src="/images/UI/upload_icon.png"/><br/><strong>Choose an image</strong><span class="box_dragndrop"> or drag it here<br/><br/>OR</span></label>
+						<div id="submit_button_wrapper">
+							<button id="submit_button" class="box_button" type="button">TAKE A WEBCAM SNAPSHOT</button>
+						</div>
 					</div>
+
+					<div class="box_uploading">Uploading&hellip;</div>
+
+					<div class="box_success">Done !</div>
+
+					<div class="box_error">Error ! <span></span>.</div>
+				</form>
+
+				<div id="the_image" class="image_preview">
 				</div>
 
-				<div class="box_uploading">Uploading&hellip;</div>
+				<div id="controls">
+					<form>
+						<div id="textarea_wrapper">
+							<textarea id="subject" name="subject" type="text" placeholder="Enter a caption for your post here..." maxlength="300" required></textarea>
+						</div>
+						<button type="button">PUSBLISH</button>
+					</form>
+				</div>
 
-				<div class="box_success">Done !</div>
-
-				<div class="box_error">Error ! <span></span>.</div>
-			</form>
-
-			<div id="the_image" class="image_preview">
 			</div>
 
 			<div id="the_webcam">

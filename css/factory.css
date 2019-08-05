@@ -138,6 +138,7 @@ input::-moz-focus-inner, input::-moz-focus-outer { border: 0; }
 }
 
 /* Set what the filters' positions will be relative to */
+#the_webcam, #the_image { margin: 25px 20px 16px 20px; }
 #the_image { position: relative; overflow: hidden; }
 
 /* Style the class applied to every filter's wrapper */
@@ -213,7 +214,7 @@ Just style it to let the user know he can drag and drop files */
 
 .box.has_advanced_upload {
 	width: 100%;
-	height: calc(100% - 25px);
+	/* height: calc(100% - 25px); */
 	background-color: #c4d1d6;
 	outline: grey dashed 2px;
 	outline-offset: -15px;
@@ -299,4 +300,47 @@ Just style it to let the user know he can drag and drop files */
 	top: -5px;
 	left: -5px;
 	cursor: pointer;
+}
+
+#center_pannel {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-flow: column;
+}
+
+#publish_button_wrapper { width: 100%; }
+#controls button {
+	background-color: dodgerblue;
+	width: auto;
+	height: 50px;
+	border: none;
+	outline: none;
+	border-radius: 20px;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
+#controls {
+	display: flex;
+	flex-flow: column;
+	width: 100%;
+	flex: 1 1;
+	margin-left: 20px;
+}
+
+input[type="text"], textarea {
+	flex: 1 1 auto;
+    resize: none;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+	margin: 5px;
+	border-radius: 10px;
+	font-size: 20px;
+	outline: none;
+}
+
+#textarea_wrapper {
+	width: 100%;
+    flex: 1 1 auto;
 }

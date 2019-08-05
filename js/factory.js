@@ -103,7 +103,6 @@ file_input.addEventListener("change", function () {
 	form.classList.add("is_uploading");
 	form.classList.remove("is_error");
 
-	console.log("Submitting");
 	if (is_advanced_upload)
 	{
 		var	xhttp;
@@ -120,10 +119,7 @@ file_input.addEventListener("change", function () {
 				if (this.responseText.startsWith("ERROR: "))
 					console.log("AN ERROR OCCURED: ", this.responseText);
 				else
-				{
 					set_background_image(this.responseText);
-					console.log("OK: Response: ", this.responseText);
-				}
 			}
 		}
 		xhttp.send(form_data);
@@ -149,11 +145,32 @@ function	set_background_image(full_path)
 {
 	var	editor = document.getElementById("the_image");
 
-	console.log("setting..");
 	editor.style.display = "block";
 	editor.style.backgroundImage = "url(" + full_path + ")";
 	editor.style.backgroundRepeat = "round";
 	editor.style.backgroundSize = "cover";
-	console.log("set");
 	form.style.display = "none";
 }
+
+function	resize()
+{
+	var	width;
+
+	box_wrapper = document.getElementById("box_wrapper");
+	the_image = document.getElementById("the_image");
+	the_webcam =  document.getElementById("the_webcam");
+	width = box_wrapper.clientWidth;
+	if (width == 0)
+	{
+		width = the_image.clientWidth;
+		console.log("W: ", width, " H: ", width / 16 * 9);
+	}
+	if (width == 0)
+		width = the_webcam.clientWidth;
+	box_wrapper.style.height = width / 16 * 9;
+	the_image.style.height =  width / 16 * 9;
+	the_webcam.style.height = width / 16 * 9;
+	document.getElementById("textarea_wrapper").style.height = "calc(100% - 60px)";
+}
+resize();
+window.onresize = resize;
