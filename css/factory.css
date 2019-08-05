@@ -291,6 +291,17 @@ Just style it to let the user know he can drag and drop files */
 	font-family: cursive;
 }
 
+.resizable .resizers .flip_image {
+	width: 13px;
+	height: 13px;
+	border-radius: 50%; /*magic to turn square into circle*/
+	background: greenyellow;
+	border: 1px solid black;
+	position: absolute;
+	font-size: 10px;
+	font-family: cursive;
+}
+
 .resizable .resizers .resizer.bottom-right {
 	right: -5px;
 	bottom: -5px;
@@ -299,6 +310,12 @@ Just style it to let the user know he can drag and drop files */
 .resizable .resizers .delete_filter.top-left {
 	top: -5px;
 	left: -5px;
+	cursor: pointer;
+}
+
+.resizable .resizers .flip_image.top-right {
+	top: -5px;
+	right: -5px;
 	cursor: pointer;
 }
 

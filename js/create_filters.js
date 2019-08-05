@@ -8,7 +8,8 @@ function    add_filter_to_editor(path_to_filter_image)
     var new_filter_wrapper = document.createElement("div");
     var resizers = document.createElement("div");
 	var resizer_bottom_right = document.createElement("div");
-	var	delete_top_left = document.createElement("div");
+    var	delete_top_left = document.createElement("div");
+    var flip_image_top_right = document.createElement("div");
 
     new_filter_wrapper.classList.add("my_filter");
     new_filter_wrapper.classList.add("resizable");
@@ -16,9 +17,12 @@ function    add_filter_to_editor(path_to_filter_image)
     resizer_bottom_right.classList.add("resizer");
 	resizer_bottom_right.classList.add("bottom-right");
 	delete_top_left.classList.add("delete_filter");
-	delete_top_left.classList.add("top-left");
+    delete_top_left.classList.add("top-left");
+    flip_image_top_right.classList.add("flip_image");
+    flip_image_top_right.classList.add("top-right");
 
     new_filter_wrapper.id = "filter_" + filter_count + "_wrapper";
+    flip_image_top_right.id = "flip_img_" + filter_count;
     new_filter_wrapper.style.backgroundImage = "url(" + path_to_filter_image + ")";
     new_filter_wrapper.style.backgroundRepeat = "no-repeat";
 	new_filter_wrapper.style.backgroundSize = "cover";
@@ -27,11 +31,39 @@ function    add_filter_to_editor(path_to_filter_image)
 
     new_filter_wrapper.appendChild(resizers);
 	resizers.appendChild(resizer_bottom_right);
-	resizers.appendChild(delete_top_left);
+    resizers.appendChild(delete_top_left);
+    resizers.appendChild(flip_image_top_right);
 	delete_top_left.appendChild(document.createTextNode("X"));
 	delete_top_left.addEventListener("click", function (elem) {
 		document.getElementById(elem.toElement.id).parentElement.parentElement.remove();
-	});
+    });
+    flip_image_top_right.addEventListener("click", function (elem) {
+        var rotation;
+
+        if (document.getElementById(elem.toElement.id).parentElement.parentElement.style.transform == "rotateY(180deg)")
+        {
+            document.getElementById(elem.toElement.id).style.right = "-5px";
+            document.getElementById(elem.toElement.id).style.setProperty("left", "initial");
+            document.getElementById(elem.toElement.id).parentElement.childNodes[0].style.right = "-5px";
+            document.getElementById(elem.toElement.id).parentElement.childNodes[0].style.setProperty("left", "initial");
+            document.getElementById(elem.toElement.id).parentElement.childNodes[1].style.left = "-5px";
+            document.getElementById(elem.toElement.id).parentElement.childNodes[1].style.setProperty("right", "initial");
+
+            rotation = "";
+        }
+        else
+        {
+            document.getElementById(elem.toElement.id).style.left = "-5px";
+            document.getElementById(elem.toElement.id).style.setProperty("right", "initial");
+            document.getElementById(elem.toElement.id).parentElement.childNodes[0].style.setProperty("right", "initial");
+            document.getElementById(elem.toElement.id).parentElement.childNodes[0].style.left = "-5px";
+            document.getElementById(elem.toElement.id).parentElement.childNodes[1].style.right = "-5px";
+            document.getElementById(elem.toElement.id).parentElement.childNodes[1].style.setProperty("left", "initial");
+
+            rotation = "rotateY(180deg)";
+        }
+        document.getElementById(elem.toElement.id).parentElement.parentElement.style.transform = rotation;
+    });
 
     editor.appendChild(new_filter_wrapper);
 
