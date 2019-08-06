@@ -13,8 +13,9 @@ send_image_data_btn.addEventListener("click", function () {
     for (i = 0; i < filters.length; i++)
     {
         url_params  += "&filters_path[]=../" + filters[i].style.backgroundImage.substr(5).slice(0, -2)
-                    + "&filters_posx[]=128"
-                    + "&filters_posy[]=128"
+                    + "&flipped[]=" + getComputedStyle(filters[i]).getPropertyValue("--flipped")
+                    + "&filters_posx[]=" + filters[i].style.left.slice(0, -2)
+                    + "&filters_posy[]=" + filters[i].style.top.slice(0, -2)
                     + "&filters_size[]=" + (filters[i].style.width == "" ? "100" : filters[i].style.width.slice(0, -2));
     }
 

@@ -40,7 +40,7 @@ function    add_filter_to_editor(path_to_filter_image)
     flip_image_top_right.addEventListener("click", function (elem) {
         var rotation;
 
-        if (document.getElementById(elem.toElement.id).parentElement.parentElement.style.transform == "rotateY(180deg)")
+        if (getComputedStyle(document.getElementById(elem.toElement.id).parentElement.parentElement).getPropertyValue("--flipped") == "true")
         {
             document.getElementById(elem.toElement.id).style.right = "-5px";
             document.getElementById(elem.toElement.id).style.setProperty("left", "initial");
@@ -48,6 +48,8 @@ function    add_filter_to_editor(path_to_filter_image)
             document.getElementById(elem.toElement.id).parentElement.childNodes[0].style.setProperty("left", "initial");
             document.getElementById(elem.toElement.id).parentElement.childNodes[1].style.left = "-5px";
             document.getElementById(elem.toElement.id).parentElement.childNodes[1].style.setProperty("right", "initial");
+
+            document.getElementById(elem.toElement.id).parentElement.parentElement.style.setProperty("--flipped", "false");
 
             rotation = "";
         }
@@ -59,6 +61,8 @@ function    add_filter_to_editor(path_to_filter_image)
             document.getElementById(elem.toElement.id).parentElement.childNodes[0].style.left = "-5px";
             document.getElementById(elem.toElement.id).parentElement.childNodes[1].style.right = "-5px";
             document.getElementById(elem.toElement.id).parentElement.childNodes[1].style.setProperty("left", "initial");
+
+            document.getElementById(elem.toElement.id).parentElement.parentElement.style.setProperty("--flipped", "true");
 
             rotation = "rotateY(180deg)";
         }

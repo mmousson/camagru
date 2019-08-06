@@ -148,6 +148,7 @@ input::-moz-focus-inner, input::-moz-focus-outer { border: 0; }
 	border: none;
 	text-align: center;
 	display: inline-grid;
+	--flipped: false;
 }
 
 /* Style the class applied to every actual filter image */
