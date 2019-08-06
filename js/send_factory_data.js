@@ -79,11 +79,11 @@ confirm_btn.addEventListener("click", function () {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
         {
             ok_btn.style.display = "inline-block";
-            if (this.responseText.startsWith("ERROR:"))
+            if (this.responseText != "OK")
             {
                 console.log(this.responseText);
                 title_txt.innerHTML = "Publishing Failure";
-                question_txt.innerHTML = "An error occured ! Please try again later";
+                question_txt.innerHTML = this.responseText;
                 status_logo.src = "/images/UI/checkmark_ko.png";
             }
             else
@@ -95,7 +95,9 @@ confirm_btn.addEventListener("click", function () {
             }
         }
     }
-    xhttp.open("GET", "/scripts/publish_image.php?path=" + image_path);
+    xhttp.open("GET", "/scripts/publish_image.php?path="
+        + image_path
+        + "&message=" + document.getElementById("subject").value);
     xhttp.send();
 });
 

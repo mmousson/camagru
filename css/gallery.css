@@ -1,0 +1,41 @@
+body, html { margin: 0; }
+.search_bar {
+    margin-top: 75px;
+    width: calc(100% - 2px);
+    height: 48px;
+    background-color: #4d4d4d;
+    border: 1px solid black;
+}
+
+.gallery_wrapper {
+    width: 100%;
+    height: calc(100% - 125px);
+    display: flex;
+    flex-flow: row;
+}
+
+.side_pannel {
+    width: 298px;
+    height: calc(100% - 2px);
+    background-color: #2f2f2f;
+    border: 1px solid black;
+}
+
+.main_view {
+    width: calc(100% - 300px);
+    height: calc(100% - 2px);
+}
+
+.sorting_tab {
+    height: 58px;
+    width: calc(100% - 2px);
+    background-color: #242424;
+    border: 1px solid black;
+}
+
+.photos {
+    width: calc(100% - 2px);
+    height: calc(100% - 60px);
+    background-color: #171717;
+    border: 1px solid black;
+}
