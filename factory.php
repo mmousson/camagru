@@ -104,7 +104,7 @@ include_once("header.php");
 						<div id="textarea_wrapper">
 							<textarea id="subject" name="subject" type="text" placeholder="Enter a caption for your post here..." maxlength="300" required></textarea>
 						</div>
-						<button type="button">PUSBLISH</button>
+						<button id="send_image_data_btn" type="button">PUSBLISH</button>
 					</form>
 				</div>
 
@@ -146,4 +146,5 @@ include_once("header.php");
 	<script type="text/javascript" src="/js/factory.js"></script>
 	<script type="text/javascript" src="/js/webcam.js"></script>
 	<script type="text/javascript" src="/js/create_filters.js"></script>
+	<script type="text/javascript" src="/js/send_factory_data.js"></script>
 </html>

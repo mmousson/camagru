@@ -147,8 +147,9 @@ function	set_background_image(full_path)
 
 	editor.style.display = "block";
 	editor.style.backgroundImage = "url(" + full_path + ")";
-	editor.style.backgroundRepeat = "round";
-	editor.style.backgroundSize = "cover";
+	editor.style.backgroundPosition = "center";
+	editor.style.backgroundRepeat = "no-repeat";
+	editor.style.backgroundSize = "contain";
 	form.style.display = "none";
 }
 
