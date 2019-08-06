@@ -36,7 +36,6 @@ function scale_image($file, $w, $h, $create_func, $preserve_alpha=FALSE, $crop=F
 }
 
 $canvas_path = $_GET['canvas_path'];
-echo "Received: " . $_GET['canvas_size'];
 $im = scale_image($canvas_path, (int)($_GET['canvas_size'] / 9 * 16), (int)$_GET['canvas_size'], imagecreatefromjpeg, FALSE, FALSE);
 foreach ($_GET['filters_path'] as $key => $value)
 {
@@ -49,7 +48,6 @@ foreach ($_GET['filters_path'] as $key => $value)
 }
 
 $path = "../uploads/output_" . $_SESSION['user_name'] . ".png";
-header('Content-type: image/png');
 if ( imagepng($im, $path, 9) === TRUE )
     echo $path;
 else

@@ -29,6 +29,13 @@ try
 
     $sql = "CREATE DATABASE IF NOT EXISTS __camagru_posts";
     $conn->exec($sql);
+    $sql = "CREATE TABLE IF NOT EXISTS __camagru_posts.publications
+    (
+        id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+        author VARCHAR(32),
+        publication_date DATETIME
+    );";
+    $conn->exec($sql);
 
     $user_name = "root";
     $full_name = "root";

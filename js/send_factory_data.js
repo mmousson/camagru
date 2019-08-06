@@ -79,8 +79,9 @@ confirm_btn.addEventListener("click", function () {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
         {
             ok_btn.style.display = "inline-block";
-            if (this.responseText == "ERROR")
+            if (this.responseText.startsWith("ERROR:"))
             {
+                console.log(this.responseText);
                 title_txt.innerHTML = "Publishing Failure";
                 question_txt.innerHTML = "An error occured ! Please try again later";
                 status_logo.src = "/images/UI/checkmark_ko.png";
@@ -90,6 +91,7 @@ confirm_btn.addEventListener("click", function () {
                 title_txt.innerHTML = "Publishing Complete";
                 question_txt.innerHTML = "Thank you for uploading your new creation";
                 status_logo.src = "/images/UI/checkmark_ok.png";
+                console.log(this.responseText);
             }
         }
     }
