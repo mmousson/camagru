@@ -1,4 +1,12 @@
 const   send_image_data_btn = document.getElementById("send_image_data_btn");
+var     cancel_btn = document.querySelector("#cancel_btn");
+var     confirm_btn = document.querySelector("#confirm_btn");
+var     ok_btn = document.querySelector("#ok_btn");
+var     overlay = document.getElementById("overlay");
+var     title_txt = document.querySelector("#dialog_title_txt");
+var     question_txt = document.querySelector("#question_txt");
+var     status_logo = document.querySelector("#status_logo");
+var     image_path;
 
 send_image_data_btn.addEventListener("click", function () {
     const   canvas_img = document.getElementById("the_image").style.backgroundImage.substr(5).slice(0, -2);
@@ -19,17 +27,77 @@ send_image_data_btn.addEventListener("click", function () {
                     + "&filters_size[]=" + (filters[i].style.width == "" ? "100" : filters[i].style.width.slice(0, -2));
     }
 
-    console.log(url_params);
+    overlay.style.display = "block";
+    overlay.style.opacity = "1";
+    title_txt.innerHTML = "Processing Image...";
+    question_txt.innerHTML = "Please wait";
+    cancel_btn.style.display = "none";
+    confirm_btn.style.display = "none";
+    status_logo.src = "/images/UI/checkmark_processing.png";
 
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
         {
-            console.log(this.responseText);
+            cancel_btn.style.display = "initial";
+            confirm_btn.style.display = "initial";
+            if (this.responseText == "ERROR")
+            {
+                title_txt.innerHTML = "Image Processing Failure";
+                question_txt.innerHTML = "An error occured, please try again later";
+                status_logo.src = "/images/UI/checkmark_ko.png";
+            }
+            else
+            {
+                title_txt.innerHTML = "Image Processing Complete";
+                question_txt.innerHTML = "Are you sure you want to pusblish your creation ?";
+                status_logo.src = "/images/UI/checkmark_ok.png";
+                image_path = this.responseText;
+            }
         }
     }
     xhttp.open("GET", url_params, true);
     xhttp.send();
+});
 
-    // document.location.href = url_params;
+cancel_btn.addEventListener("click", function () {
+    overlay.style.display = "none";
+    overlay.style.opacity = "0";
+});
+
+confirm_btn.addEventListener("click", function () {
+    var xhttp;
+
+    title_txt.innerHTML = "Publishing...";
+    question_txt.innerHTML = "Please wait";
+    cancel_btn.style.display = "none";
+    confirm_btn.style.display = "none";
+    status_logo.src = "/images/UI/checkmark_processing.png";
+
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
+        {
+            ok_btn.style.display = "inline-block";
+            if (this.responseText == "ERROR")
+            {
+                title_txt.innerHTML = "Publishing Failure";
+                question_txt.innerHTML = "An error occured ! Please try again later";
+                status_logo.src = "/images/UI/checkmark_ko.png";
+            }
+            else
+            {
+                title_txt.innerHTML = "Publishing Complete";
+                question_txt.innerHTML = "Thank you for uploading your new creation";
+                status_logo.src = "/images/UI/checkmark_ok.png";
+            }
+        }
+    }
+    xhttp.open("GET", "/scripts/publish_image.php?path=" + image_path);
+    xhttp.send();
+});
+
+ok_btn.addEventListener("click", function () {
+    ok_btn.style.display = "none";
+    overlay.style.display = "none";
 });

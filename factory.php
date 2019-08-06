@@ -141,6 +141,17 @@ include_once("header.php");
 				?>
 			</div>
 		</div>
+
+		<div id="overlay">
+			<div class="dialog">
+				<img id="status_logo" class="status" src="/images/UI/checkmark_processing.png"/>
+				<p id="dialog_title_txt" class="title">Image Processing Complete</p>
+				<p id="question_txt" class="question">Are you sure you want to publish your creation ?</p>
+				<button id="cancel_btn" class="cancel" type="button">No, I don't want to</button>
+				<button id="confirm_btn" class="confirm" type="button">Yes, I do want to publish this creation</button>
+				<button id="ok_btn" class="confirm" type="button">OK</button>
+			</div>
+		</div>
 	</body>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="/js/factory.js"></script>

@@ -162,10 +162,7 @@ function	resize()
 	the_webcam =  document.getElementById("the_webcam");
 	width = box_wrapper.clientWidth;
 	if (width == 0)
-	{
 		width = the_image.clientWidth;
-		console.log("W: ", width, " H: ", width / 16 * 9);
-	}
 	if (width == 0)
 		width = the_webcam.clientWidth;
 	box_wrapper.style.height = width / 16 * 9;

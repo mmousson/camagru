@@ -1,4 +1,5 @@
 <?php
+session_start();
 function scale_image($file, $w, $h, $create_func, $preserve_alpha=FALSE, $crop=FALSE) {
     list($width, $height) = getimagesize($file);
     $r = $width / $height;
@@ -47,10 +48,11 @@ foreach ($_GET['filters_path'] as $key => $value)
     imagecopy($im, $stamp, $_GET['filters_posx'][$key] - $offset_x, $_GET['filters_posy'][$key] - $offset_y, 0, 0, $_GET['filters_size'][$key], $_GET['filters_size'][$key]);
 }
 
+$path = "../uploads/output_" . $_SESSION['user_name'] . ".png";
 header('Content-type: image/png');
-if ( imagepng($im, "../uploads/output.png", 9) === TRUE )
-    echo "ALL GOOD";
+if ( imagepng($im, $path, 9) === TRUE )
+    echo $path;
 else
-    echo "FAILURE";
+    echo "ERROR";
 imagedestroy($im);
 ?>
