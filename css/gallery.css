@@ -87,6 +87,7 @@ h2, h3 {
     color: white;
     border-radius: 5px;
     cursor: text;
+    width: 300px;
 }
   
 .search-container button {
@@ -126,6 +127,7 @@ h2, h3 {
     width: 100%;
     height: 35px;
     text-align: left;
+    padding-top: 5px;
     padding-left: 42px;
     border: none;
     outline: none;
@@ -135,4 +137,37 @@ h2, h3 {
     transition: 0.2s;
     cursor: pointer;
     color: #6b6b6b;
+}
+
+#mosaic_1 {
+    border: 5px inset #656565;
+    background-image: url(/images/UI/mosaic_grey_1.png);
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+#mosaic_6 {
+    border: 5px outset #656565;
+    background-image: url(/images/UI/mosaic_grey_6.png);
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.mosaic_buttons button {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 60px;
+    height: 45px;
+    /* border-radius: 5px; */
+    outline: none;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    background-color: #656565;
+}
+.mosaic_buttons {
+    float: right;
+    display: flex;
+    margin-top: 5px;
+    margin-right: 10px;
 }

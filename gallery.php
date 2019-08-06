@@ -60,6 +60,10 @@ include_once ( "header.php" );
             </div>
             <div class="main_view">
                 <div class="sorting_tab">
+                    <div class="mosaic_buttons">
+                        <button id="mosaic_1"></button>
+                        <button id="mosaic_6"></button>
+                    </div>
                 </div>
                 <div class="photos">
                 </div>
