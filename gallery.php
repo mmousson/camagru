@@ -61,8 +61,9 @@ include_once ( "header.php" );
             <div class="main_view">
                 <div class="sorting_tab">
                     <div class="mosaic_buttons">
-                        <button id="mosaic_1"></button>
-                        <button id="mosaic_6"></button>
+						<input id="18" class="mosaic_btn" type="image" src="/images/UI/mosaic_18_normal.png"/>
+                        <input id="6" class="mosaic_btn" type="image" src="/images/UI/mosaic_6_normal.png"/>
+						<input id="1" class="mosaic_btn" type="image" src="/images/UI/mosaic_1_pressed.png"/>
                     </div>
                 </div>
                 <div class="photos">
@@ -70,4 +71,5 @@ include_once ( "header.php" );
             </div>
         </div>
     </body>
+	<script type="text/javascript" src="/js/gallery.js"></script>
 </html>

@@ -5,11 +5,11 @@ h2 {
     margin-left: 20px;
     margin-top: 40px;
     margin-bottom: 10px;
-    font-size: 40px;
+    font-size: 30px;
 }
 h3 { color: #6b6b6b; margin: 10px 0 10px 20px; }
 h2, h3 {
-    font-family: fantasy;
+    font-family: monospace;
     width: fit-content;
     display: flex;
     flex-flow: row;
@@ -22,7 +22,7 @@ h2, h3 {
     height: 64px;
     background-color: #4d4d4d;
     border: 1px solid black;
-    font-family: fantasy;
+    font-family: monospace;
     font-size: 35px;
     font-weight: bold;
     text-shadow: 1px 1px 2px black;
@@ -115,8 +115,9 @@ h2, h3 {
 }
 .main_title_wrapper p {
     display: inline-block;
-    font-family: fantasy;
-    font-size: 30px;
+    font-family: monospace;
+	font-size: 25px;
+	margin-top: 40px;
     margin-bottom: 0;
     color: #acacac;
 }
@@ -131,8 +132,8 @@ h2, h3 {
     padding-left: 42px;
     border: none;
     outline: none;
-    font-family: fantasy;
-    font-size: 17px;
+    font-family: monospace;
+    font-size: 14px;
     background-color: rgba(71, 161, 251, 0);
     transition: 0.2s;
     cursor: pointer;
@@ -151,19 +152,10 @@ h2, h3 {
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
 }
-.mosaic_buttons button {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    width: 60px;
-    height: 45px;
-    /* border-radius: 5px; */
+.mosaic_buttons input[type="image"] {
+	height: 45px;
+	width: auto;
     outline: none;
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    background-color: #656565;
 }
 .mosaic_buttons {
     float: right;

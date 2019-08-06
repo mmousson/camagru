@@ -12,10 +12,10 @@ session_start();
 		<div id="main_header">
 			<input type="image" src="images/site_logo.png" onclick="window.location.href='index.php'"/>
 			<div class="navigation_pannel">
-				<button>GALLERY</button>
-				<button onclick="window.location.href='factory.php'">THE FACTORY</button>
-				<button onclick="window.location.href='about_us.php'">ABOUT US</button>
-				<button onclick="window.location.href='contacts.php'">CONTACT US</button>
+				<button onclick="window.location.href='/gallery.php'">GALLERY</button>
+				<button onclick="window.location.href='/factory.php'">THE FACTORY</button>
+				<button onclick="window.location.href='/about_us.php'">ABOUT US</button>
+				<button onclick="window.location.href='/contacts.php'">CONTACT US</button>
 			</div>
 			<div class="identification_pannel">
 				<?php
