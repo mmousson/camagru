@@ -68,29 +68,36 @@ mosaic_1.addEventListener("click", gallery_mosaic_event_handler);
 mosaic_6.addEventListener("click", gallery_mosaic_event_handler);
 mosaic_18.addEventListener("click", gallery_mosaic_event_handler);
 
+var	overlay_active = false;
 var	overlay = document.querySelector(".overlay");
 var	overlay_wrapper = overlay.querySelector(".wrapper");
 var	overlay_image = overlay.querySelector(".overlay_image");
 var	comments_wrapper = overlay.querySelector(".comments_wrapper");
 
+window.addEventListener("click", function (e) {
+	if (overlay_active && !overlay_wrapper.contains(e.target))
+	{
+		overlay_active = false;
+		overlay.style.opacity = "0";
+		overlay.style.display = "none";
+	}
+});
+
 function	picture_show_overlay(id)
 {
 	var	xhttp;
 
-	overlay.style.display = "block";
-	overlay.style.opacity = "1";
-	overlay_image.style.backgroundImage = "url(/posts/" + id + ".png)";
-
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
+		{
+			overlay_active = true;
+			overlay.style.display = "block";
+			overlay.style.opacity = "1";
+			overlay_image.style.backgroundImage = "url(/posts/" + id + ".png)";
 			comments_wrapper.innerHTML = this.responseText;
+		}
 	}
 	xhttp.open("GET", "/scripts/load_comments.php?id=" + id, true);
 	xhttp.send();
 }
-
-// overlay.addEventListener("click", function () {
-// 	overlay.style.opacity = "0";
-// 	overlay.style.display = "none";
-// });
