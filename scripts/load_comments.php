@@ -1,5 +1,5 @@
 <?php
-include ( "pdo_connect.php" );
+include_once ( "pdo_connect.php" );
 
 if ( isset( $_GET['id'] ) && !empty( $_GET['id'] ) )
 {

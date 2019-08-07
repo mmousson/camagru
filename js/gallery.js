@@ -69,10 +69,13 @@ mosaic_6.addEventListener("click", gallery_mosaic_event_handler);
 mosaic_18.addEventListener("click", gallery_mosaic_event_handler);
 
 var	overlay_active = false;
+var	active_id = -1;
 var	overlay = document.querySelector(".overlay");
 var	overlay_wrapper = overlay.querySelector(".wrapper");
 var	overlay_image = overlay.querySelector(".overlay_image");
 var	comments_wrapper = overlay.querySelector(".comments_wrapper");
+var	comment_btn = overlay.querySelector("#comment_button");
+var	comment_input = overlay.querySelector("#comment_textarea");
 
 window.addEventListener("click", function (e) {
 	if (overlay_active && !overlay_wrapper.contains(e.target))
@@ -91,6 +94,7 @@ function	picture_show_overlay(id)
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
 		{
+			active_id = id;
 			overlay_active = true;
 			overlay.style.display = "block";
 			overlay.style.opacity = "1";
@@ -101,3 +105,25 @@ function	picture_show_overlay(id)
 	xhttp.open("GET", "/scripts/load_comments.php?id=" + id, true);
 	xhttp.send();
 }
+
+comment_btn.addEventListener("click", function () {
+	var	xhttp;
+
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
+		{
+			if (this.responseText == "OK")
+			{
+				comment_input.value = "";
+				picture_show_overlay(active_id);
+			}
+			else
+				alert(this.responseText.slice(7));
+		}
+	}
+	xhttp.open("GET", "/scripts/add_comment.php?"
+		+ "image_id=" + active_id
+		+ "&message=" + comment_input.value);
+	xhttp.send();
+});

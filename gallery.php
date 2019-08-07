@@ -69,24 +69,26 @@ include_once ( "header.php" );
                     </div>
                 </div>
                 <div class="photos_grid">
-                    <div id="example" class="photo_wrapper mosaic_1" onclick="picture_show_overlay(1)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(2)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(3)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(4)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(5)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(6)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(7)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(8)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(9)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(10)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(11)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(12)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(13)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(14)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(15)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(16)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(17)"></div>
-                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(18)"></div>
+                    <?php
+                        include_once ( "scripts/pdo_connect.php" );
+
+                        $conn = pdo_connect( "__camagru_posts" );
+                        if ( $conn !== NULL )
+                        {
+                            $query = $conn->prepare("SELECT id, author FROM __camagru_posts.publications WHERE 1");
+                            $query->execute();
+
+                            $results = $query->fetchAll();
+                            foreach ( $results as $post )
+                            {
+                                echo '<div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(' . $post['id'] . ')" style="background-image: url(/posts/' . $post['id'] . '.png);">';
+                                echo "</div>";
+                            }
+                            $conn = NULL;
+                        }
+                        else
+                            echo "FATAL ERROR";
+                    ?>
                 </div>
             </div>
         </div>
@@ -101,7 +103,7 @@ include_once ( "header.php" );
 
                     <div class="input_comment">
                         <textarea id="comment_textarea" name="" placeholder="Enter your comment here..." maxlength="300"></textarea>
-                        <button type="button">Submit</button>
+                        <button id="comment_button" type="button">Submit</button>
                     </div>
 
                 </div>
