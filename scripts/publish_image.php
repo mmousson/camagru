@@ -7,7 +7,7 @@ function    pdo_connect()
 
     try
     {
-        $conn = new PDO("mysql:host=$servername;dbname=__camagru_users", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=__camagru_posts", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return ( $conn );
     }
@@ -55,7 +55,7 @@ if ( isset( $_GET['path'] ) && !empty( $_GET['path'] ) )
             $id = $other->fetch()['id'];
 
             copy( $_GET['path'], "../posts/" . $id . ".png");
-            unlink( $_GET['pathl'] );
+            // unlink( $_GET['path'] );
             echo "OK";
         }
     }

@@ -33,7 +33,16 @@ try
     (
         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
         author VARCHAR(32),
-        publication_date DATETIME
+        publication_date DATETIME,
+        message VARCHAR(300)
+    );";
+    $conn->exec($sql);
+    $sql = "CREATE TABLE IF NOT EXISTS __camagru_posts.comments
+    (
+        image_id INT NOT NULL,
+        author VARCHAR(32),
+        publication_date DATETIME,
+        message VARCHAR(300)
     );";
     $conn->exec($sql);
 

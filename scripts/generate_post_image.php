@@ -35,8 +35,16 @@ function scale_image($file, $w, $h, $create_func, $preserve_alpha=FALSE, $crop=F
     return $dst;
 }
 
+$create_func = NULL;
+$canvas_ext = explode(".", $_GET['canvas_path'])[1];
+if ( strcmp( $canvas_ext, "png" ) )
+    $create_func = imagecreatefrompng;
+else if ( strcmp( $canvas_ext, "jpeg" ) )
+    $create_func = imagecreatefromjpeg;
+
 $canvas_path = $_GET['canvas_path'];
-$im = scale_image($canvas_path, (int)($_GET['canvas_size'] / 9 * 16), (int)$_GET['canvas_size'], imagecreatefromjpeg, FALSE, FALSE);
+$im = scale_image($canvas_path, (int)($_GET['canvas_size'] / 9 * 16), (int)$_GET['canvas_size'], $create_func, FALSE, FALSE);
+
 foreach ($_GET['filters_path'] as $key => $value)
 {
     $stamp =  scale_image($value, $_GET['filters_size'][$key], $_GET['filters_size'][$key], imagecreatefrompng, TRUE, FALSE);
