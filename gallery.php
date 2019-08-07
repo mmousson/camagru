@@ -69,63 +69,34 @@ include_once ( "header.php" );
                     </div>
                 </div>
                 <div class="photos_grid">
-                    <div id="example" class="photo_wrapper mosaic_1">1</div>
-                    <div class="photo_wrapper mosaic_1">2</div>
-                    <div class="photo_wrapper mosaic_1">3</div>
-                    <div class="photo_wrapper mosaic_1">4</div>
-                    <div class="photo_wrapper mosaic_1">5</div>
-                    <div class="photo_wrapper mosaic_1">6</div>
-                    <div class="photo_wrapper mosaic_1">7</div>
-                    <div class="photo_wrapper mosaic_1">8</div>
-                    <div class="photo_wrapper mosaic_1">9</div>
-                    <div class="photo_wrapper mosaic_1">10</div>
-                    <div class="photo_wrapper mosaic_1">11</div>
-                    <div class="photo_wrapper mosaic_1">12</div>
-                    <div class="photo_wrapper mosaic_1">13</div>
-                    <div class="photo_wrapper mosaic_1">14</div>
-                    <div class="photo_wrapper mosaic_1">15</div>
-                    <div class="photo_wrapper mosaic_1">16</div>
-                    <div class="photo_wrapper mosaic_1">17</div>
-                    <div class="photo_wrapper mosaic_1">18</div>
+                    <div id="example" class="photo_wrapper mosaic_1" onclick="picture_show_overlay(1)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(2)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(3)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(4)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(5)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(6)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(7)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(8)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(9)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(10)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(11)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(12)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(13)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(14)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(15)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(16)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(17)"></div>
+                    <div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(18)"></div>
                 </div>
             </div>
         </div>
         <div class="overlay">
             <div class="wrapper">
-                <div class="overlay_image">
-
-                </div>
+                <div class="overlay_image"></div>
 
                 <div class="comments_zone">
                     <div class="comments_wrapper">
 
-                        <?php
-                            include ( "scripts/pdo_connect.php" );
-
-                            $conn = pdo_connect( "__camagru_posts" );
-                            if ( $conn !== NULL )
-                            {
-                                $query = $conn->prepare("SELECT author, message FROM comments WHERE image_id='4'");
-                                $query->execute();
-
-                                $results = $query->fetchAll();
-                                if ( empty( $results ) )
-                                    echo '<div id="no_comment_txt">BE THE FIRST TO COMMENT</div>';
-                                foreach ( $results as $match )
-                                {
-                                    echo '<div class="comment">';
-                                        echo '<div class="comment_avatar">';
-                                            echo '<img src="/images/UI/avatar_icon.png"/>';
-                                        echo '</div>';
-                                        echo '<div class="comment_infos">';
-                                            echo '<p class="comment_author">' . $match['author'] . '</p>';
-                                            echo '<p class="comment_content">' . $match['message'] . '</p>';
-                                        echo '</div>';
-                                    echo '</div>';
-                                }
-                                $conn = NULL;
-                            }
-                        ?>
                     </div>
 
                     <div class="input_comment">
