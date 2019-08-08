@@ -45,6 +45,13 @@ try
         message VARCHAR(300)
     );";
     $conn->exec($sql);
+    $sql = "CREATE TABLE IF NOT EXISTS __camagru_posts.likes
+    (
+        image_id INT NOT NULL,
+        author VARCHAR(32),
+        like_dir INT
+    );";
+    $conn->exec($sql);
 
     $user_name = "root";
     $full_name = "root";

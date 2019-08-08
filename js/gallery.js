@@ -127,3 +127,35 @@ comment_btn.addEventListener("click", function () {
 		+ "&message=" + comment_input.value);
 	xhttp.send();
 });
+
+function	upvote(amount)
+{
+	var	xhttp;
+
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
+		{
+			if (this.responseText != "OK")
+			{
+			}
+			else
+			{
+				if (amount == 1)
+				{
+					document.querySelector("#like_btn").src = "/images/UI/like_clicked.png";
+					document.querySelector("#dislike_btn").src = "/images/UI/dislike_icon.png";
+				}
+				else
+				{
+					document.querySelector("#like_btn").src = "/images/UI/like_icon.png";
+					document.querySelector("#dislike_btn").src = "/images/UI/dislike_clicked.png";
+				}
+			}
+		}
+	}
+	xhttp.open("GET", "/scripts/upvote.php?"
+		+ "image_id=" + active_id
+		+ "&like=" + (amount > 0 ? "1" : "-1"));
+	xhttp.send();
+}

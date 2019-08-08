@@ -19,7 +19,10 @@ if ( isset( $_GET['id'] ) && !empty( $_GET['id'] ) )
                     echo '<img src="/images/UI/avatar_icon.png"/>';
                 echo '</div>';
                 echo '<div class="comment_infos">';
-                    echo '<p class="comment_author">' . $match['author'] . '</p>';
+                    if ( strcmp( $match['author'], "root" ) === 0 )
+                        echo '<p style="color: red;" class="comment_author">' . $match['author'] . '</p>';
+                    else
+                        echo '<p class="comment_author">' . $match['author'] . '</p>';
                     echo '<p class="comment_content">' . $match['message'] . '</p>';
                 echo '</div>';
             echo '</div>';

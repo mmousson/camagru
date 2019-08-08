@@ -27,6 +27,31 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    position: relative;
+}
+
+.overlay .overlay_image .infos_display_wrapper:hover { opacity: 1; }
+.overlay .overlay_image .infos_display_wrapper { width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.5s;
+}
+.overlay .overlay_image .infos_display {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(rgba(0,0,0,0), black);
+    position: absolute;
+    bottom: 0;
+}
+.overlay .overlay_image .infos_display .relative_pos { position: relative;padding-top: 115px; }
+.overlay .overlay_image .infos_display p {
+    width: fit-content;
+    display: inline;
+    color: white;
+    font-size: 20px;
+    font-family: monospace;
+    position: absolute;
+    left: 20px;
 }
 
 .overlay .comments_zone {
@@ -103,4 +128,12 @@
     color: white;
     font-family: monospace;
     font-size: 12px;
+}
+
+#like_btn { right: 100px; }
+#dislike_btn { right: 20px; }
+#like_btn, #dislike_btn {
+    width: 50px;
+    height: 50px;
+    position: absolute;
 }

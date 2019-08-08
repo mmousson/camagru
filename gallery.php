@@ -94,7 +94,17 @@ include_once ( "header.php" );
         </div>
         <div class="overlay">
             <div class="wrapper">
-                <div class="overlay_image"></div>
+                <div class="overlay_image">
+                    <div class="infos_display_wrapper">
+                        <div class="infos_display">
+                            <div class="relative_pos">
+                                <p>Posted by: root</p>
+                                <input id="like_btn" type="image" src="/images/UI/like_icon.png" onclick="upvote(+1)"/>
+                                <input id="dislike_btn" type="image" src="/images/UI/dislike_icon.png" onclick="upvote(-1)"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="comments_zone">
                     <div class="comments_wrapper">
