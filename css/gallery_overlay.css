@@ -86,7 +86,19 @@
 }
 .overlay .comments_zone .comments_wrapper .comment .comment_infos {
     width: calc(100% - 95px);
-    display: inline-block;
+	display: inline-block;
+	position: relative;
+}
+
+.overlay .comments_zone .comment_infos:hover .delete_comment_btn { opacity: 1; }
+.overlay .comments_zone .comment_infos .delete_comment_btn {
+	height: 20px;
+	width: 20px;
+	position: absolute;
+    right: 5px;
+	top: 0px;
+	opacity: 0;
+	transition: 0.2s;
 }
 
 .overlay .comments_zone .comments_wrapper .comment .comment_author {

@@ -39,10 +39,12 @@ try
     $conn->exec($sql);
     $sql = "CREATE TABLE IF NOT EXISTS __camagru_posts.comments
     (
+		comment_id INT NOT NULL AUTO_INCREMENT,
         image_id INT NOT NULL,
         author VARCHAR(32),
         publication_date DATETIME,
-        message VARCHAR(300)
+        message VARCHAR(300),
+		PRIMARY KEY('comment_id')
     );";
     $conn->exec($sql);
     $sql = "CREATE TABLE IF NOT EXISTS __camagru_posts.likes

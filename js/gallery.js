@@ -100,6 +100,13 @@ function	picture_show_overlay(id)
 			overlay.style.opacity = "1";
 			overlay_image.style.backgroundImage = "url(/posts/" + id + ".png)";
 			comments_wrapper.innerHTML = this.responseText;
+
+			//Once all comments are loaded, add event listener to allow the user
+			//(or the root) to delete the comments he is allowed to
+			var	delete_buttons = comments_wrapper.querySelectorAll(".delete_comment_btn");
+			delete_buttons.forEach(function (element) {
+				element.addEventListener("click", delete_comment);
+			});
 		}
 	}
 	xhttp.open("GET", "/scripts/load_comments.php?id=" + id, true);
@@ -157,5 +164,29 @@ function	upvote(amount)
 	xhttp.open("GET", "/scripts/upvote.php?"
 		+ "image_id=" + active_id
 		+ "&like=" + (amount > 0 ? "1" : "-1"));
+	xhttp.send();
+}
+
+function	delete_comment(elem)
+{
+	var	xhttp;
+
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
+		{
+			if (this.responseText.startsWith("ERROR:"))
+			{
+				
+			}
+			else
+			{
+				console.log(this.responseText);
+				picture_show_overlay(active_id);
+			}
+		}
+	}
+	xhttp.open("GET", "/scripts/administrative_functions.php?delete_type=comment"
+		+ "&comment_id=" + elem.toElement.id);
 	xhttp.send();
 }

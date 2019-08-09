@@ -41,7 +41,7 @@ if ( strcmp( $canvas_ext, "png" ) )
     $create_func = imagecreatefrompng;
 else if ( strcmp( $canvas_ext, "jpeg" ) )
     $create_func = imagecreatefromjpeg;
-    else if ( strcmp( $canvas_ext, "jpg" ) )
+else if ( strcmp( $canvas_ext, "jpg" ) )
     $create_func = imagecreatefromjpeg;
 
 $canvas_path = $_GET['canvas_path'];
