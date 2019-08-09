@@ -53,7 +53,8 @@ send_image_data_btn.addEventListener("click", function () {
                 question_txt.innerHTML = "Are you sure you want to pusblish your creation ?";
                 status_logo.src = "/images/UI/checkmark_ok.png";
                 image_path = this.responseText;
-            }
+			}
+			console.log(this.responseText);
         }
     }
     xhttp.open("GET", url_params, true);

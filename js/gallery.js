@@ -176,14 +176,9 @@ function	delete_comment(elem)
 		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
 		{
 			if (this.responseText.startsWith("ERROR:"))
-			{
-				
-			}
-			else
-			{
 				console.log(this.responseText);
+			else
 				picture_show_overlay(active_id);
-			}
 		}
 	}
 	xhttp.open("GET", "/scripts/administrative_functions.php?delete_type=comment"

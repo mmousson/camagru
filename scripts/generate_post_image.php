@@ -1,6 +1,15 @@
 <?php
 session_start();
-function scale_image($file, $w, $h, $create_func, $preserve_alpha=FALSE, $crop=FALSE) {
+function	endsWith( $string, $endString )
+{ 
+	$len = strlen( $endString );
+	if ( $len == 0 ) {
+		return true;
+	}
+	return ( substr( $string, -$len ) === $endString );
+}
+
+function	scale_image($file, $w, $h, $create_func, $preserve_alpha=FALSE, $crop=FALSE) {
     list($width, $height) = getimagesize($file);
     $r = $width / $height;
     if ($crop) {
@@ -36,15 +45,15 @@ function scale_image($file, $w, $h, $create_func, $preserve_alpha=FALSE, $crop=F
 }
 
 $create_func = NULL;
-$canvas_ext = explode(".", $_GET['canvas_path'])[1];
-if ( strcmp( $canvas_ext, "png" ) )
+$canvas_path = $_GET['canvas_path'];
+
+if ( endsWith( $canvas_path, ".png" ) === TRUE )
     $create_func = imagecreatefrompng;
-else if ( strcmp( $canvas_ext, "jpeg" ) )
+else if ( endsWith( $canvas_path, ".jpeg" ) === TRUE )
     $create_func = imagecreatefromjpeg;
-else if ( strcmp( $canvas_ext, "jpg" ) )
+else if ( endsWith( $canvas_path, ".jpg" ) === TRUE )
     $create_func = imagecreatefromjpeg;
 
-$canvas_path = $_GET['canvas_path'];
 $im = scale_image($canvas_path, (int)($_GET['canvas_size'] / 9 * 16), (int)$_GET['canvas_size'], $create_func, FALSE, FALSE);
 
 foreach ($_GET['filters_path'] as $key => $value)
