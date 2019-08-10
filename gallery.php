@@ -100,7 +100,8 @@ include_once ( "header.php" );
                             <div class="relative_pos">
                                 <p>Posted by: root</p>
                                 <input id="like_btn" type="image" src="/images/UI/like_icon.png" onclick="upvote(+1)"/>
-                                <input id="dislike_btn" type="image" src="/images/UI/dislike_icon.png" onclick="upvote(-1)"/>
+								<input id="dislike_btn" type="image" src="/images/UI/dislike_icon.png" onclick="upvote(-1)"/>
+								<button id="delete_post">DELETE THIS POST</button>
                             </div>
                         </div>
                     </div>

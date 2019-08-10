@@ -76,6 +76,7 @@ var	overlay_image = overlay.querySelector(".overlay_image");
 var	comments_wrapper = overlay.querySelector(".comments_wrapper");
 var	comment_btn = overlay.querySelector("#comment_button");
 var	comment_input = overlay.querySelector("#comment_textarea");
+var	delete_btn = overlay.querySelector("#delete_post");
 
 window.addEventListener("click", function (e) {
 	if (overlay_active && !overlay_wrapper.contains(e.target))
@@ -113,9 +114,13 @@ function	picture_show_overlay(id)
 	xhttp.send();
 }
 
+var	is_sending_comment = false;
 comment_btn.addEventListener("click", function () {
 	var	xhttp;
 
+	if (is_sending_comment)
+		return ;
+	is_sending_comment = true;
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
@@ -127,11 +132,43 @@ comment_btn.addEventListener("click", function () {
 			}
 			else
 				alert(this.responseText.slice(7));
+			is_sending_comment = false;
 		}
 	}
 	xhttp.open("GET", "/scripts/add_comment.php?"
 		+ "image_id=" + active_id
 		+ "&message=" + comment_input.value);
+	xhttp.send();
+});
+
+var	is_deleting = false;
+delete_btn.addEventListener("click", function () {
+	var	xhttp;
+
+	console.log("DELETING: ", overlay_image.style.backgroundImage.substring(12).replace(".png\")", ""));
+	if (is_deleting)
+		return ;
+	is_deleting = true;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		console.log("Changed");
+		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
+		{
+			console.log("DONE");
+			if (this.responseText == "OK")
+			{
+				console.log("OK");
+				document.location.reload(true);
+			}
+			else
+			{ //Error handling
+				console.log(this.responseText);
+			}
+			is_deleting = false;
+		}
+	}
+	xhttp.open("GET", "/scripts/administrative_functions.php?delete_type=post"
+		+ "&image_id=" + overlay_image.style.backgroundImage.substring(12).replace(".png\")", "") );
 	xhttp.send();
 });
 

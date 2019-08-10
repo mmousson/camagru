@@ -90,6 +90,21 @@
 	position: relative;
 }
 
+.overlay .wrapper .relative_pos #delete_post:hover { background-color: rgb(252, 92, 92); }
+.overlay .wrapper .relative_pos #delete_post:active { background-color: rgb(197, 5, 5); }
+.overlay .wrapper .relative_pos #delete_post {
+	width: 150px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: rgb(255, 43, 43);
+    color: white;
+    font-family: monospace;
+    font-weight: bold;
+    left: 20px;
+    top: 70px;
+}
+
 .overlay .comments_zone .comment_infos:hover .delete_comment_btn { opacity: 1; }
 .overlay .comments_zone .comment_infos .delete_comment_btn {
 	height: 20px;

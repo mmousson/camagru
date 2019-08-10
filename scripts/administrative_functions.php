@@ -28,7 +28,7 @@ else if ( strcmp( $_GET['delete_type'], "post" ) === 0)
 
 			$image_path = "../posts/" . $_GET['image_id'] . ".png";
 			if ( unlink( $image_path ) === FALSE )
-				$message .= "ERROR: Couldn't the image file related to that post. You should do it manually" . PHP_EOL;
+				$message .= "ERROR: Couldn't delete the image file related to that post. You should do it manually" . PHP_EOL;
 		}
 	}
 	else
@@ -55,6 +55,10 @@ else if ( strcmp( $_GET['delete_type'], "comment" ) === 0 )
 	}
 	else
 		$message .= "ERROR: Couldn't connect to the database" . PHP_EOL;
+	if ( $message === "" )
+		echo "OK";
+	else
+		echo $message;
 }
 else if ( strcmp( $_GET['delete_type'], "profile" ) === 0 )
 {
@@ -62,14 +66,20 @@ else if ( strcmp( $_GET['delete_type'], "profile" ) === 0 )
 
 	if ( $conn !== NULL)
 	{
-		if ( is_author_or_root( $conn, $_GET['delete_type'], $_GET['comment_id'] ) !== TRUE )
+		if ( is_author_or_root( $conn, $_GET['delete_type'], $_GET['user_id'] ) !== TRUE )
 			$message .= "ERROR: You are not authorized to perform this action. This incident will be reported" . PHP_EOL;
 		else
 		{
-
+			$sql = "DELETE FROM account_infos WHERE id='" . $_GET['user_id'] . "'";
+			$conn->exec($sql);
+			$conn = NULL;
 		}
 	}
 	else
 		$message .= "ERROR: Couldn't connect to the database" . PHP_EOL;
+	if ( $message === "" )
+		echo "OK";
+	else
+		echo $message;
 }
 ?>
