@@ -64,8 +64,8 @@ include_once ( "header.php" );
                 <div class="sorting_tab">
                     <div class="mosaic_buttons">
 						<input id="18" class="mosaic_btn" type="image" src="/images/UI/mosaic_18_normal.png"/>
-                        <input id="6" class="mosaic_btn" type="image" src="/images/UI/mosaic_6_normal.png"/>
-						<input id="1" class="mosaic_btn" type="image" src="/images/UI/mosaic_1_pressed.png"/>
+                        <input id="6" class="mosaic_btn" type="image" src="/images/UI/mosaic_6_pressed.png"/>
+						<input id="1" class="mosaic_btn" type="image" src="/images/UI/mosaic_1_normal.png"/>
                     </div>
                 </div>
                 <div class="photos_grid">
@@ -81,7 +81,7 @@ include_once ( "header.php" );
                             $results = $query->fetchAll();
                             foreach ( $results as $post )
                             {
-                                echo '<div class="photo_wrapper mosaic_1" onclick="picture_show_overlay(' . $post['id'] . ')" style="background-image: url(/posts/' . $post['id'] . '.png);">';
+                                echo '<div class="photo_wrapper mosaic_6" onclick="picture_show_overlay(' . $post['id'] . ')" style="background-image: url(/posts/' . $post['id'] . '.png);">';
                                 echo "</div>";
                             }
                             $conn = NULL;
