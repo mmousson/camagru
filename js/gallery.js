@@ -104,10 +104,24 @@ function	picture_show_overlay(id)
 
 			//Once all comments are loaded, add event listener to allow the user
 			//(or the root) to delete the comments he is allowed to
+			var	xhttp_delete;
 			var	delete_buttons = comments_wrapper.querySelectorAll(".delete_comment_btn");
 			delete_buttons.forEach(function (element) {
 				element.addEventListener("click", delete_comment);
 			});
+			xhttp_delete = new XMLHttpRequest();
+			xhttp_delete.onreadystatechange = function () {
+				if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
+				{
+					if (this.responseText == "OK")
+						delete_btn.style.display = "inline-block";
+					else if (this.responseText == "DENIED")
+						delete_btn.style.display = "none";
+				}
+			}
+			xhttp_delete.open("GET", "/scripts/administrative_functions.php?delete_type=check"
+				+ "&image_id=" + overlay_image.style.backgroundImage.substring(12).replace(".png\")", ""));
+			xhttp_delete.send();
 		}
 	}
 	xhttp.open("GET", "/scripts/load_comments.php?id=" + id, true);
@@ -145,24 +159,17 @@ var	is_deleting = false;
 delete_btn.addEventListener("click", function () {
 	var	xhttp;
 
-	console.log("DELETING: ", overlay_image.style.backgroundImage.substring(12).replace(".png\")", ""));
 	if (is_deleting)
 		return ;
 	is_deleting = true;
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
-		console.log("Changed");
 		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
 		{
-			console.log("DONE");
 			if (this.responseText == "OK")
-			{
-				console.log("OK");
 				document.location.reload(true);
-			}
 			else
 			{ //Error handling
-				console.log(this.responseText);
 			}
 			is_deleting = false;
 		}

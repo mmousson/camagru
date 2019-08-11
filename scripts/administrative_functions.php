@@ -2,15 +2,47 @@
 session_start();
 include_once ( "pdo_connect.php" );
 
-function	is_author_or_root()
+function	is_author_or_root( $conn, $delete_type, $id )
 {
-	return ( TRUE );
+	$result = array();
+
+	if ( strcmp( $_SESSION['user_name'], "root" ) === 0 )
+		return ( TRUE );
+	else if ( strcmp( $delete_type, "check" ) === 0
+		|| strcmp( $delete_type, "post" ) === 0 )
+	{
+		$query = $conn->prepare("SELECT author FROM publications WHERE id=:id");
+		$query->bindParam(':id', $id);
+		$query->execute();
+
+		$result = $query->fetch();
+	}
+	else if ( strcmp( $delete_type, "comment" ) === 0 )
+	{
+		$query = $conn->prepare("SELECT author FROM comments WHERE comment_id=:comment_id");
+		$query->bindParam(':comment_id', $id);
+		$query->execute();
+
+		$result = $query->fetch();
+	}
+	if ( strcmp( $_SESSION['user_name'], $result['author'] ) === 0 )
+		return ( TRUE );
+	else
+		return ( FALSE );
 }
 
 $message = "";
-if ( strcmp( $_GET['delete_type'], "none" ) === 0 )
+if ( strcmp( $_GET['delete_type'], "check" ) === 0 )
 {
+	$message = "";
+	$conn = pdo_connect( "__camagru_posts" );
 
+	if ( is_author_or_root( $conn, $_GET['delete_type'], $_GET['image_id'] ) === TRUE )
+		$message .= "OK";
+	else
+		$message .= "DENIED";
+	$conn = NULL;
+	echo $message;
 }
 else if ( strcmp( $_GET['delete_type'], "post" ) === 0)
 {

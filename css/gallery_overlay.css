@@ -102,7 +102,8 @@
     font-family: monospace;
     font-weight: bold;
     left: 20px;
-    top: 70px;
+	top: 70px;
+	/* display: none; */
 }
 
 .overlay .comments_zone .comment_infos:hover .delete_comment_btn { opacity: 1; }
