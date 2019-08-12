@@ -150,6 +150,7 @@ function	set_background_image(full_path)
 	editor.style.backgroundPosition = "center";
 	editor.style.backgroundRepeat = "no-repeat";
 	editor.style.backgroundSize = "contain";
+	editor.style.setProperty("--loaded", "true");
 	form.style.display = "none";
 }
 

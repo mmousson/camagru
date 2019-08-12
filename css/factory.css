@@ -141,7 +141,7 @@ input::-moz-focus-inner, input::-moz-focus-outer { border: 0; }
 
 /* Set what the filters' positions will be relative to */
 #the_webcam, #the_image { margin: 25px 20px 16px 20px; }
-#the_image { position: relative; overflow: hidden; }
+#the_image { position: relative; overflow: hidden; --loaded: false; }
 
 /* Style the class applied to every filter's wrapper */
 .my_filter {

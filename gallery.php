@@ -1,5 +1,6 @@
 <?php
 include_once ( "header.php" );
+include_once ( "scripts/pdo_connect.php" );
 ?>
 <html>
     <head>
@@ -36,8 +37,34 @@ include_once ( "header.php" );
                     <div class="arrow-right"></div>
                     <p>Albums</p>
                     <div class="content">
-                        <button type="button" onclick="document.location.href='/gallery.php?filter=public'">Public (0)</button>
-                        <button type="button" onclick="document.location.href='/gallery.php?filter=private'">Private (0)</button>
+                        <button type="button" onclick="document.location.href='/gallery.php?filter=public'">Public
+                        <?php
+                            $conn = pdo_connect( "__camagru_posts" );
+                            if ( $conn !== NULL )
+                            {
+                                $query = $conn->prepare("SELECT id FROM publications WHERE author='" . $_SESSION['user_name'] . "' AND public='1'");
+                                $query->execute();
+
+                                $results = $query->fetchAll();
+                                echo "(" . count( $results ) . ")";
+                                $conn = NULL;
+                            }
+                        ?>
+                        </button>
+                        <button type="button" onclick="document.location.href='/gallery.php?filter=private'">Private
+                        <?php
+                            $conn = pdo_connect( "__camagru_posts" );
+                            if ( $conn !== NULL )
+                            {
+                                $query = $conn->prepare("SELECT id FROM publications WHERE author='" . $_SESSION['user_name'] . "' AND public='0'");
+                                $query->execute();
+
+                                $results = $query->fetchAll();
+                                echo "(" . count( $results ) . ")";
+                                $conn = NULL;
+                            }
+                        ?>
+                        </button>
                     </div>
                 </div>
                 <div class="main_title_wrapper">

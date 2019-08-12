@@ -57,7 +57,7 @@ include_once("header.php");
 						<p>
 							<label for="in">Invert</label>
 						</p>
-						<input class="slider_range" id="in" name="in" type="range" min="0" max="100" value="0"/>
+						<input class="slider_range" id="in" name="in" type="range" min="0" max="1" value="0"/>
 						<span class="slider_span">0</span>
 					</div>
 					<div class="slider_wrapper">

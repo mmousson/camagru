@@ -11,13 +11,14 @@ var     public_check = public_confirm.querySelector("#make_public");
 var     image_path;
 
 send_image_data_btn.addEventListener("click", function () {
+    if (document.getElementById("the_image").style.getPropertyValue("--loaded") == false)
+        return ;
     const   canvas_img = document.getElementById("the_image").style.backgroundImage.substr(5).slice(0, -2);
     const   filters = document.getElementsByClassName("my_filter");
     var     url_params = "/scripts/generate_post_image.php?";
     var     xhttp;
     var     i;
 
-    console.log(filters);
     url_params += ("canvas_path=" + canvas_img);
     url_params += ("&canvas_size=" + document.getElementById("the_image").style.height.slice(0, -2));
     for (i = 0; i < filters.length; i++)
