@@ -99,6 +99,13 @@ include_once("header.php");
 				<div id="the_image" class="image_preview">
 				</div>
 
+				<div id="the_webcam">
+					<video id="video" autoplay="true">
+					</video>
+					<canvas id="webcam_canvas" style="display: none;"></canvas>
+					<input id="take_webcam_snapshot" type="image" src="/images/UI/webcam_snapshot.png"/>
+				</div>
+
 				<div id="controls">
 					<form>
 						<div id="textarea_wrapper">
@@ -108,13 +115,6 @@ include_once("header.php");
 					</form>
 				</div>
 
-			</div>
-
-			<div id="the_webcam">
-				<video id="video"></video>
-				<button id="startbutton">Prendre une photo</button>
-				<canvas id="canvas"></canvas>
-				<img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
 			</div>
 
 			<div class="image_filters" style="overflow-y: scroll;">
