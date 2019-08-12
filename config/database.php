@@ -44,7 +44,7 @@ try
         author VARCHAR(32),
         publication_date DATETIME,
         message VARCHAR(300),
-		PRIMARY KEY('comment_id')
+		PRIMARY KEY (comment_id)
     );";
     $conn->exec($sql);
     $sql = "CREATE TABLE IF NOT EXISTS __camagru_posts.likes
