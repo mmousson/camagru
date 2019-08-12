@@ -18,7 +18,7 @@ function    pdo_connect()
     }
 }
 
-if ( isset( $_GET['path'] ) && !empty( $_GET['path'] ) )
+if ( isset( $_GET['path'] ) && !empty( $_GET['path'] ) && isset( $_GET['public'] ) )
 {
     $conn = pdo_connect();
     session_start();
@@ -30,21 +30,28 @@ if ( isset( $_GET['path'] ) && !empty( $_GET['path'] ) )
             $login = $_SESSION['user_name'];
             $date = date("Y-m-d H:i:s");
             $message = $_GET['message'];
+            if ( strcmp( $_GET['public'], "true" ) === 0 )
+                $public = "1";
+            else
+                $public = "0";
             $query = $conn->prepare("INSERT INTO __camagru_posts.publications
                                     (
                                         author,
                                         publication_date,
-                                        message
+                                        message,
+                                        public
                                     )
                                     VALUES
                                     (
                                         :author,
                                         :publication_date,
-                                        :message
+                                        :message,
+                                        :public
                                     )");
             $query->bindParam(':author', $login);
             $query->bindParam(':publication_date', $date);
             $query->bindParam(':message', $message);
+            $query->bindParam(':public', $public);
             $query->execute();
 
             $other = $conn->prepare('SELECT id FROM __camagru_posts.publications

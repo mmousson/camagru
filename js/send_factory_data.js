@@ -6,6 +6,8 @@ var     overlay = document.getElementById("overlay");
 var     title_txt = document.querySelector("#dialog_title_txt");
 var     question_txt = document.querySelector("#question_txt");
 var     status_logo = document.querySelector("#status_logo");
+var     public_confirm = document.querySelector("#public_confirm");
+var     public_check = public_confirm.querySelector("#make_public");
 var     image_path;
 
 send_image_data_btn.addEventListener("click", function () {
@@ -41,6 +43,7 @@ send_image_data_btn.addEventListener("click", function () {
         {
             cancel_btn.style.display = "initial";
             confirm_btn.style.display = "initial";
+            public_confirm.style.display= "block";
             if (this.responseText == "ERROR")
             {
                 title_txt.innerHTML = "Image Processing Failure";
@@ -80,6 +83,7 @@ confirm_btn.addEventListener("click", function () {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
         {
             ok_btn.style.display = "inline-block";
+            public_confirm.style.display = "none";
             if (this.responseText != "OK")
             {
                 console.log(this.responseText);
@@ -96,9 +100,9 @@ confirm_btn.addEventListener("click", function () {
             }
         }
     }
-    xhttp.open("GET", "/scripts/publish_image.php?path="
-        + image_path
-        + "&message=" + document.getElementById("subject").value);
+    xhttp.open("GET", "/scripts/publish_image.php?path=" + image_path
+        + "&message=" + document.getElementById("subject").value
+        + "&public=" + (public_check.checked ? "true" : "false"));
     xhttp.send();
 });
 

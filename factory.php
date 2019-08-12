@@ -149,6 +149,10 @@ include_once("header.php");
 				<p id="question_txt" class="question">Are you sure you want to publish your creation ?</p>
 				<button id="cancel_btn" class="cancel" type="button">No, I don't want to</button>
 				<button id="confirm_btn" class="confirm" type="button">Yes, I do want to publish this creation</button>
+				<div id="public_confirm">
+					<input type="checkbox" id="make_public" name="make_public" checked/>
+					<label for="">Make this post public</label>
+				</div>
 				<button id="ok_btn" class="confirm" type="button">OK</button>
 			</div>
 		</div>

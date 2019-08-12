@@ -26,37 +26,28 @@ include_once ( "header.php" );
                     <div class="arrow-right"></div>
                     <p>All Photos</p>
                     <div class="content">
-                        <button type="button">Everything (0)</button>
-                        <button type="button">Most Recent (0)</button>
-                        <button type="button">Most Viewed (0)</button>
-                        <button type="button">Most Liked (0)</button>
-                    </div>
-                </div>
-                <div class="main_title_wrapper">
-                    <div class="arrow-right"></div>
-                    <p>Group Albums</p>
-                    <div class="content">
-                        <button type="button">Friend 1, Friend 2, You (0)</button>
-                        <button type="button">Friend 3, You (0)</button>
-                        <button type="button">Shared (0)</button>
+                        <button type="button" onclick="document.location.href='/gallery.php?filter=all'">Everything</button>
+                        <button type="button" onclick="document.location.href='/gallery.php?filter=recent'">Most Recent</button>
+                        <button type="button" onclick="document.location.href='/gallery.php?filter=ancient'">Most Ancient</button>
+                        <button type="button" onclick="document.location.href='/gallery.php?filter=liked'">Most Liked</button>
                     </div>
                 </div>
                 <div class="main_title_wrapper">
                     <div class="arrow-right"></div>
                     <p>Albums</p>
                     <div class="content">
-                        <button type="button">Public (0)</button>
-                        <button type="button">Private (0)</button>
+                        <button type="button" onclick="document.location.href='/gallery.php?filter=public'">Public (0)</button>
+                        <button type="button" onclick="document.location.href='/gallery.php?filter=private'">Private (0)</button>
                     </div>
                 </div>
                 <div class="main_title_wrapper">
                     <div class="arrow-right"></div>
                     <p>Other Sites</p>
                     <div class="content">
-                        <button type="button">Facebook (0)</button>
-                        <button type="button">Twitter (0)</button>
-                        <button type="button">Instagram (0)</button>
-                        <button type="button">Picasa (0)</button>
+                        <button type="button">Facebook</button>
+                        <button type="button">Twitter</button>
+                        <button type="button">Instagram</button>
+                        <button type="button">Picasa</button>
                     </div>
                 </div>
             </div>
@@ -70,24 +61,7 @@ include_once ( "header.php" );
                 </div>
                 <div class="photos_grid">
                     <?php
-                        include_once ( "scripts/pdo_connect.php" );
-
-                        $conn = pdo_connect( "__camagru_posts" );
-                        if ( $conn !== NULL )
-                        {
-                            $query = $conn->prepare("SELECT id, author FROM __camagru_posts.publications WHERE 1");
-                            $query->execute();
-
-                            $results = $query->fetchAll();
-                            foreach ( $results as $post )
-                            {
-                                echo '<div class="photo_wrapper mosaic_6" onclick="picture_show_overlay(' . $post['id'] . ')" style="background-image: url(/posts/' . $post['id'] . '.png);">';
-                                echo "</div>";
-                            }
-                            $conn = NULL;
-                        }
-                        else
-                            echo "FATAL ERROR";
+                        include_once ( "scripts/gallery_generate.php" );
                     ?>
                 </div>
             </div>
@@ -98,7 +72,7 @@ include_once ( "header.php" );
                     <div class="infos_display_wrapper">
                         <div class="infos_display">
                             <div class="relative_pos">
-                                <p>Posted by: root</p>
+                                <p id="author_label">Posted by: root</p>
                                 <input id="like_btn" type="image" src="/images/UI/like_icon.png" onclick="upvote(+1)"/>
 								<input id="dislike_btn" type="image" src="/images/UI/dislike_icon.png" onclick="upvote(-1)"/>
 								<button id="delete_post">DELETE THIS POST</button>

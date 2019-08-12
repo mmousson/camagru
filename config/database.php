@@ -34,7 +34,9 @@ try
         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
         author VARCHAR(32),
         publication_date DATETIME,
-        message VARCHAR(300)
+        message VARCHAR(300),
+        public BOOLEAN,
+        likes INT NOT NULL DEFAULT '0'
     );";
     $conn->exec($sql);
     $sql = "CREATE TABLE IF NOT EXISTS __camagru_posts.comments

@@ -73,6 +73,7 @@ var	active_id = -1;
 var	overlay = document.querySelector(".overlay");
 var	overlay_wrapper = overlay.querySelector(".wrapper");
 var	overlay_image = overlay.querySelector(".overlay_image");
+var	author_label= overlay.querySelector("#author_label");
 var	comments_wrapper = overlay.querySelector(".comments_wrapper");
 var	comment_btn = overlay.querySelector("#comment_button");
 var	comment_input = overlay.querySelector("#comment_textarea");
@@ -87,6 +88,55 @@ window.addEventListener("click", function (e) {
 	}
 });
 
+function	get_pic_author(id)
+{
+	var	xhttp;
+
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
+		{
+			if (this.responseText.startsWith("ERROR:"))
+				console.log(this.responseText);
+			else
+			{
+				author_label.innerHTML = "Posted by: " + this.responseText;
+			}
+		}
+	}
+	xhttp.open("GET", "/scripts/get_pic_author.php?id=" + id);
+	xhttp.send();
+}
+
+function	load_likes_state(id)
+{
+	var	xhttp;
+
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
+		{
+			if (this.responseText == "1")
+			{
+				document.querySelector("#like_btn").src = "/images/UI/like_clicked.png";
+				document.querySelector("#dislike_btn").src = "/images/UI/dislike_icon.png";
+			}
+			else if (this.responseText == "-1")
+			{
+				document.querySelector("#like_btn").src = "/images/UI/like_icon.png";
+				document.querySelector("#dislike_btn").src = "/images/UI/dislike_clicked.png";
+			}
+			else
+			{
+				document.querySelector("#like_btn").src = "/images/UI/like_icon.png";
+				document.querySelector("#dislike_btn").src = "/images/UI/dislike_icon.png";	
+			}
+		}
+	}
+	xhttp.open("GET", "/scripts/get_likes_state.php?id=" + id);
+	xhttp.send();
+}
+
 function	picture_show_overlay(id)
 {
 	var	xhttp;
@@ -100,6 +150,10 @@ function	picture_show_overlay(id)
 			overlay.style.display = "block";
 			overlay.style.opacity = "1";
 			overlay_image.style.backgroundImage = "url(/posts/" + id + ".png)";
+
+			get_pic_author(id);
+			load_likes_state(id);
+
 			comments_wrapper.innerHTML = this.responseText;
 
 			//Once all comments are loaded, add event listener to allow the user
@@ -187,10 +241,7 @@ function	upvote(amount)
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
 		{
-			if (this.responseText != "OK")
-			{
-			}
-			else
+			if (this.responseText == "OK")
 			{
 				if (amount == 1)
 				{
