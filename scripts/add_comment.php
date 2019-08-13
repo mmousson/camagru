@@ -32,6 +32,18 @@ if ( isset( $_GET['image_id'] ) && !empty( $_GET['image_id'] )
             $query->bindParam(':message', $_GET['message']);
             $query->execute();
 
+            $query = $conn->prepare("SELECT author FROM publications WHERE id=:id");
+            $query->bindParam(':id', $_GET['image_id']);
+            $query->execute();
+            
+            $author_name = $query->fetch()[0];
+
+            $query = $conn->prepare("SELECT mail, comment_notif FROM __camagru_users.account_infos WHERE login=:login");
+            $query->bindParam(':login', $author_name);
+            $query->execute();
+
+            if ( intval( $result['comment_notif'] ) == 1 )
+                send_comment_notif( $result['mail'] );
             $conn = NULL;
             echo "OK";
         }

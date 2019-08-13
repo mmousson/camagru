@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once ( "pdo_connect.php" );
+include_once ( "mail_utils.php" );
 
 if ( $_SESSION['logged_in'] === TRUE )
 {
@@ -63,6 +64,20 @@ if ( $_SESSION['logged_in'] === TRUE )
             $query->execute();
         }
 
+        //Either way, notify the author of the post
+        $query = $conn->prepare("SELECT author FROM publications WHERE id=:id");
+        $query->bindParam(':id', $_GET['image_id']);
+        $query->execute();
+        
+        $author_name = $query->fetch()[0];
+
+        $query = $conn->prepare("SELECT mail, like_notif FROM __camagru_users.account_infos WHERE login=:login");
+        $query->bindParam(':login', $author_name);
+        $query->execute();
+
+        $result = $query->fetch();
+        if ( intval( $result['like_notif'] ) == 1 )
+            send_like_notif( $result['mail'] );
         $conn = NULL;
         echo "OK";
     }

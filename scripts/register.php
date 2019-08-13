@@ -1,5 +1,6 @@
 <?php
-require_once( "user_management.php" );
+include_once ( "mail_utils.php" );
+require_once ( "user_management.php" );
 if (isset($_POST['mobile']) && isset($_POST['mail']) && isset($_POST['full_name']) && isset($_POST['user_name'])
 	&& isset($_POST['pass']) && isset($_POST['repass']))
 {
@@ -25,8 +26,8 @@ if (isset($_POST['mobile']) && isset($_POST['mail']) && isset($_POST['full_name'
 	else
 	{
 		$token = add_user($_POST['mobile'], $_POST['mail'], $_POST['full_name'], $_POST['user_name'], $_POST['pass']);
-		// if ( $token !== NULL )
-		// 	send_token($_POST['mail'], $token);
+		if ( $token !== NULL )
+			send_token($_POST['full_name'], $_POST['user_name'], $_POST['mail'], $token);
 	}
 }
 else
