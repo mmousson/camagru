@@ -1,5 +1,5 @@
 <?php
-function    pdo_connect()
+function    pdo_connect_user()
 {
     $servername = "localhost";
     $username = "root";
@@ -20,7 +20,7 @@ function    pdo_connect()
 
 function	check_if_exists($data, $row)
 {
-    $conn = pdo_connect();
+    $conn = pdo_connect_user();
     if ( $conn !== NULL )
     {
         $sql = "SELECT * FROM account_infos WHERE $row='$data'";
@@ -48,7 +48,7 @@ function    generate_token()
 
 function	remove_user($login)
 {
-	$conn = pdo_connect();
+	$conn = pdo_connect_user();
 	if ( $conn !== NULL )
 	{
 		$query = $conn->prepare("DELETE FROM account_infos WHERE login = :login");
@@ -155,7 +155,7 @@ function    auth_user($user, $pass)
 
 function    get_user_mail($user)
 {
-    $conn = pdo_connect();
+    $conn = pdo_connect_user();
     if ( $conn !== NULL )
     {
         $query = $conn->prepare("SELECT mail FROM account_infos WHERE login='" . $user . "'");
@@ -170,7 +170,7 @@ function    get_user_mail($user)
 
 function	get_user_preference($login, $preference_id)
 {
-	$conn = pdo_connect();
+	$conn = pdo_connect_user();
 	if ( $conn !== NULL )
 	{
 		$query = $conn->prepare("SELECT $preference_id FROM account_infos WHERE login='" . $login . "'");
@@ -186,7 +186,7 @@ function	get_user_preference($login, $preference_id)
 
 function	update_user_settings($login, $like, $comment)
 {
-	$conn = pdo_connect();
+	$conn = pdo_connect_user();
 	$like_val = ($like === "true" ? "1" : "0");
 	$comment_val = ($comment === "true" ? "1" : "0");
 	if ( $conn !== NULL )
@@ -205,7 +205,7 @@ function	update_user_settings($login, $like, $comment)
 
 function	update_user_infos($login, $new_login, $mail, $oldpass, $newpass, $repass)
 {
-	$conn = pdo_connect();
+	$conn = pdo_connect_user();
 	if (strcmp($newpass, $repass) !== 0)
 		return ( 2 );
 	$old_pass_hash = hash("whirlpool", $oldpass);

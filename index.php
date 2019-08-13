@@ -2,6 +2,7 @@
 session_start();
 include_once ( "error_msg.php" );
 include_once ( "scripts/user_management.php" );
+include_once ( "scripts/pdo_connect.php" );
 ?>
 <html>
 	<meta charset="UTF-8">
@@ -36,10 +37,23 @@ if (isset($_GET['login']))
 				include ( "scripts/generate_login.php" );
 			}
 			else
-				include ( "/scripts/generate_register.php" );
+				include ( "scripts/generate_register.php" );
 		}
 		else
-			include ( "/scripts/generate_register.php" );
+			include ( "scripts/generate_register.php" );
+	}
+	else if ( strcmp( $_GET['login'], "verify" ) === 0 )
+	{
+		$conn = pdo_connect( "__camagru_users" );
+		if ( $conn !== NULL )
+		{
+			$query = $conn->prepare("UPDATE account_infos SET verified='1' WHERE token=:token");
+			$query->bindParam(':token', $_GET['token']);
+			$query->execute();
+
+			include_once ( "scripts/generate_login.php" );
+			$conn = NULL;
+		}
 	}
 	else
 		include( "scripts/generate_register.php" );

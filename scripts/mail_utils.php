@@ -5,6 +5,8 @@ function send_token($first_name, $last_name, $address, $token)
     $from = "root@camagru.fr"; // this is the sender's Email address
     $subject = "Confirm Your Account";
     $message = $first_name . " " . $last_name . " here is your token:" . "\n\n" . $token;
+    $message .= "\n\n" . "Please click on the following link to verify your account: " . "\n\n";
+    $message .= "https://camagru.com/index.php?login=verify&token=" . $token;
 
     $headers = "From:" . $from;
 
