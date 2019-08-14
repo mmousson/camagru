@@ -299,3 +299,19 @@ function	delete_comment(elem)
 		+ "&comment_id=" + elem.toElement.id);
 	xhttp.send();
 }
+
+function bring_up_pannel()
+{
+	var	pannel_element;
+
+	pannel_element = document.getElementById("pannel");
+	pannel_element.style.left = "0px";
+}
+
+function close_pannel()
+{
+	var	pannel_element;
+
+	pannel_element = document.getElementById("pannel");
+	pannel_element.style.left = "-300px";
+}

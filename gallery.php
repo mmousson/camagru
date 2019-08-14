@@ -21,7 +21,8 @@ include_once ( "scripts/pdo_connect.php" );
             </div>
         </div>
         <div class="gallery_wrapper">
-            <div class="side_pannel">
+            <div id="pannel" class="side_pannel">
+                <input onclick="close_pannel()" id="pannel_close" type="image" src="/images/UI/cross_close_icon.png"/>
                 <h2>Gallery<div class="arrow-down"></div></h2>
                 <div class="main_title_wrapper">
                     <div class="arrow-right"></div>
@@ -84,6 +85,11 @@ include_once ( "scripts/pdo_connect.php" );
 						<input id="18" class="mosaic_btn" type="image" src="/images/UI/mosaic_18_normal.png"/>
                         <input id="6" class="mosaic_btn" type="image" src="/images/UI/mosaic_6_pressed.png"/>
 						<input id="1" class="mosaic_btn" type="image" src="/images/UI/mosaic_1_normal.png"/>
+                    </div>
+
+                    <!-- This div will be shown on mobile devices, its button will bring up the side pannel -->
+                    <div class="pannel_button">
+                        <input onclick="bring_up_pannel()" id="pannel_btn" type="image" src="/images/UI/menu_button.png"/>
                     </div>
                 </div>
                 <div class="photos_grid">

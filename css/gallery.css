@@ -40,6 +40,7 @@ h2, h3 {
     height: calc(100% - 141px);
     display: flex;
     flex-flow: row;
+    position: relative;
 }
 
 .side_pannel {
@@ -50,9 +51,36 @@ h2, h3 {
     overflow-y: auto;
 }
 
-.main_view {
-    width: calc(100% - 300px);
-    height: calc(100% - 2px);
+.main_view { height: calc(100% - 2px); }
+@media screen and (max-width: 1024px) {
+    .side_pannel {
+        position: absolute;
+        left: -300px;
+        transition: 0.5s;
+        --mobile: true;
+    }
+    .main_view { width: 100%; }
+    #pannel_btn {
+        display: block;
+        width: 42px;
+        height: 42px;
+        margin-top: 8px;
+        margin-left: 8px;
+    }
+    #pannel_close {
+        width: 42px;
+        height: 42px;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .side_pannel { --mobile: false; }
+    .main_view { width: calc(100% - 300px); }
+    #pannel_btn { display: none; }
+    #pannel_close { display: none; }
 }
 
 .sorting_tab {
