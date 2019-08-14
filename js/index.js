@@ -1,4 +1,20 @@
 var slide_index = 1;
+var	validate_form_btns = document.querySelectorAll(".input_text");
+var	register_btn = document.getElementById("submit");
+var	login_btn = document.getElementById("login");
+
+function add_enter_listener(event) {
+	if (event.keyCode === 13)
+	{
+		submit_register_form();
+		submit_login_form();
+	}
+}
+
+validate_form_btns.forEach(function (elem) {
+	elem.addEventListener("keyup", add_enter_listener);
+});
+
 carousel();
 
 function slide_divs(amount)
@@ -37,56 +53,77 @@ function carousel()
 	setTimeout(carousel, 5000);
 }
 
-$("#submit").click(function () {
-	$.post(
-		'/scripts/register.php',
+function submit_register_form()
+{
+	var	xhttp;
 
+	if (document.getElementById("mobile") == null)
+		return ;
+
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
 		{
-			mobile: $("#mobile").val(),
-			mail: $("#mail").val(),
-			full_name: $("#full_name").val(),
-			user_name: $("#user_name").val(),
-			pass: $("#pass").val(),
-			repass: $("#repass").val()
-		},
-
-		function (data) {
-			if (data != "")
+			if (this.responseText != "")
 			{
-				$("#error_msg").css("display", "inline");
-				$("#error_msg").css("top", "0%");
-				$("#message").text(data);
+				document.getElementById("error_msg").style.display = "inline";
+				document.getElementById("error_msg").style.top = "0%";
+				document.getElementById("message").innerHTML = this.responseText;
 			}
 			else
 			{
-				$("#error_msg").css("display", "inline");
-				$("#error_msg").css("background-color", "rgba(70, 255, 86, 0.905)");
-				$("#message").text("Registration Complete ! A confirmation e-mail has been sent to you");
+				document.getElementById("error_msg").style.display = "inline";
+				document.getElementById("error_msg").style.backgroundColor = "rgba(70, 255, 86, 0.905)";
+				document.getElementById("message").innerHTML = "Registration Complete ! A confirmation e-mail has been sent to you";
 			}
-		},
+		}
+	}
+	xhttp.open("POST", "/scripts/register.php");
+	xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhttp.send("mobile=" + document.getElementById("mobile").value
+		+ "&mail=" + document.getElementById("mail").value
+		+ "&full_name=" + document.getElementById("full_name").value
+		+ "&user_name=" + document.getElementById("user_name").value
+		+ "&pass=" + document.getElementById("pass").value
+		+ "&repass=" + document.getElementById("repass").value);
+}
 
-		'text');
-});
+function submit_login_form()
+{
+	var	xhttp;
 
-$("#login").click(function () {
-	$.post(
-		'/scripts/login.php',
+	if (document.getElementById("mobile") != null)
+		return ;
 
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
 		{
-			user_name: $("#user_name").val(),
-			pass: $("#pass").val()
-		},
-
-		function (data) {
-			if (data == "OK")
+			if (this.responseText == "OK")
 				window.location.replace("/factory.php");
 			else
 			{
-				$("#error_msg").css("display", "inline");
-				$("#error_msg").css("top", "0%");
-				$("#message").text(data);
+				document.getElementById("error_msg").style.display = "inline";
+				document.getElementById("error_msg").style.top = "0%";
+				document.getElementById("message").innerHTML = this.responseText;
 			}
-		},
+		}
+	}
+	xhttp.open("POST", "/scripts/login.php");
+	xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhttp.send("user_name=" + document.getElementById("user_name").value
+		+ "&pass=" + document.getElementById("pass").value);
+}
 
-		'text');
-});
+if (register_btn != null)
+{
+	register_btn.addEventListener("click", function () {
+		submit_register_form();
+	});
+}
+else if (login_btn != null)
+{
+	login_btn.addEventListener("click", function () {
+		submit_login_form();
+	});
+}

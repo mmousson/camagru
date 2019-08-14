@@ -1,13 +1,9 @@
 <?php
 function    pdo_connect( $database )
 {
-    $servername = "localhost";
-    $username = "root";
-    $password = "bleu";
-
     try
     {
-        $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+        $conn = new PDO("mysql:host=localhost;dbname=$database", "root", "bleu");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return ( $conn );
     }

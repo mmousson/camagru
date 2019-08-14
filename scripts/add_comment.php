@@ -42,8 +42,8 @@ if ( isset( $_GET['image_id'] ) && !empty( $_GET['image_id'] )
             $query->bindParam(':login', $author_name);
             $query->execute();
 
-            if ( intval( $result['comment_notif'] ) == 1 )
-                send_comment_notif( $result['mail'] );
+            // if ( intval( $result['comment_notif'] ) == 1 )
+            //     send_comment_notif( $result['mail'] );
             $conn = NULL;
             echo "OK";
         }

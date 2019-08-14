@@ -7,7 +7,7 @@ function    sort_by_date_recent($a, $b)
     if ( $offset == 0 )
         return ( 0 );
     else
-        return ( $offset < 0 ? -1 : 1 );
+        return ( $offset < 0 ? 1 : -1 );
 }
 
 function    sort_by_date_ancient($a, $b)
@@ -16,7 +16,7 @@ function    sort_by_date_ancient($a, $b)
     if ( $offset == 0 )
         return ( 0 );
     else
-        return ( $offset < 0 ? 1 : -1 );
+        return ( $offset < 0 ? -1 : 1 );
 }
 
 function    sort_by_likes($a, $b)

@@ -29,5 +29,8 @@ if (isset($_POST['user_name']) && isset($_POST['pass']))
 	}
 }
 else
-	echo "Incomplete Data";
+{
+    echo "Incomplete Dataa";
+    print_r($_POST);
+}
 ?>

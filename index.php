@@ -11,7 +11,7 @@ include_once ( "scripts/pdo_connect.php" );
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
 	</head>
 	<body>
-		<section class="wrapper">
+		<div class="wrapper">
 		<div class="log_panel">
 			<img class="camagru_logo" src="images/camagru_logo.png" alt="Camagru Logo"/>
 <?php
@@ -68,7 +68,7 @@ else
 			<p>© 2019 mmousson</p>
 		</div>
 
-		<div class="slider">
+		<!-- <div class="slider">
 			<section class="slides_wrapper">
 				<img class="slides" src="images/posts/0-0/post_img.jpg"/>
 				<input type="image" class="previous_btn" onclick="slide_divs(-1)" src="images/UI/prev_btn.png"/>
@@ -86,8 +86,8 @@ else
 				<input type="image" class="previous_btn" onclick="slide_divs(-1)" src="images/UI/prev_btn.png"/>
 				<input type="image" class="next_btn" onclick="slide_divs(+1)" src="images/UI/next_btn.png"/>
 			</section>
+		</div> -->
 		</div>
-		</section>
 		<div class="useful_pannel">
 		<a class="useful_link" href="about_us.php">ABOUT US</a>
 		<a class="useful_link" href="support.php">SUPPORT</a>

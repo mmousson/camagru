@@ -79,6 +79,48 @@ var	comment_btn = overlay.querySelector("#comment_button");
 var	comment_input = overlay.querySelector("#comment_textarea");
 var	delete_btn = overlay.querySelector("#delete_post");
 
+var	is_sending_comment = false;
+var	is_shift = false;
+
+
+function send_comment ()
+{
+	var	xhttp;
+
+	if (is_sending_comment || is_shift)
+		return ;
+	is_sending_comment = true;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
+		{
+			if (this.responseText == "OK")
+			{
+				comment_input.value = "";
+				picture_show_overlay(active_id);
+			}
+			else
+				alert(this.responseText.slice(7));
+			is_sending_comment = false;
+		}
+	}
+	xhttp.open("GET", "/scripts/add_comment.php?"
+		+ "image_id=" + active_id
+		+ "&message=" + comment_input.value);
+	xhttp.send();
+}
+
+comment_input.addEventListener("keyup", function (event) {
+	if (event.keyCode === 13)
+		send_comment();
+	else if (event.keyCode == 16)
+		is_shift = false;
+});
+comment_input.addEventListener("keydown", function () {
+	if (event.keyCode == 16)
+		is_shift = true;
+});
+
 window.addEventListener("click", function (e) {
 	if (overlay_active && !overlay_wrapper.contains(e.target))
 	{
@@ -182,31 +224,8 @@ function	picture_show_overlay(id)
 	xhttp.send();
 }
 
-var	is_sending_comment = false;
 comment_btn.addEventListener("click", function () {
-	var	xhttp;
-
-	if (is_sending_comment)
-		return ;
-	is_sending_comment = true;
-	xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function () {
-		if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
-		{
-			if (this.responseText == "OK")
-			{
-				comment_input.value = "";
-				picture_show_overlay(active_id);
-			}
-			else
-				alert(this.responseText.slice(7));
-			is_sending_comment = false;
-		}
-	}
-	xhttp.open("GET", "/scripts/add_comment.php?"
-		+ "image_id=" + active_id
-		+ "&message=" + comment_input.value);
-	xhttp.send();
+	send_comment();
 });
 
 var	is_deleting = false;
