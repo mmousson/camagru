@@ -2,11 +2,11 @@
 function send_token($first_name, $last_name, $address, $token)
 {
     $to = $address;
-    $from = "root@camagru.fr"; // this is the sender's Email address
+    $from = "camagrusmtpltd@gmail.com";
     $subject = "Confirm Your Account";
     $message = $first_name . " " . $last_name . " here is your token:" . "\n\n" . $token;
     $message .= "\n\n" . "Please click on the following link to verify your account: " . "\n\n";
-    $message .= "https://camagru.com/index.php?login=verify&token=" . $token;
+    $message .= "https://192.168.99.100/index.php?login=verify&token=" . $token;
 
     $headers = "From:" . $from;
 
@@ -16,7 +16,7 @@ function send_token($first_name, $last_name, $address, $token)
 function send_like_notif($address)
 {
     $to = $address;
-    $from = "root@camagru.fr"; // this is the sender's Email address
+    $from = "camagrusmtpltd@gmail.com";
     $subject = "Activity in Your Creations";
     $message = "Somebody liked your creation!";
 
@@ -28,7 +28,7 @@ function send_like_notif($address)
 function send_comment_notif($address)
 {
     $to = $address;
-    $from = "root@camagru.fr"; // this is the sender's Email address
+    $from = "camagrusmtpltd@gmail.com";
     $subject = "Activity in Your Creations";
     $message = "Somebody commented on your creation!";
 

@@ -26,8 +26,8 @@ if (isset($_POST['mobile']) && isset($_POST['mail']) && isset($_POST['full_name'
 	else
 	{
 		$token = add_user($_POST['mobile'], $_POST['mail'], $_POST['full_name'], $_POST['user_name'], $_POST['pass']);
-		// if ( $token !== NULL )
-		// 	send_token($_POST['full_name'], $_POST['user_name'], $_POST['mail'], $token);
+		if ( $token !== NULL )
+			send_token($_POST['full_name'], $_POST['user_name'], $_POST['mail'], $token);
 	}
 }
 else

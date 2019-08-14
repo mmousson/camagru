@@ -71,6 +71,8 @@ function    add_user($mobile, $mail, $full_name, $user_name, $pass)
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $token = generate_token();
+        $default_like_param = "1";
+        $default_comment_param = "1";
         $date = date("Y-m-d H:i:s");
         $pass_hash = hash("whirlpool", $pass);
         $verfied = 0;
@@ -82,6 +84,8 @@ function    add_user($mobile, $mail, $full_name, $user_name, $pass)
                                     mail,
                                     signup_date,
                                     verified,
+                                    like_notif,
+                                    comment_notif,
                                     token,
                                     password_hash
                                 )
@@ -93,6 +97,8 @@ function    add_user($mobile, $mail, $full_name, $user_name, $pass)
                                     :mail,
                                     :signup_date,
                                     :verified,
+                                    :like_notif,
+                                    :comment_notif,
                                     :token,
                                     :password_hash
                                 )");
@@ -102,6 +108,8 @@ function    add_user($mobile, $mail, $full_name, $user_name, $pass)
         $pdo->bindParam(':mail', $mail);
         $pdo->bindParam(':signup_date', $date);
         $pdo->bindParam(':verified', $verfied);
+        $pdo->bindParam(':like_notif', $default_like_param);
+        $pdo->bindParam(':comment_notif', $default_comment_param);
         $pdo->bindParam(':token', $token);
         $pdo->bindParam(':password_hash', $pass_hash);
         $pdo->execute();

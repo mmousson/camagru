@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if ( $_SESSION['logged_in'] === TRUE )
+{
+	header ( "Location: gallery.php" );
+	exit ();
+}
 include_once ( "error_msg.php" );
 include_once ( "scripts/user_management.php" );
 include_once ( "scripts/pdo_connect.php" );
