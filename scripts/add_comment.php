@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once ( "pdo_connect.php" );
+include_once ( "mail_utils.php" );
 
 if ( isset( $_GET['image_id'] ) && !empty( $_GET['image_id'] )
     && isset ( $_GET['message'] ) && !empty( $_GET['message'] ) )
@@ -42,8 +43,9 @@ if ( isset( $_GET['image_id'] ) && !empty( $_GET['image_id'] )
             $query->bindParam(':login', $author_name);
             $query->execute();
 
-            // if ( intval( $result['comment_notif'] ) == 1 )
-            //     send_comment_notif( $result['mail'] );
+            $result = $query->fetch();
+            if ( intval( $result['comment_notif'] ) == 1 )
+                send_comment_notif( $result['mail'] );
             $conn = NULL;
             echo "OK";
         }

@@ -76,10 +76,10 @@ if ( $_SESSION['logged_in'] === TRUE )
         $query->execute();
 
         $result = $query->fetch();
-        // if ( intval( $result['like_notif'] ) == 1 )
-        //     send_like_notif( $result['mail'] );
+        if ( intval( $result['like_notif'] ) == 1 )
+            send_like_notif( $result['mail'] );
         $conn = NULL;
-        echo "OK";
+        echo "OK ";
     }
 }
 else

@@ -66,6 +66,18 @@ foreach ($_GET['filters_path'] as $key => $value)
     imagecopy($im, $stamp, $_GET['filters_posx'][$key] - $offset_x, $_GET['filters_posy'][$key] - $offset_y, 0, 0, $_GET['filters_size'][$key], $_GET['filters_size'][$key]);
 }
 
+//Apply filter effects
+if ( strcmp( $_GET['grayscale'], "1" ) === 0 )
+    imagefilter( $im, IMG_FILTER_GRAYSCALE );
+imagefilter( $im, IMG_FILTER_BRIGHTNESS, ((intval( $_GET['brightness'] ) - 100) * 2.55) );
+if ( strcmp( $_GET['invert'], "1" ) === 0 )
+    imagefilter( $im, IMG_FILTER_NEGATE );
+if ( strcmp( $_GET['sepia'], "1" ) === 0 )
+{
+    imagefilter( $im, IMG_FILTER_GRAYSCALE);
+    imagefilter( $im, IMG_FILTER_COLORIZE, 100, 50, 0);
+}
+
 $path = "../uploads/output_" . $_SESSION['user_name'] . ".png";
 if ( imagepng($im, $path, 9) === TRUE )
     echo $path;

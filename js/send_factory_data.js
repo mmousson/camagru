@@ -29,6 +29,10 @@ send_image_data_btn.addEventListener("click", function () {
                     + "&filters_posy[]=" + filters[i].style.top.slice(0, -2)
                     + "&filters_size[]=" + (filters[i].style.width == "" ? "100" : filters[i].style.width.slice(0, -2));
     }
+    url_params += ("&grayscale=" + document.getElementById("gs").value
+        + "&brightness=" + document.getElementById("br").value
+        + "&invert=" + document.getElementById("in").value
+        + "&sepia=" + document.getElementById("se").value);
 
     overlay.style.display = "block";
     overlay.style.opacity = "1";
@@ -39,6 +43,7 @@ send_image_data_btn.addEventListener("click", function () {
     status_logo.src = "/images/UI/checkmark_processing.png";
 
     xhttp = new XMLHttpRequest();
+    console.log(url_params);
     xhttp.onreadystatechange = function () {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
         {

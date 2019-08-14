@@ -15,14 +15,7 @@ include_once("header.php");
 						<p>
 							<label for="gs">Grayscale</label>
 						</p>
-						<input class="slider_range" id="gs" name="gs" type="range" min="0" max="100" value="0"/>
-						<span class="slider_span">0</span>
-					</div>
-					<div class="slider_wrapper">
-						<p>
-							<label for="bl">Blur</label>
-						</p>
-						<input class="slider_range" id="bl" name="bl" type="range" min="0" max="100" value="0"/>
+						<input class="slider_range" id="gs" name="gs" type="range" min="0" max="1" value="0"/>
 						<span class="slider_span">0</span>
 					</div>
 					<div class="slider_wrapper">
@@ -34,27 +27,6 @@ include_once("header.php");
 					</div>
 					<div class="slider_wrapper">
 						<p>
-							<label for="co">Contrast</label>
-						</p>
-						<input class="slider_range" id="co" name="co" type="range" min="0" max="100" value="100"/>
-						<span class="slider_span">0</span>
-					</div>
-					<div class="slider_wrapper">
-						<p>
-							<label for="hu">Hue Rotate</label>
-						</p>
-						<input class="slider_range" id="hu" name="hu" type="range" min="0" max="100" value="0"/>
-						<span class="slider_span">0</span>
-					</div>
-					<div class="slider_wrapper">
-						<p>
-							<label for="op">Opacity</label>
-						</p>
-						<input class="slider_range" id="op" name="op" type="range" min="0" max="100" value="100"/>
-						<span class="slider_span">0</span>
-					</div>
-					<div class="slider_wrapper">
-						<p>
 							<label for="in">Invert</label>
 						</p>
 						<input class="slider_range" id="in" name="in" type="range" min="0" max="1" value="0"/>
@@ -62,16 +34,9 @@ include_once("header.php");
 					</div>
 					<div class="slider_wrapper">
 						<p>
-							<label for="sa">Saturation</label>
-						</p>
-						<input class="slider_range" id="sa" name="sa" type="range" min="0" max="100" value="100"/>
-						<span class="slider_span">0</span>
-					</div>
-					<div class="slider_wrapper">
-						<p>
 							<label for="se">Sepia</label>
 						</p>
-						<input class="slider_range" id="se" name="se" type="range" min="0" max="100" value="0"/>
+						<input class="slider_range" id="se" name="se" type="range" min="0" max="1" value="0"/>
 						<span class="slider_span">0</span>
 					</div>
 					<button id="reset_btn" class="btn red">RESET</button>
@@ -157,7 +122,6 @@ include_once("header.php");
 			</div>
 		</div>
 	</body>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="/js/factory.js"></script>
 	<script type="text/javascript" src="/js/webcam.js"></script>
 	<script type="text/javascript" src="/js/create_filters.js"></script>

@@ -4,17 +4,15 @@ var	submit_btn = document.getElementById("submit_button");
 var	file_input = document.getElementById("file");
 
 var rangeSlider = function(){
-	var slider = $('.slider_wrapper'),
-	range = $('.slider_range'),
-	value = $('.slider_span');
+	var	slider = document.querySelectorAll(".slider_wrapper");
 
-	slider.each(function(){
-		value.each(function(){
-			var value = $(this).prev().attr('value');
-			$(this).html(value);
-		});
-		range.on('input', function(){
-			$(this).next(value).html(this.value);
+	slider.forEach(function (elem_slider) {
+		var range = elem_slider.querySelector(".slider_range");
+		var	value = elem_slider.querySelector(".slider_span");
+
+		value.innerHTML = range.value;
+		range.addEventListener("input", function () {
+			value.innerHTML = this.value;
 		});
 	});
 };
@@ -31,41 +29,30 @@ var			is_advanced_upload = function () {
 
 function	edit_image()
 {
-	var	gs = $("#gs").val();
-	var	bl = $("#bl").val();
-	var	br = $("#br").val();
-	var	co = $("#co").val();
-	var	hu = $("#hu").val();
-	var	op = $("#op").val();
-	var	_in = $("#in").val();
-	var	sa = $("#sa").val();
-	var	se = $("#se").val();
+	var gs = document.getElementById("gs").value * 100;
+	var br = document.getElementById("br").value;
+	var _in = document.getElementById("in").value * 100;
+	var se = document.getElementById("se").value * 100;
 
 	var filter =	'grayscale(' + gs +
-					'%) blur(' + bl +
-					'px) brightness(' + br +
-					'%) contrast(' + co +
-					'%) hue-rotate(' + hu +
-					'deg) opacity(' + op +
+					'%) brightness(' + br +
 					'%) invert(' + _in +
-					'%) saturate(' + sa +
 					'%) sepia(' + se +
 					'%)';
-	$("#the_image").css("filter", filter);
-	$("#the_image").css("filter", filter);
+	document.getElementById("the_image").style.filter = filter;
 }
 
-$("input[type=range]").change(edit_image).mousemove(edit_image);
-$("#reset_btn").click(function () {
-	$("#gs").val("0");
-	$("#bl").val("0");
-	$("#br").val("100");
-	$("#co").val("100");
-	$("#hu").val("0");
-	$("#op").val("100");
-	$("#in").val("0");
-	$("#sa").val("100");
-	$("#se").val("0");
+var	input_ranges = document.querySelectorAll(".slider_range");
+input_ranges.forEach(function (range_elem) {
+	range_elem.addEventListener("change", edit_image);
+	range_elem.addEventListener("mousemove", edit_image);
+});
+
+document.getElementById("reset_btn").addEventListener("click", function () {
+	document.getElementById("gs").value = "0";
+	document.getElementById("br").value = "100";
+	document.getElementById("in").value = "0";
+	document.getElementById("se").value = "0";
 	rangeSlider();
 	edit_image();
 });
@@ -110,7 +97,6 @@ file_input.addEventListener("change", function () {
 
 		xhttp = new XMLHttpRequest();
 		form_data = new FormData(form);
-		console.log("Form Data: ", form_data);
 		xhttp.open("POST", "/scripts/upload_image.php", true);
 		xhttp.onreadystatechange = function () {
 			if (this.readyState == XMLHttpRequest.DONE && this.status == 200)

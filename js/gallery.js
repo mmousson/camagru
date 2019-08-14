@@ -89,6 +89,7 @@ function send_comment ()
 
 	if (is_sending_comment || is_shift)
 		return ;
+	comment_btn.innerHTML = "Submitting...";
 	is_sending_comment = true;
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
@@ -100,8 +101,9 @@ function send_comment ()
 				picture_show_overlay(active_id);
 			}
 			else
-				alert(this.responseText.slice(7));
+				alert(this.responseText);
 			is_sending_comment = false;
+			comment_btn.innerHTML = "Submit";
 		}
 	}
 	xhttp.open("GET", "/scripts/add_comment.php?"
