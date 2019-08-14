@@ -68,7 +68,7 @@ else
 			<p>© 2019 mmousson</p>
 		</div>
 
-		<!-- <div class="slider">
+		<div class="slider">
 			<section class="slides_wrapper">
 				<img class="slides" src="images/posts/0-0/post_img.jpg"/>
 				<input type="image" class="previous_btn" onclick="slide_divs(-1)" src="images/UI/prev_btn.png"/>
@@ -86,7 +86,7 @@ else
 				<input type="image" class="previous_btn" onclick="slide_divs(-1)" src="images/UI/prev_btn.png"/>
 				<input type="image" class="next_btn" onclick="slide_divs(+1)" src="images/UI/next_btn.png"/>
 			</section>
-		</div> -->
+		</div>
 		</div>
 		<div class="useful_pannel">
 		<a class="useful_link" href="about_us.php">ABOUT US</a>

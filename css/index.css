@@ -14,14 +14,45 @@ hr {
 	border: 1px solid rgba(30, 30, 30, 0.9);
 }
 
-.log_panel {
-	float: left;
-    display: inline-block;
-	margin-top: 2%;
-	margin-left: 2%;
-	padding-top: 20px;
-	width: 600px;
-	background-color: rgba(35, 35, 35, 0.8);
+@media screen and (max-width: 1024px) {
+	body {
+		background-size: auto;
+		background-repeat: no-repeat;
+	}
+	.log_panel {
+		width: 100%;
+		height: 100%;
+		margin-top: 0px;
+		margin-left: 0px;
+		padding-top: 0px;
+		background-color: rgba(35, 35, 35, 0.8);
+	}
+	.slider { display: none; }
+	.useful_pannel { transform: translate(0%, -90%); }
+	.useful_link { margin-right: 20px; margin-left: 20px; }
+	.input_text { height: 3.9em; }
+}
+
+@media screen and (min-width: 1025px) {
+	.log_panel {
+		float: left;
+		display: inline-block;
+		margin-top: 2%;
+		margin-left: 2%;
+		padding-top: 20px;
+		width: 600px;
+		background-color: rgba(35, 35, 35, 0.8);
+	}
+	.slider { 
+		height: 100%;
+		display: flex;
+		overflow: auto;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.useful_pannel { transform: translate(0%, -100%); }
+	.useful_link { margin-right: 100px; margin-left: 100px; }
+	.input_text { height: 1.9em; }
 }
 
 .log_panel p {
@@ -35,7 +66,6 @@ hr {
 .camagru_logo { width: 65%; display: block; margin: 0 auto; }
 .input_text {
 	width: 80%;
-	height: 1.9em;
 	display: block;
 	margin: 0 auto;
 	margin-top: 28px;
@@ -68,16 +98,11 @@ hr {
 }
 
 .wrapper { display: inline; }
-.slider { 
-	height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
- }
 
+.slides_wrapper img { max-width: 100%; }
  .slides_wrapper {
 	margin: auto;
-	max-width: 80%;
+	max-width: 100%;
 	height: auto;
 	position: relative;
 }
@@ -86,15 +111,12 @@ hr {
 	position: fixed;
 	height: 2%;
 	width: 100%;
-	transform: translate(0%, -100%);
 	background-color: #c1c1c1cb;
 	text-align: center;
 }
 
 .useful_link {
 	color: #3e3e3e;
-	margin-right: 100px;
-	margin-left: 100px;
 	font-size: 12px;
 	font-weight: normal;
 	font-family: cursive;
