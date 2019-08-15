@@ -55,6 +55,16 @@ if (isset($_GET['login']))
 			$conn = NULL;
 		}
 	}
+	else if ( strcmp( $_GET['login'], "reset" ) === 0 )
+	{
+		if ( isset( $_GET['token'] ) )
+		{
+			$_SESSION['token'] = $_GET['token'];
+			include ( "scripts/generate_new_password.php" );
+		}
+		else
+			include ( "scripts/generate_reset_password.php" );
+	}
 	else
 		include( "scripts/generate_register.php" );
 }

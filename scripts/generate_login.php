@@ -6,3 +6,6 @@
 <p>
     Pas encore membre ? Enregistrez-vous <a href="/index.php?login=false">en cliquant ici</a>
 </p>
+<p>
+    Forgot your password ? Reset it <a href="/index.php?login=reset">HERE</a>
+</p>
