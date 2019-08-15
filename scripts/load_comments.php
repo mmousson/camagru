@@ -24,7 +24,7 @@ if ( isset( $_GET['id'] ) && !empty( $_GET['id'] ) )
                         echo '<p style="color: red;" class="comment_author">' . $match['author'] . '</p>';
                     else
 						echo '<p class="comment_author">' . $match['author'] . '</p>';
-					echo '<p class="comment_content">' . $match['message'] . '</p>';
+					echo '<p class="comment_content">' . htmlspecialchars( $match['message'] ) . '</p>';
 					if ( strcmp( $_SESSION['user_name'], "root" ) === 0
 						|| strcmp( $_SESSION['user_name'], $match['author'] ) === 0 )
 						echo '<input type="image" id="' . $match['comment_id'] . '" class="delete_comment_btn" src="/images/UI/checkmark_ko.png" title="Delete That Comment"/>';

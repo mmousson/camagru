@@ -108,7 +108,7 @@ function send_comment ()
 	}
 	xhttp.open("GET", "/scripts/add_comment.php?"
 		+ "image_id=" + active_id
-		+ "&message=" + comment_input.value);
+		+ "&message=" + encodeURI(comment_input.value));
 	xhttp.send();
 }
 
