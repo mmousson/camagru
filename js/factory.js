@@ -155,7 +155,6 @@ function	resize()
 	box_wrapper.style.height = width / 16 * 9;
 	the_image.style.height =  width / 16 * 9;
 	the_webcam.style.height = width / 16 * 9;
-	document.getElementById("textarea_wrapper").style.height = "calc(100% - 60px)";
 }
 resize();
 window.onresize = resize;

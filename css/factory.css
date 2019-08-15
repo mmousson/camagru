@@ -366,6 +366,11 @@ Just style it to let the user know he can drag and drop files */
 	flex: 1 1;
 	margin-left: 20px;
 }
+#controls form {
+	height: 100%;
+	display: grid;
+	grid-template-areas: 'caption' 'caption' 'caption' 'caption' 'caption' 'caption' 'caption' 'caption' 'caption' 'button';
+}
 
 input[type="text"], textarea {
 	flex: 1 1 auto;
@@ -376,12 +381,16 @@ input[type="text"], textarea {
 	border-radius: 10px;
 	font-size: 20px;
 	outline: none;
+	padding: 10px;
 }
 
+#textarea_wrapper { height: 100%; }
 #textarea_wrapper {
-	width: 100%;
-    flex: 1 1 auto;
+	height: 100%;
+	grid-area: caption;
 }
+
+#send_image_data_btn { height: 100%; }
 
 #overlay {
 	background-color: rgba(0,0,0, 0.5);
