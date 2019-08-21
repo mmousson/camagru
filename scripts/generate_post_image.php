@@ -29,6 +29,10 @@ function	scale_image($file, $w, $h, $create_func, $preserve_alpha=FALSE, $crop=F
             $newwidth = $w;
         }
     }
+    if ( strcmp( $create_func, "imagecreatefrompng" ) === 0 )
+        $src = imagecreatefrompng( $file );
+    else if ( strcmp( $create_func, "imagecreatefromjpeg" ) === 0 )
+        $src = imagecreatefromjpeg( $file );
     $src = $create_func($file);
     $dst = imagecreatetruecolor($newwidth, $newheight);
 
@@ -54,17 +58,17 @@ $create_func = NULL;
 $canvas_path = $_GET['canvas_path'];
 
 if ( endsWith( $canvas_path, ".png" ) === TRUE )
-    $create_func = imagecreatefrompng;
+    $create_func = "imagecreatefrompng";
 else if ( endsWith( $canvas_path, ".jpeg" ) === TRUE )
-    $create_func = imagecreatefromjpeg;
+    $create_func = "imagecreatefromjpeg";
 else if ( endsWith( $canvas_path, ".jpg" ) === TRUE )
-    $create_func = imagecreatefromjpeg;
+    $create_func = "imagecreatefromjpeg";
 
 $im = scale_image($canvas_path, (int)($_GET['canvas_size'] / 9 * 16), (int)$_GET['canvas_size'], $create_func, FALSE, FALSE);
 
 foreach ($_GET['filters_path'] as $key => $value)
 {
-    $stamp =  scale_image($value, $_GET['filters_size'][$key], $_GET['filters_size'][$key], imagecreatefrompng, TRUE, FALSE);
+    $stamp =  scale_image($value, $_GET['filters_size'][$key], $_GET['filters_size'][$key], "imagecreatefrompng", TRUE, FALSE);
     if ( strcmp( $_GET['flipped'][$key], "true" ) === 0 )
         imageflip( $stamp, IMG_FLIP_HORIZONTAL );
     $offset_x = (((int)$_GET['canvas_size'] / 9 * 16) - imagesx($im)) / 2;

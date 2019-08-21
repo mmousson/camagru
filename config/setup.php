@@ -1,7 +1,5 @@
 <?php
 	include_once ( "database.php" );
-	mkdir("../uploads");
-	mkdir("../posts");
 	
 	try
 	{

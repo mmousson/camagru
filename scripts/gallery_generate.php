@@ -45,12 +45,15 @@ if ( $conn !== NULL )
 
     $results = $query->fetchAll();
 
-    if ( strcmp( $_GET['filter'], "recent" ) === 0 )
-        usort( $results, sort_by_date_recent );
-    else if ( strcmp( $_GET['filter'], "ancient" ) === 0 )
-        usort( $results, sort_by_date_ancient );
-    else if ( strcmp( $_GET['filter'], "liked" ) === 0 )
-        usort( $results, sort_by_likes );
+    if ( isset( $_GET['filter'] ) )
+    {
+        if ( strcmp( $_GET['filter'], "recent" ) === 0 )
+            usort( $results, sort_by_date_recent );
+        else if ( strcmp( $_GET['filter'], "ancient" ) === 0 )
+            usort( $results, sort_by_date_ancient );
+        else if ( strcmp( $_GET['filter'], "liked" ) === 0 )
+            usort( $results, sort_by_likes );
+    }
 
     foreach ( $results as $post )
     {
