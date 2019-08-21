@@ -44,6 +44,12 @@ function	scale_image($file, $w, $h, $create_func, $preserve_alpha=FALSE, $crop=F
     return $dst;
 }
 
+if ( count( $_GET['filters_path'] ) == 0 )
+{
+    echo "ERROR: You must add at least one filter";
+    exit();
+}
+
 $create_func = NULL;
 $canvas_path = $_GET['canvas_path'];
 
@@ -82,6 +88,6 @@ $path = "../uploads/output_" . $_SESSION['user_name'] . ".png";
 if ( imagepng($im, $path, 9) === TRUE )
     echo $path;
 else
-    echo "ERROR";
+    echo "ERROR: An error occured, please try again later";
 imagedestroy($im);
 ?>

@@ -27,6 +27,11 @@ function takepicture(video)
             the_image.style.backgroundRepeat = "no-repeat";
             the_image.style.backgroundSize = "contain";
             the_image.style.setProperty("--loaded", "true");
+
+            var filters = the_webcam.querySelectorAll(".my_filter");
+            filters.forEach(function (elem) {
+                the_image.appendChild(elem);
+            });
         }
     }
     xhttp.open("POST", "/scripts/process_webcam_snapshot.php");

@@ -137,6 +137,7 @@ function	set_background_image(full_path)
 	editor.style.backgroundRepeat = "no-repeat";
 	editor.style.backgroundSize = "contain";
 	editor.style.setProperty("--loaded", "true");
+
 	form.style.display = "none";
 }
 
@@ -147,14 +148,29 @@ function	resize()
 	box_wrapper = document.getElementById("box_wrapper");
 	the_image = document.getElementById("the_image");
 	the_webcam =  document.getElementById("the_webcam");
-	width = box_wrapper.clientWidth;
-	if (width == 0)
-		width = the_image.clientWidth;
-	if (width == 0)
-		width = the_webcam.clientWidth;
-	box_wrapper.style.height = width / 16 * 9;
-	the_image.style.height =  width / 16 * 9;
-	the_webcam.style.height = width / 16 * 9;
+
+	if (getComputedStyle(box_wrapper).getPropertyValue("--mobile") == "true")
+	{
+		width = box_wrapper.clientWidth;
+		if (width == 0)
+			width = the_image.clientWidth;
+		if (width == 0)
+			width = the_webcam.clientWidth;
+		box_wrapper.style.height = width * 16 / 9;
+		the_image.style.height =  width * 16 / 9;
+		the_webcam.style.height = width * 16 / 9;
+	}
+	else
+	{
+		width = box_wrapper.clientWidth;
+		if (width == 0)
+			width = the_image.clientWidth;
+		if (width == 0)
+			width = the_webcam.clientWidth;
+		box_wrapper.style.height = width / 16 * 9;
+		the_image.style.height =  width / 16 * 9;
+		the_webcam.style.height = width / 16 * 9;
+	}
 }
 resize();
 window.onresize = resize;

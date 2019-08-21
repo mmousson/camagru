@@ -1,5 +1,10 @@
 <?php
 include_once("header.php");
+if ( $_SESSION['logged_in'] !== TRUE )
+{
+	header ( "Location: index.php?login=false" );
+	exit();
+}
 ?>
 <html>
 	<meta charset="UTF-8"/>
@@ -76,7 +81,7 @@ include_once("header.php");
 						<div id="textarea_wrapper">
 							<textarea id="subject" name="subject" type="text" placeholder="Enter a caption for your post here..." maxlength="300" required></textarea>
 						</div>
-						<button id="send_image_data_btn" type="button">PUSBLISH</button>
+						<button id="send_image_data_btn" type="button" disabled>PUSBLISH</button>
 					</form>
 				</div>
 

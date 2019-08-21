@@ -43,18 +43,15 @@ send_image_data_btn.addEventListener("click", function () {
     status_logo.src = "/images/UI/checkmark_processing.png";
 
     xhttp = new XMLHttpRequest();
-    console.log(url_params);
     xhttp.onreadystatechange = function () {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
         {
-            cancel_btn.style.display = "initial";
-            confirm_btn.style.display = "initial";
-            public_confirm.style.display= "block";
-            if (this.responseText == "ERROR")
+            if (this.responseText.startsWith("ERROR"))
             {
                 title_txt.innerHTML = "Image Processing Failure";
-                question_txt.innerHTML = "An error occured, please try again later";
+                question_txt.innerHTML = this.responseText.slice(7);
                 status_logo.src = "/images/UI/checkmark_ko.png";
+                ok_btn.style.display = "initial";
             }
             else
             {
@@ -62,6 +59,9 @@ send_image_data_btn.addEventListener("click", function () {
                 question_txt.innerHTML = "Are you sure you want to pusblish your creation ?";
                 status_logo.src = "/images/UI/checkmark_ok.png";
                 image_path = this.responseText;
+                cancel_btn.style.display = "initial";
+                confirm_btn.style.display = "initial";
+                public_confirm.style.display= "block";
 			}
 			console.log(this.responseText);
         }

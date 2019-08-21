@@ -1,7 +1,14 @@
 var filter_count = 0;
 var editor = document.getElementById("the_image");
+var webcam = document.getElementById("the_webcam");
 var add_btn = document.getElementById("add_btn");
 var resizing = false;
+
+function    update_submit_button_status()
+{
+    if (filter_count > 0)
+        document.getElementById("send_image_data_btn").disabled = false;
+}
 
 function    add_filter_to_editor(path_to_filter_image)
 {
@@ -69,12 +76,16 @@ function    add_filter_to_editor(path_to_filter_image)
         document.getElementById(elem.toElement.id).parentElement.parentElement.style.transform = rotation;
     });
 
-    editor.appendChild(new_filter_wrapper);
+    if (editor.style.display != "")
+        editor.appendChild(new_filter_wrapper);
+    else
+        webcam.appendChild(new_filter_wrapper);
 
     drag_element(new_filter_wrapper);
     make_resizable_div(new_filter_wrapper.id);
 
     filter_count++;
+    update_submit_button_status();
 }
 
 function    drag_element(elem)

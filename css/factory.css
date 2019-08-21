@@ -1,4 +1,4 @@
-body { background-color: rgb(25,25,25); margin: 0; }
+body { background-color: rgb(42,42,42); margin: 0; }
 .image_settings::-webkit-scrollbar { width: 0 !important }
 .image_filters::-webkit-scrollbar { width: 0 !important }
 .editor_wrapper {
@@ -9,6 +9,15 @@ body { background-color: rgb(25,25,25); margin: 0; }
 .editor_wrapper > div {
 	padding: 20px;
 	background-color: rgb(42, 42, 42);
+}
+
+@media screen and (max-width: 1024px) {
+	#box_wrapper { --mobile:true; }
+	.image_settings { display: none; }
+}
+
+@media screen and (min-width: 1025px) {
+	#box_wrapper { --mobile:false; }
 }
 
 .image_settings { max-width: 350px; overflow: auto; }
@@ -347,6 +356,7 @@ Just style it to let the user know he can drag and drop files */
 }
 
 #publish_button_wrapper { width: 100%; }
+#controls button:disabled { background-color: grey; }
 #controls button {
 	background-color: dodgerblue;
 	margin-top: 10px;
