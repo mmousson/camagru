@@ -12,6 +12,8 @@ We had to deal with the following topics:
 - Cross Site Request Forgery (XSS)
 - Cross Origin Resource Sharing (CORS)
 
+![alt tag](https://raw.githubusercontent.com/mmousson/camagru/master/screenshots/screenshot_1.png)
+
 ## Technologies
 
 We were only allowed to use a LAMP stack. All frameworks, all libraries were forbidden.
@@ -62,6 +64,8 @@ All done !
 By default, the users table will hold a root account with the following credentials:
 <br>login: `root`
 <br>password: `bleu`
+
+![alt tag](https://raw.githubusercontent.com/mmousson/camagru/master/screenshots/screenshots.jpg)
 
 ## Disclaimer
 
