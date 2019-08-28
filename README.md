@@ -1,5 +1,4 @@
 # camagru
-## School 42's first Web Project
 
 This web project was challenging us to create a small web application allowing an user to
 make basic photo and video editing using the webcam and some predefined images.
@@ -17,8 +16,8 @@ We had to deal with the following topics:
 
 We were only allowed to use a LAMP stack. All frameworks, all libraries were forbidden.
 Authorized languages:
-- Server-side : PHP
-- Client-side : HTML / CSS / Vanilla Javascript
+- Server-side : PHP 7.2
+- Client-side : HTML 5 / CSS 3 / Vanilla Javascript
 
 ## Security
 
@@ -63,3 +62,8 @@ All done !
 By default, the users table will hold a root account with the following credentials:
 <br>login: `root`
 <br>password: `bleu`
+
+## Disclaimer
+
+This project was made for School 42's Cursus by Mallory Mousson (mmousson) and for learning purposes only.<br>
+You should NOT copy any part of this repository in your own projects without fully understanding it.
